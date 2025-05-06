@@ -1,0 +1,101 @@
+
+
+<ion-content fullscreen>
+  <ng-container *ngIf="!feedBackMensage else nofeedBackMensage"></ng-container>
+  <ng-template #nofeedBackMensage>
+  <div class="alert-feedback">
+    <ion-button (click)="setFeedBackMensage()">X</ion-button>
+    <p>Olá, Maria! Gostando do aplicativo? Não esqueça de deixar seu feedback para a gente. Isso ajuda o SupportChain a melhorar cada vez mais!</p>
+    <ion-router-link routerLink="/tabs/tab2">
+      Feedback
+    </ion-router-link>
+  </div>
+  </ng-template>
+  <ion-grid>
+
+    <!-- News -->
+    <ion-row>
+      <ion-col size="12">
+          <h2 class="section-title">News</h2>
+          <div class="container-news">
+              <div class="ajust-position-news" [style.transform]="'translateX(' + newsTranslante + 'rem)'">
+              <ion-card ion-card ion-card class="news-card" *ngFor="let news of news" button>
+              <img src={{news.linkImg}} alt="Notícia" />
+              <div class="news-overlay">
+                <h3>{{news.title}}</h3>
+                <p>{{news.author}} - {{news.date}} às {{news.time}}</p>
+              </div>
+              </ion-card>
+            </div>
+            <button (click)="translateNewsMinus()" class="minus-button">-</button>
+            <ng-container *ngIf="newsTranslante == -100 else notYetInNewsMax">
+              <button (click)="translateNewsPlus()" class="plus-button" style="color: black;">></button>
+            </ng-container>
+            <ng-template #notYetInNewsMax>
+              <button (click)="translateNewsPlus()" class="plus-button">+</button>
+            </ng-template>
+          </div>
+        <div class="Newsdots">
+          <ion-icon name="ellipse" class="newdot selected"></ion-icon>
+          <ion-icon name="ellipse" class="newdot"></ion-icon>
+          <ion-icon name="ellipse" class="newdot"></ion-icon>
+          <ion-icon name="ellipse" class="newdot"></ion-icon>
+          <ion-icon name="ellipse" class="newdot"></ion-icon>
+        </div>
+        
+      </ion-col>
+    </ion-row>
+
+    <!-- Literatura (sem slide, em grid) -->
+    <ion-row>
+      <ion-col size="12">
+        <h2 class="section-title">Literatura</h2>
+      </ion-col>
+      <ion-col size="12" >
+        <div class="container-books">
+          <div class="ajust-position-books" [style.transform]="'translateX(' + booksTranslate + 'rem)'">
+            <ion-card *ngFor="let book of books" button>
+              <img src={{book.linkImg}} />
+              <ion-card-header>
+                <ion-card-title>{{ book.name }}</ion-card-title>
+                <ion-card-subtitle>{{ book.author }}</ion-card-subtitle>
+                <div class="stars">★★★★★</div>
+              </ion-card-header>
+            </ion-card>
+          </div>  
+          <button (click)="translateBooksMinus()" class="minus-button">-</button>
+          <ng-container *ngIf="booksTranslate == -104 else notYetInBooksMax">
+            <button (click)="translateBooksPlus()" class="plus-button" style="color: black;">></button>
+          </ng-container>
+          <ng-template #notYetInBooksMax>
+            <button class="plus-button" (click)="translateBooksPlus()">+</button>
+          </ng-template>
+        </div>
+        <div class="Newsdots">
+          <ion-icon name="ellipse" class="bookdot selected"></ion-icon>
+          <ion-icon name="ellipse" class="bookdot"></ion-icon>
+          <ion-icon name="ellipse" class="bookdot"></ion-icon>
+          <ion-icon name="ellipse" class="bookdot"></ion-icon>
+          <ion-icon name="ellipse" class="bookdot"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Artigos -->
+    <ion-row>
+      <ion-col size="12" class="container-books">
+        <h2 class="section-title">Artigos</h2>
+        <ion-card class="article-card" *ngFor="let article of articles" button>
+          <ion-card-content>
+            <h3>{{ article.title }}</h3>
+            <div class="tags">
+              <ion-chip color="secondary" *ngFor="let tag of article.tags">{{ tag }}</ion-chip>
+            </div>
+            <p class="author">{{ article.authors }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

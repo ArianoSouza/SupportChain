@@ -1,0 +1,187 @@
+.feedback-note {
+    background-color: #6d5ea6;
+    color: white;
+    padding: 0 16px 16px;
+    font-size: 14px;
+  
+    a {
+      display: block;
+      margin-top: 8px;
+      text-decoration: underline;
+      color: white;
+    }
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 16px 0 8px;
+  }
+  
+  .news-card {
+    position: relative;
+    border-radius: 12px;
+    min-width: 23rem;
+  
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+  
+    .news-overlay {
+      position: absolute;
+      bottom: 0;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      width: 100%;
+  
+      h3 {
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .Newsdots {
+    text-align: center;
+    margin: 8px 0;
+  
+    .newdot {
+      font-size: 8px;
+      color: #ccc;
+  
+      &.selected {
+        color: #5d3dc3;
+      }
+    }
+    .bookdot {
+      font-size: 8px;
+      color: #ccc;
+  
+      &.selected {
+        color: #5d3dc3;
+      }
+    }
+  }
+  
+  .stars {
+    color: #ffb700;
+    font-size: 14px;
+  }
+  
+  .article-card {
+    background: #f8f8f8;
+    border: 2px solid #5d3dc3;
+    border-radius: 16px;
+    margin: 12px 0;
+    padding: 8px;
+  
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+  
+    .author {
+      font-size: 12px;
+      color: #555;
+    }
+  }
+  .alert-feedback{
+    position: relative;
+    background-color: #5d3dc3;
+    color: white;
+    width: 100%;
+    padding: 1rem ;
+
+    p{
+        width: 90%;
+        margin: 0.5rem 0rem;
+    }
+    ion-button{
+        position: absolute;
+        right: 1rem;
+        --background:none;
+        --color: white;
+        box-shadow: none;
+        --box-shadow:none;
+    }
+    ion-router-link{
+        --color: white ;
+        text-decoration: underline;
+    }
+  }
+
+  .container-news{
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  
+   
+  }
+  
+  .ajust-position-news{
+    display: flex;
+    width: fit-content;
+    transition: 0.5s;
+    animation: ease-in-out;
+  }
+
+  .ajust-position-books{
+    display: flex;
+    width: fit-content;
+    transition: 0.5s;
+    animation: ease-in-out;
+
+    ion-card{
+      img{
+        width: 50%;           
+        display: block;
+        margin: 0 auto;       
+        border-radius: 8px;   
+      }
+      width: 11rem;
+      height: fit-content
+    }
+    
+    ion-card-title{
+      font-size: 1rem;
+    }
+  }
+  .container-books{
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .plus-button{
+    position: absolute;
+    right: 0px;
+    top:0px;
+    z-index: 1;
+    height: 100%;
+    width: 10px;
+    color: transparent;
+    background:none;
+  }
+  .minus-button{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    z-index: 1;
+    height: 100%;
+    width: 10px;
+    color: transparent;
+    background:none;
+  }
