@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "clear && tsc && node ./build/index.js"
+    "start": "clear && tsc && node ./build/index.js",
+    "conect": "tsnd ./src/data/Database.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -11,9 +12,13 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/knex": "^0.15.2",
     "axios": "^1.9.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.1"
   }
 }
