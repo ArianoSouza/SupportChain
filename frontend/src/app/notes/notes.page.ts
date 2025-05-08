@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { userNotes } from '../models/types/user.types';
+import { ModalController } from '@ionic/angular';
+import { NewNoteComponent } from '../components/new-note/new-note.component';
 @Component({
   selector: 'app-notes',
   templateUrl: 'notes.page.html',
@@ -11,7 +13,7 @@ export class Tab2Page implements OnInit {
   ngOnInit(): void {
     console.log(new Date().toLocaleString())
   }
-  constructor() {}
+  constructor( private modalController: ModalController) {}
 
   allNotes: userNotes[] = [
     {
@@ -68,13 +70,21 @@ export class Tab2Page implements OnInit {
     
   }
 
+  public typeNote:String = "sei lá man kkkkk" 
+
+  changeTypeNotes = ()=>{
+    this.typeNote= "teste"
+    console.log(this.typeNote)
+  }
+
+  async abrirModal() {
+    const modal = await this.modalController.create({
+      component: NewNoteComponent
+    });
+  
+    await modal.present();
+  }
+
   sortByDateAllNotes = this.sortNotesByDateDesc(this.allNotes)
-
-
-
-
-
-
-
 
 }

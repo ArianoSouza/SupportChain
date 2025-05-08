@@ -6,7 +6,7 @@ const API_URL = "https://newsapi.org/v2/everything";
 
 export async function GetNews(req: Request, res:Response):Promise<void>{
     try{
-        const { query = "tecnologia" }= req.query;
+        const { query = "saude" }= req.query;
         console.log(`🔍 Buscando notícias para Query: ${query}`);
         const response = await axios.get(API_URL, {
             params: {

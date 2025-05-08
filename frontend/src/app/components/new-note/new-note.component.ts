@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonicModule, ModalController } from '@ionic/angular';
 import { userNotes } from 'src/app/models/types/user.types';
+
 
 @Component({
   selector: 'app-new-note',
@@ -18,13 +19,15 @@ export class NewNoteComponent  implements OnInit {
 
   constructor(private modalController: ModalController) { }
 
- newNote:userNotes = {
-  title:"",
-  content:"",
-  noteDate: new Date().toLocaleString(),
-  noteType:"note"
- }
+  newNote:userNotes = {
+    title:"",
+    content:"",
+    noteDate: new Date().toLocaleString(),
+    noteType: "note"
+   }
 
+ ngOnInit() {}
+ 
 
 
 closeModal() {
@@ -57,6 +60,6 @@ sendDataTest = ()=>{
 
 
 
-  ngOnInit() {}
+
 
 }

@@ -20,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.use(router);
 
+
 app.get("/noticias", GetNews);
 app.get("/Books", GetBooks);
 app.get("/Artigos",GetArtigos);

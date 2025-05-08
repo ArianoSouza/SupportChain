@@ -22,13 +22,15 @@
       width: 90%;
       margin-bottom: 1rem;
       --color: grey;
-      --color-selected:var(--background-activated);
+      --highlight-color: #3f2b96;
+      --background: none;
     }
 
   
     .login-button {
-      width: 100%;
-      max-width: 400px;
+      width: 90%;
+      height: 3rem;
+      font-size: 1rem;
       color: #fff;
       --background: #3D348B;
       --background-activated:#251d6d ;

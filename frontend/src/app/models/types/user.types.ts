@@ -1,22 +1,24 @@
 export type books = {
-    name:String
-    author:String,
-    rate:Number,
-    linkImg:String
+    title:String
+    author:String
+    cover:string
 }
 
 export type articles = {
     title: String,
-    authors: String[],
+    authors: String,
+    id:String,
+    link:String
     tags:String[]
 }
 
 export type news = {
-    title: String,
-    author: String,
-    date:String,
-    time:String,
-    linkImg:String
+    titulo: String,
+    autor: String,
+    descricao:String,
+    publicado_em:String,
+    url:String,
+    imagem:String
 }
 
 export type userNotes = {

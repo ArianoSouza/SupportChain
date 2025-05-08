@@ -35,3 +35,21 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 100;
+    src: url(./assets/fonts/Lato-Thin.ttf);
+}
+@font-face {
+    font-family: 'Lato';
+    font-weight: 200;
+    src: url(./assets/fonts/Lato-Regular.ttf);
+}
+@font-face {
+    font-family: 'Lato';
+    font-weight: 300;
+    src: url(./assets/fonts/Lato-Bold.ttf);
+}
+
