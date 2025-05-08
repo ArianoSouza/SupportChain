@@ -21,3 +21,10 @@
   ion-content,ion-card{
     --background: white;
   }
+  ion-input{
+    width: 90%;
+    margin-bottom: 1rem;
+    --color: grey;
+    --highlight-color: #3f2b96;
+    --background: none;
+  }

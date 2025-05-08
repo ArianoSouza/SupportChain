@@ -14,6 +14,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./externTabPages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   }
 ];
 @NgModule({

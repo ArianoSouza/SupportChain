@@ -106,7 +106,7 @@
               <!-- Artigos -->
               <ion-row>
                 <ion-col size="12" class="container-books">
-                  <ion-card class="article-card" *ngFor="let article of articles" button>
+                  <ion-card class="article-card" *ngFor="let article of articles" button (click)="goToLink(article.link)" >
                     <ion-card-content>
                       <h3>{{ article.title }}</h3>
                       <div class="tags">
