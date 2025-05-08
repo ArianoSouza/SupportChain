@@ -21,3 +21,24 @@ export type TConteudos={
     ConteudoTextos: any[]; 
     Imagens: any[]; 
 }
+
+export type User={
+    id:string,
+    nome:string,
+    sobrenome:string,
+    email: string
+    senha: string,
+    sexo: string
+    estado_civil: string 
+    data_de_nascimento: string
+    numero_de_telefone: string
+    estado: string
+    cidade: string
+    bairro: string
+    foto: string;
+}
+
+export type Login = {
+    email: string,
+    senha: string;
+}
