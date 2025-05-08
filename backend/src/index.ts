@@ -9,6 +9,8 @@ import GetTrilha from './Controlles/GetTrilha';
 import GetEtapa from './Controlles/GetEtapa';
 import dotenv from "dotenv";
 import { Router } from 'express';
+import GetCadastro from './Controlles/usuarioRoutes';
+import GetLogin from './Controlles/usuarioLogin';
 
 dotenv.config();
 
@@ -28,6 +30,8 @@ router.post("/Trilhas", InsertTrilha);
 router.post("/Etapas", InsertEtapa);
 router.get("/trilha", GetTrilha);
 router.get("/etapa",GetEtapa);
+router.post("/user/cadastro", GetCadastro);
+router.post("/user/login", GetLogin);
 
 app.listen(3000, () => {
   console.log("Server is running  in http://localhost:3000")
