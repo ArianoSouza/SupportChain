@@ -7,22 +7,21 @@ const printError = (error: any) => {
   const createTable = async () =>{
     try{
         await connection.raw(`
-        
-         CREATE TABLE IF NOT EXISTS trilha(
-            id_trilha INT AUTO_INCREMENT PRIMARY KEY,
-            Nome VARCHAR(255),
-            descricao TEXT,
-            objetivo TEXT
-            );
-
-            CREATE TABLE Etapas (
-             id_etapa INT AUTO_INCREMENT PRIMARY KEY,
-             id_trilha INT,
-             ordem INT,
-             titulo VARCHAR(255),
-             descricao TEXT,
-             FOREIGN KEY (id_trilha) REFERENCES Trilha(id_trilha)
-            );
+          CREATE TABLE IF NOT EXISTS usuario (
+          id VARCHAR(36) PRIMARY KEY PRIMARY KEY,
+          Nome VARCHAR(100) NOT NULL,
+          Sobrenome VARCHAR(100) NOT NULL,
+          Email VARCHAR(100) NOT NULL UNIQUE,
+          senha VARCHAR(255) NOT NULL,
+          sexo VARCHAR(20) NOT NULL,
+          Estado_Civil VARCHAR(50),
+          data_nascimento VARCHAR(10) ,
+          numero_telefone VARCHAR(20),
+          Estado VARCHAR(50),
+          Cidade VARCHAR(50),
+          Bairro VARCHAR(50),
+          Foto TEXT 
+          );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

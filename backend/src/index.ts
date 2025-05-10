@@ -11,6 +11,7 @@ import dotenv from "dotenv";
 import { Router } from 'express';
 import GetCadastro from './Controlles/usuarioRoutes';
 import GetLogin from './Controlles/usuarioLogin';
+import autenticarToken from './Serviços/autenticarToken';
 
 dotenv.config();
 
@@ -23,13 +24,13 @@ app.use(cors());
 app.use(router);
 
 
-app.get("/noticias", GetNews);
-app.get("/Books", GetBooks);
-app.get("/Artigos",GetArtigos);
+app.get("/noticias",autenticarToken ,GetNews);
+app.get("/Books",autenticarToken, GetBooks);
+app.get("/Artigos",autenticarToken,GetArtigos);
 router.post("/Trilhas", InsertTrilha);
-router.post("/Etapas", InsertEtapa);
-router.get("/trilha", GetTrilha);
-router.get("/etapa",GetEtapa);
+router.post("/Etapas",autenticarToken ,InsertEtapa);
+router.get("/trilha",autenticarToken ,GetTrilha);
+router.get("/etapa",autenticarToken,GetEtapa);
 router.post("/user/cadastro", GetCadastro);
 router.post("/user/login", GetLogin);
 

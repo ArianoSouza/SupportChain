@@ -30,8 +30,8 @@ export type User={
     senha: string,
     sexo: string
     estado_civil: string 
-    data_de_nascimento: string
-    numero_de_telefone: string
+    data_nascimento: string
+    numero_telefone: string
     estado: string
     cidade: string
     bairro: string
@@ -42,3 +42,7 @@ export type Login = {
     email: string,
     senha: string;
 }
+
+export interface AuthenticationData {
+    id: string;
+ }
