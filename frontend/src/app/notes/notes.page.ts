@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { userNotes } from '../models/types/user.types';
 import { ModalController } from '@ionic/angular';
 import { NewNoteComponent } from '../components/new-note/new-note.component';
+import { ShareService } from '../services/shareInfo/share.service';
+import { NoticiaService } from '../services/noticia.service';
+
 @Component({
   selector: 'app-notes',
   templateUrl: 'notes.page.html',
@@ -11,44 +14,16 @@ import { NewNoteComponent } from '../components/new-note/new-note.component';
 export class Tab2Page implements OnInit {
 
   ngOnInit(): void {
-    console.log(new Date().toLocaleString())
+    this.share.mensagemAtual.subscribe(dados => {
+      console.log(dados)
+      this.allNotes = dados
+      console.log(this.allNotes)
+    });
   }
-  constructor( private modalController: ModalController) {}
+  constructor( private modalController: ModalController , private share: ShareService, ) {}
 
-  allNotes: userNotes[] = [
-    {
-      content:'Hoje percebi que meu filho estava mais quieto e irritado que o normal, sempre no quarto com o celular, e isso me preocupou. Em vez de brigar ou tirar o aparelho, resolvi conversar com calma. No começo ele resistiu, mas depois acabou contando que teve um desentendimento com uma colega na escola e ficou muito chateado com a situação. Disse que se sentiu excluído e até pensou em faltar às aulas. Fiquei triste por ele estar guardando tudo sozinho, mas feliz por ter conseguido criar um momento de escuta verdadeira. Essa conversa me fez entender que, muitas vezes, por trás do uso excessivo da internet, existem sentimentos mal resolvidos que eles não sabem expressar.',
-      noteType:'note',
-      noteDate: '05/05/2025, 14:14:09'
-    },
-    {
-      title:'Não sei oq está acontecendo',
-      content:'Hoje percebi que meu filho estava mais quieto e irritado que o normal, sempre no quarto com o celular, e isso me preocupou. Em vez de brigar ou tirar o aparelho, resolvi conversar com calma. No começo ele resistiu, mas depois acabou contando que teve um desentendimento com uma colega na escola e ficou muito chateado com a situação. Disse que se sentiu excluído e até pensou em faltar às aulas. Fiquei triste por ele estar guardando tudo sozinho, mas feliz por ter conseguido criar um momento de escuta verdadeira. Essa conversa me fez entender que, muitas vezes, por trás do uso excessivo da internet, existem sentimentos mal resolvidos que eles não sabem expressar.',
-      noteType:'diary',
-      noteDate: new Date().toISOString()
-    }
-    ,
-    {
-      title:'Não sei oq está acontecendo',
-      content:'Hoje percebi que meu filho estava mais quieto e irritado que o normal, sempre no quarto com o celular, e isso me preocupou. Em vez de brigar ou tirar o aparelho, resolvi conversar com calma. No começo ele resistiu, mas depois acabou contando que teve um desentendimento com uma colega na escola e ficou muito chateado com a situação. Disse que se sentiu excluído e até pensou em faltar às aulas. Fiquei triste por ele estar guardando tudo sozinho, mas feliz por ter conseguido criar um momento de escuta verdadeira. Essa conversa me fez entender que, muitas vezes, por trás do uso excessivo da internet, existem sentimentos mal resolvidos que eles não sabem expressar.',
-      noteType:'diary',
-      noteDate: "03/05/2025, 14:14:09"
-    },
-    {
-      title:'Não sei oq está acontecendo',
-      content:'Hoje percebi que meu filho estava mais quieto e irritado que o normal, sempre no quarto com o celular, e isso me preocupou. Em vez de brigar ou tirar o aparelho, resolvi conversar com calma. No começo ele resistiu, mas depois acabou contando que teve um desentendimento com uma colega na escola e ficou muito chateado com a situação. Disse que se sentiu excluído e até pensou em faltar às aulas. Fiquei triste por ele estar guardando tudo sozinho, mas feliz por ter conseguido criar um momento de escuta verdadeira. Essa conversa me fez entender que, muitas vezes, por trás do uso excessivo da internet, existem sentimentos mal resolvidos que eles não sabem expressar.',
-      noteType:'diary',
-      noteDate: "03/30/2025, 14:14:09"
-    },
-    {
-      title:'Não sei oq está acontecendo',
-      content:'Hoje percebi que meu filho estava mais quieto e irritado que o normal, sempre no quarto com o celular, e isso me preocupou. Em vez de brigar ou tirar o aparelho, resolvi conversar com calma. No começo ele resistiu, mas depois acabou contando que teve um desentendimento com uma colega na escola e ficou muito chateado com a situação. Disse que se sentiu excluído e até pensou em faltar às aulas. Fiquei triste por ele estar guardando tudo sozinho, mas feliz por ter conseguido criar um momento de escuta verdadeira. Essa conversa me fez entender que, muitas vezes, por trás do uso excessivo da internet, existem sentimentos mal resolvidos que eles não sabem expressar.',
-      noteType:'diary',
-      noteDate: "03/30/2025, 17:14:09"
-    }
-  ]
+  allNotes: userNotes[]= []
 
-  newNoteType:String = "note"
 
   formatIsoDateToEn = (dateIso: String): String => {
     const date = new Date(dateIso.toString());
@@ -70,19 +45,18 @@ export class Tab2Page implements OnInit {
     
   }
 
-  public typeNote:String = "sei lá man kkkkk" 
 
-  changeTypeNotes = ()=>{
-    this.typeNote= "teste"
-    console.log(this.typeNote)
-  }
-
-  async abrirModal() {
+  async abrirModal(event:Event) {
+    const elementId = (event.currentTarget as HTMLElement).id.toString();
     const modal = await this.modalController.create({
       component: NewNoteComponent
     });
-  
+    this.changeTypeById(elementId)
     await modal.present();
+  }
+
+  changeTypeById (id:string){
+    this.share.mudarValorDeTipo(id);
   }
 
   sortByDateAllNotes = this.sortNotesByDateDesc(this.allNotes)

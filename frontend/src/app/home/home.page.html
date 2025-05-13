@@ -1,6 +1,6 @@
 <ion-content fullscreen>
 
-
+    
 
     <ng-container *ngIf="!feedBackMensage else nofeedBackMensage"></ng-container>
     <ng-template #nofeedBackMensage>
@@ -11,8 +11,32 @@
         Feedback
       </ion-router-link>
     </div>
+
+    
+
     </ng-template>
     <ion-grid>
+      <div class="container-welcome">
+        <img src="assets/images/logo sc 3.svg" alt="">
+        <div>
+          <h1>Olá</h1>
+          <h2>Seja bem vindo!</h2>
+        </div>
+      </div>
+  
+      <div class="container-sugestion">
+        <h2>Sugestões</h2>
+        <div>
+          <ion-card button (click)="goToPage(sugestions[0].url)">
+            <ion-icon name={{sugestions[0].icon}}></ion-icon>
+            <h5>{{sugestions[0].title}}</h5>
+          </ion-card>
+          <ion-card button (click)="goToPage(sugestions[2].url)">
+            <ion-icon name={{sugestions[2].icon}}></ion-icon>
+            <h5>{{sugestions[2].title}}</h5>
+          </ion-card>
+        </div>
+      </div>
   
       <!-- News -->
       <h2 class="section-title">News</h2>
@@ -25,7 +49,7 @@
           <ion-row>
             <ion-col size="12">
                 <div class="container-news">
-                    <div class="ajust-position-news" [style.transform]="'translateX(' + newsTranslante + 'rem)'">
+                    <div class="ajust-position-news" [style.transform]="'translateX(' + newsTranslante + 'px)'">
                     <ion-card ion-card ion-card class="news-card" *ngFor="let news of news" button (click)="goToLink(news.url)">
                     <img src={{news.imagem}} alt="Notícia" />
                     <div class="news-overlay">
@@ -34,27 +58,11 @@
                     </div>
                     </ion-card>
                   </div>
-                  <button (click)="translateNewsMinus()" class="minus-button">-</button>
-                  <ng-container *ngIf="newsTranslante == -100 else notYetInNewsMax">
-                    <button (click)="translateNewsPlus()" class="plus-button" style="color: black;">></button>
-                  </ng-container>
-                  <ng-template #notYetInNewsMax>
-                    <button (click)="translateNewsPlus()" class="plus-button">+</button>
-                  </ng-template>
                 </div>
-              <div class="Newsdots">
-                <ion-icon name="ellipse" class="newdot selected"></ion-icon>
-                <ion-icon name="ellipse" class="newdot"></ion-icon>
-                <ion-icon name="ellipse" class="newdot"></ion-icon>
-                <ion-icon name="ellipse" class="newdot"></ion-icon>
-                <ion-icon name="ellipse" class="newdot"></ion-icon>
-              </div>
-              
             </ion-col>
           </ion-row>
       </ng-template>
   </ng-template>
-  
     <h2 class="section-title">Literatura</h2>
     <ion-spinner *ngIf="isLoading else noLoadingBooks" name="crescent" class="loading-spinner" color="danger"></ion-spinner>
       <ng-template #noLoadingBooks>
@@ -66,7 +74,7 @@
             <ion-row>
               <ion-col size="12" >
                 <div class="container-books">
-                  <div class="ajust-position-books" [style.transform]="'translateX(' + booksTranslate + 'rem)'">
+                  <div class="ajust-position-books" [style.transform]="'translateX(' + booksTranslate + 'px)'">
                     <ion-card *ngFor="let book of books" button>
                       <img src={{book.cover}} />
                       <ion-card-header>
@@ -76,20 +84,6 @@
                       </ion-card-header>
                     </ion-card>
                   </div>  
-                  <button (click)="translateBooksMinus()" class="minus-button">-</button>
-                  <ng-container *ngIf="booksTranslate == -104 else notYetInBooksMax">
-                    <button (click)="translateBooksPlus()" class="plus-button" style="color: black;">></button>
-                  </ng-container>
-                  <ng-template #notYetInBooksMax>
-                    <button class="plus-button" (click)="translateBooksPlus()">+</button>
-                  </ng-template>
-                </div>
-                <div class="Newsdots">
-                  <ion-icon name="ellipse" class="bookdot selected"></ion-icon>
-                  <ion-icon name="ellipse" class="bookdot"></ion-icon>
-                  <ion-icon name="ellipse" class="bookdot"></ion-icon>
-                  <ion-icon name="ellipse" class="bookdot"></ion-icon>
-                  <ion-icon name="ellipse" class="bookdot"></ion-icon>
                 </div>
               </ion-col>
             </ion-row>
@@ -105,7 +99,7 @@
           <ng-template #withArticles>
               <!-- Artigos -->
               <ion-row>
-                <ion-col size="12" class="container-books">
+                <ion-col size="12">
                   <ion-card class="article-card" *ngFor="let article of articles" button (click)="goToLink(article.link)" >
                     <ion-card-content>
                       <h3>{{ article.title }}</h3>

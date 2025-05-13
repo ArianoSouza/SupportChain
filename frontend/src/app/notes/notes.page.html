@@ -3,9 +3,19 @@
   <!-- Sugestões -->
    <div class="container-nova-nota">
     <ion-text class="sugestoes-titulo">Sugestões</ion-text>
-    <div class="container-icone">
-      <ion-icon name="document-text" class="icone" button id="open-new-note" (click)="abrirModal()"></ion-icon>
-      <ion-label>Nova nota</ion-label>
+    <div class="container-all-new-notes">
+      <div class="container-icone">
+        <ion-icon name="document-text" class="icone" button id="note" (click)="abrirModal($event)"></ion-icon>
+        <ion-label>Nota</ion-label>
+      </div>
+      <div class="container-icone">
+        <ion-icon name="document-text" class="icone" button id="diary" (click)="abrirModal($event)"></ion-icon>
+        <ion-label>Diário</ion-label>
+      </div>
+      <div class="container-icone">
+        <ion-icon name="document-text" class="icone" button id="talk" (click)="abrirModal($event)"></ion-icon>
+        <ion-label>Conversa</ion-label>
+      </div>
     </div>
    </div>
 
@@ -13,8 +23,8 @@
 
   <!-- Nota do diário -->
    <ion-list>
-  
-    <ion-card class="caixa-nota" *ngFor="let note of sortByDateAllNotes">
+  <ng-container *ngIf="sortByDateAllNotes.length === 0 else noNotes">
+    <ion-card class="caixa-nota" *ngFor="let note of allNotes">
       <ng-container *ngIf="note.title else noTitle">
         <h2>{{note.title}}</h2>
       </ng-container>
@@ -24,6 +34,10 @@
       <p class="texto-nota">{{note.content}}</p>
       <ion-text class="data-nota">{{formatIsoDateToEn(note.noteDate)}}</ion-text>
     </ion-card>
+  </ng-container>
+  <ng-template #noNotes>
+    <div>no data</div>
+  </ng-template>
    </ion-list>
 </ion-content>
 

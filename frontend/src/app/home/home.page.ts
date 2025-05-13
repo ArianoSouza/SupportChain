@@ -5,14 +5,22 @@ import { articles, news } from '../models/types/user.types';
 import { NoticiaService } from '../services/noticia.service';
 import { BookService } from '../services/bookservice/book.service';
 import { forkJoin } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 
-
+ type sugestionHome={
+  id: String
+  title:String
+  icon:String
+  url:String
+ }
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone:false
+
 
 })
 export class Tab1Page implements OnInit{
@@ -40,19 +48,38 @@ export class Tab1Page implements OnInit{
         this.isLoading = false;
       }
     );
+
+    console.log(window.innerWidth)
   
    }
-   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService) {}
+   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService,private router: Router ) {}
  
    isLoading = true
   newsTranslante = 0
   booksTranslate = 0
   avaliation = false
   feedBackMensage = true
-  indexTranslateNews = 26.1
-  indexTranslateBooks = 25
-  currentIndexnews = Math.abs(this.newsTranslante / this.indexTranslateNews);
-  currentIndexBooks = Math.abs(this.newsTranslante / this.indexTranslateBooks);
+
+  sugestions:sugestionHome[] = [
+    {
+      id: "s01",
+      title:"Trilhas",
+      icon:"clipboard-outline",
+      url:"/tabs/trilhas"
+    },
+    {
+      id: "s02",
+      title:"Nova nota",
+      icon:"document-text-outline",
+      url:"/tabs/notes"
+    },
+    {
+      id: "s03",
+      title:"Serviços",
+      icon:"business-outline",
+      url:"/tabs/medicalassistance"
+    }
+]
 
   books:books[] = []
   articles:articles[] = []
@@ -61,62 +88,16 @@ export class Tab1Page implements OnInit{
   setFeedBackMensage = ()=>{
     this.feedBackMensage = !this.feedBackMensage
   }
-  translateNewsMinus =()=>{
-    if (!(this.newsTranslante >=0  )){
-      this.newsTranslante +=this.indexTranslateNews
-      this.currentIndexnews = Math.abs(this.newsTranslante /this.indexTranslateNews);
-      this.updateDotsNews();
-  }
-}
-  translateNewsPlus =()=>{
-    if (!(this.newsTranslante <= (this.indexTranslateNews*-4))){
-      this.newsTranslante -=this.indexTranslateNews
-      this.currentIndexnews = Math.abs(this.newsTranslante / this.indexTranslateNews);
-      this.updateDotsNews();
-
-  }
-}
-translateBooksMinus =()=>{
-  if (!(this.booksTranslate >=0 )){
-    this.booksTranslate +=this.currentIndexBooks
-    this.currentIndexBooks = Math.abs(this.booksTranslate/ this.indexTranslateBooks);
-    this.updateDotsBooks();
-}
-}
-translateBooksPlus =()=>{
-  if (!(this.booksTranslate <= (this.indexTranslateBooks*-4))){
-    this.booksTranslate -=this.indexTranslateBooks
-    this.currentIndexBooks = Math.abs(this.booksTranslate/ this.indexTranslateBooks);
-    this.updateDotsBooks();
-}
-}
-
-
-updateDotsNews = () => {
-  const dots = document.querySelectorAll('.newdot');
-  dots.forEach((dot, index) => {
-    if (index === this.currentIndexnews) {
-      dot.classList.add('selected');
-    } else {
-      dot.classList.remove('selected');
-    }
-  });
-}
-
-updateDotsBooks = () => {
-  const dots = document.querySelectorAll('.bookdot');
-  dots.forEach((dot, index) => {
-    if (index === this.currentIndexBooks) {
-      dot.classList.add('selected');
-    } else {
-      dot.classList.remove('selected');
-    }
-  });
-}
+  
 
 goToLink = (link:String)=>{
   window.open(link as string,'_blank')
 }
+
+goToPage(link:String){
+  this.router.navigate([link as string])
+}
+
 
 
 }

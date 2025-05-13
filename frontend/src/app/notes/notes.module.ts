@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './notes-routing.module';
 import { NewNoteComponent } from "../components/new-note/new-note.component";
+import { ShareService } from '../services/shareInfo/share.service';
 
 @NgModule({
   imports: [

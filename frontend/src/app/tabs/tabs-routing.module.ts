@@ -1,3 +1,5 @@
+import { MedicalAssistancePageModule } from './../medical-assistance/medical-assistance.module';
+import { MedicalAssistancePage } from './../medical-assistance/medical-assistance.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -18,6 +20,10 @@ const routes: Routes = [
       {
         path: 'infoModules',
         loadChildren: () => import('../infoModules/infoModules.module').then(m => m.Tab3PageModule)
+      },
+      {
+        path: 'medicalassistance',
+        loadChildren: () => import('../medical-assistance/medical-assistance.module').then(m => m.MedicalAssistancePageModule)
       },
       {
         path: '',

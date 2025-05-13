@@ -24,13 +24,13 @@ app.use(cors());
 app.use(router);
 
 
-app.get("/noticias",autenticarToken ,GetNews);
-app.get("/Books",autenticarToken, GetBooks);
-app.get("/Artigos",autenticarToken,GetArtigos);
-router.post("/Trilhas", InsertTrilha);
-router.post("/Etapas",autenticarToken ,InsertEtapa);
-router.get("/trilha",autenticarToken ,GetTrilha);
-router.get("/etapa",autenticarToken,GetEtapa);
+app.get("/noticias",GetNews);
+app.get("/Books", GetBooks);
+app.get("/Artigos",GetArtigos);
+router.post("/Trilhas",InsertTrilha); //inserir depois a autentificação
+router.post("/Etapas",InsertEtapa);
+router.get("/trilha",GetTrilha);
+router.get("/etapa",GetEtapa);
 router.post("/user/cadastro", GetCadastro);
 router.post("/user/login", GetLogin);
 

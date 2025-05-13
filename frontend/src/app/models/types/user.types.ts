@@ -27,3 +27,13 @@ export type userNotes = {
     noteType:String
     noteDate: String
 }
+export type Assistance = {
+    id:string
+    image: string;
+    name: string;
+    location: string;
+    phone: string;
+    services: string[];
+    description:string
+  }
+  

@@ -3,6 +3,10 @@ import { Component, OnInit,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonicModule, ModalController } from '@ionic/angular';
 import { userNotes } from 'src/app/models/types/user.types';
+import { Tab2Page } from 'src/app/notes/notes.page';
+import { NoticiaService } from 'src/app/services/noticia.service';
+import { ShareService } from 'src/app/services/shareInfo/share.service';
+
 
 
 @Component({
@@ -17,7 +21,7 @@ import { userNotes } from 'src/app/models/types/user.types';
 })
 export class NewNoteComponent  implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, private share:ShareService) { }
 
   newNote:userNotes = {
     title:"",
@@ -25,8 +29,14 @@ export class NewNoteComponent  implements OnInit {
     noteDate: new Date().toLocaleString(),
     noteType: "note"
    }
-
- ngOnInit() {}
+//AQUI
+ ngOnInit() {
+  this.share.tipoAtual.subscribe(dados => {
+    console.log(dados)
+    this.newNote.noteType = dados
+    console.log(this.newNote.noteType)
+  });
+ }
  
 
 
@@ -55,11 +65,7 @@ closeModal() {
 
 sendDataTest = ()=>{
   this.newNote.noteDate = this.formatToMySQLDate(this.newNote.noteDate.toString())
-  console.log(this.newNote)
+  this.share.adicionarNota(this.newNote);
+  this.closeModal()
 }
-
-
-
-
-
 }

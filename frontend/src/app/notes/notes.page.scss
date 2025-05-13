@@ -93,3 +93,14 @@ ion-content {
   app-new-note{
     height: 100%;
   }
+
+  .container-all-new-notes{
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    ion-label{
+      color: #000;
+    }
+  }
