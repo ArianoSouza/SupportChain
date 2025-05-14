@@ -3,6 +3,7 @@ import { MedicalAssistancePage } from './../medical-assistance/medical-assistanc
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { TrilhasPageModule } from '../trilhas/trilhas.module';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
         path: 'medicalassistance',
         loadChildren: () => import('../medical-assistance/medical-assistance.module').then(m => m.MedicalAssistancePageModule)
       },
+      {
+    path: 'trilhas',
+    loadChildren: () => import('../trilhas/trilhas.module').then( m => m.TrilhasPageModule)
+   },
       {
         path: '',
         redirectTo: '/tabs/home',

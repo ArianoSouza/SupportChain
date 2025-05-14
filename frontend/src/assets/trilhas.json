@@ -1,0 +1,32 @@
+{
+  "temas": [
+    {
+      "id": "1",
+      "icone": "wifi-outline",
+      "titulo": "Dependência de Internet",
+      "descricao": "Explora os riscos do uso excessivo da internet e seus impactos no bem-estar físico, mental e social das crianças e adolescentes.",
+      "objetivo": "Conscientizar pais e filhos sobre os sinais da dependência digital e oferecer estratégias para promover um uso equilibrado da tecnologia."
+    },
+    {
+      "id": "2",
+      "icone": "chatbubble-ellipses-outline",
+      "titulo": "Diálogo Ativo",
+      "descricao": "Estimula a comunicação aberta e empática entre pais e filhos como ferramenta fundamental na construção de vínculos fortes e saudáveis.",
+      "objetivo": "Fortalecer a relação familiar por meio da escuta ativa e do diálogo constante, criando um ambiente de confiança e apoio mútuo."
+    },
+    {
+      "id": "3",
+      "icone": "happy-outline" ,
+      "titulo": "Guia de Saúde Emocional",
+      "descricao": "Apresenta práticas e orientações que ajudam crianças a lidar com emoções, estresse, frustrações e autocuidado.",
+      "objetivo": "Desenvolver a inteligência emocional desde cedo, promovendo o equilíbrio emocional e a resiliência."
+    },
+    {
+      "id": "4",
+      "icone": "person-outline",
+      "titulo": "Autoconhecimento",
+      "descricao": "Propõe atividades e reflexões para que a criança compreenda melhor seus sentimentos, valores, interesses e limites.",
+      "objetivo": "Ajudar a criança a construir uma identidade saudável e confiante, favorecendo escolhas mais conscientes no dia a dia."
+    }
+  ]
+}
