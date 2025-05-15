@@ -1,0 +1,89 @@
+[
+    {
+      "id": 1,
+      "order": 1,
+      "title": "Introdução ao Problema",
+      "desc": "Compreenda o que é dependência digital, seus sintomas e impactos na vida pessoal e social, além da diferença entre uso intenso e uso problemático.",
+      "conteudos": [
+        "O que é dependência digital?",
+        "Sintomas comuns e impactos na vida pessoal/social",
+        "Diferença entre uso intenso e uso problemático"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 2,
+      "title": "Autoavaliação Guiada",
+      "desc": "Ferramentas de autoanálise para dependentes e familiares, promovendo empatia por meio da comparação de percepções.",
+      "conteudos": [
+        "Questionário interativo para dependente (anônimo ou não)",
+        "Teste de percepção para amigos/familiares (ex: 'Você acha que seu filho se isola após o uso da internet?')",
+        "Comparação de percepções (dependente vs. família) para fomentar empatia"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 3,
+      "title": "Métodos de Conversação Afirmativa",
+      "desc": "Técnicas para uma comunicação mais saudável e produtiva entre familiares e dependentes.",
+      "conteudos": [
+        "Técnicas de escuta ativa e comunicação não violenta",
+        "Exemplos de frases que ajudam (e as que atrapalham)",
+        "Como evitar julgamentos e estimular o diálogo aberto",
+        "Simulações ou roleplay com diálogos interativos"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 4,
+      "title": "Reconhecendo Gatilhos",
+      "desc": "Ajuda para identificar os fatores que levam ao uso excessivo da internet, estimulando a reflexão conjunta.",
+      "conteudos": [
+        "Ajuda para entender o que leva ao uso excessivo (ansiedade? tédio? redes sociais específicas?)",
+        "Perguntas orientadoras para dependentes e familiares refletirem juntos"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 5,
+      "title": "Construindo Juntos uma Nova Rotina",
+      "desc": "Ferramentas para criar, em conjunto, hábitos mais saudáveis e equilibrados com a tecnologia.",
+      "conteudos": [
+        "Planejamento colaborativo: definir juntos metas de uso saudável",
+        "Criação de momentos offline em família",
+        "Atividades substitutivas recomendadas com base nos interesses do dependente"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 6,
+      "title": "Check-ins e Feedback",
+      "desc": "Registro contínuo do progresso e espaço para feedbacks entre dependente e familiares.",
+      "conteudos": [
+        "Registro de progresso (tempo de uso, sentimentos, interações)",
+        "Família/amigos podem deixar feedbacks positivos no app (estilo 'diário de progresso')",
+        "Dependente pode dizer como está se sentindo"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 7,
+      "title": "Rede de Apoio",
+      "desc": "Conexão com profissionais e instituições parceiras para suporte complementar.",
+      "conteudos": [
+        "Sugestões de instituições e profissionais parceiros",
+        "Espaço para familiares marcarem consultas ou tirarem dúvidas com terapeutas parceiros"
+      ]
+    },
+    {
+      "id": 1,
+      "order": 8,
+      "title": "Comunidade e Troca",
+      "desc": "Espaço seguro para compartilhamento de histórias e apoio entre pessoas que enfrentam desafios semelhantes.",
+      "conteudos": [
+        "Seção onde familiares, dependentes e pessoas interessadas podem compartilhar histórias (anonimamente se quiserem)",
+        "Mecanismo de apoio mútuo: 'Você não está sozinho'"
+      ]
+    }
+  ]
+  

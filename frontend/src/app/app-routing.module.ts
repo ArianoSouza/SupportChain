@@ -19,7 +19,11 @@ const routes: Routes = [
     path: 'cadastro',
     loadChildren: () => import('./externTabPages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
-  
+  {
+    path: 'modulos',
+    loadChildren: () => import('./externTabPages/modulos/modulos.module').then( m => m.ModulosPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

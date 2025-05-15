@@ -1,0 +1,16 @@
+ion-button{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    height: 3rem;
+    width: 3rem;
+    --background:none;
+    --box-shadow:none;
+    --border-radius:100px;
+    color: #3D348B;
+}
+app-out-of-service.compact {
+    height:20rem;
+    display: block;
+    overflow: hidden;
+  }

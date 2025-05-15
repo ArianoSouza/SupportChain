@@ -1,5 +1,7 @@
+import { Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {TrilhasService, Tema} from '../services/trilhas.service';
+import trilhas from 'src/app/mocks/trilhas.json'
 
 @Component({
   selector: 'app-trilhas',
@@ -9,13 +11,13 @@ import {TrilhasService, Tema} from '../services/trilhas.service';
 })
 export class TrilhasPage implements OnInit {
 
- temas: Tema[] = []; 
- temasFiltrados: Tema[] = [];
+ temas: Tema[] = trilhas.temas as Tema[]; 
+ temasFiltrados: Tema[] = this.temas;
 
-  constructor(private trilhasService: TrilhasService) { }
+  constructor(private trilhasService: TrilhasService, private router: Router) { }
 
   ngOnInit() {
-     this.carregarTemas();
+     //this.carregarTemas();
   }
 
  carregarTemas() {
@@ -43,5 +45,14 @@ export class TrilhasPage implements OnInit {
 onSearch(event: any) {
   const query = event.detail.value;
   this.temasFiltrados = this.filtrarTemas(query);
+}
+
+goToModulos(event:Event){
+  this.router.navigate(['/modulos'],{
+    queryParams:
+    {
+      id: (event.currentTarget as HTMLElement).id.toString()
+    }
+  })
 }
 }

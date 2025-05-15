@@ -36,4 +36,12 @@ export type Assistance = {
     services: string[];
     description:string
   }
+
+  export type TrilhaModulo = {
+    id: number;
+    order: number;
+    title: string;
+    desc: string;
+    conteudos: string[];
+  };
   

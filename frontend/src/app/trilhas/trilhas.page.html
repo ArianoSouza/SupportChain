@@ -49,7 +49,7 @@
 <ion-grid>
   <ion-row>
     <ion-col *ngFor="let tema of temasFiltrados" size="6" size-md="4" size-lg="3">
-      <ion-card class="trilha-card">
+      <ion-card class="trilha-card" button id={{tema.id}} (click)="goToModulos($event)">
         <ion-card-header>
           <ion-icon [name]="tema.icone"></ion-icon>
           <ion-card-content>

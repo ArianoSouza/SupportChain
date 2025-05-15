@@ -1,3 +1,4 @@
+import { AppVideosPageModule } from './../app-videos/app-videos.module';
 import { MedicalAssistancePageModule } from './../medical-assistance/medical-assistance.module';
 import { MedicalAssistancePage } from './../medical-assistance/medical-assistance.page';
 import { NgModule } from '@angular/core';
@@ -15,21 +16,21 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.Tab1PageModule)
       },
       {
-        path: 'notes',
-        loadChildren: () => import('../notes/notes.module').then(m => m.Tab2PageModule)
-      },
-      {
-        path: 'infoModules',
-        loadChildren: () => import('../infoModules/infoModules.module').then(m => m.Tab3PageModule)
-      },
-      {
         path: 'medicalassistance',
         loadChildren: () => import('../medical-assistance/medical-assistance.module').then(m => m.MedicalAssistancePageModule)
       },
       {
-    path: 'trilhas',
-    loadChildren: () => import('../trilhas/trilhas.module').then( m => m.TrilhasPageModule)
-   },
+        path: 'trilhas',
+        loadChildren: () => import('../trilhas/trilhas.module').then( m => m.TrilhasPageModule)
+      },
+      {
+        path: 'app-videos',
+        loadChildren: () => import('../app-videos/app-videos.module').then( m => m.AppVideosPageModule)
+      },
+      {
+        path: 'configuracoes',
+        loadChildren: () => import('../configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
+      },
       {
         path: '',
         redirectTo: '/tabs/home',
