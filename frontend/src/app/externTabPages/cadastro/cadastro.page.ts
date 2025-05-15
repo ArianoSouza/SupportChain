@@ -1,7 +1,9 @@
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { Component } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { userData } from 'src/app/models/types/user.types';
+import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
   standalone:false
 })
 export class CadastroPage {
-  usuario = {
+  usuario:userData = {
     nome: '',
     sobrenome: '',
     email: '',
@@ -22,17 +24,24 @@ export class CadastroPage {
     estado: '',
     cidade: '',
     bairro: '',
-    foto: 'aloha'
   };
 
   constructor(
     private authService: AuthService,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private router: Router
+    private router: Router,
+    private userService:CadastroService,
+    private NavController:NavController
   ) {}
 
-  async onCadastrar() {
+  onregister(){
+    this.userService.setDados(this.usuario)
+    this.NavController.navigateForward('/login')
+    console.log(this.userService.getDados())
+  }
+
+ /* async onCadastrar() {
     const loading = await this.loadingCtrl.create({ message: 'Cadastrando...' });
     await loading.present();
 
@@ -61,5 +70,10 @@ export class CadastroPage {
         await alert.present();
       }
     });
+  }
+    */
+
+  goToLogin(){
+    this.NavController.navigateBack('/login')
   }
 }

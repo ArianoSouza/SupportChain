@@ -6,7 +6,7 @@
     <ng-template #nofeedBackMensage>
     <div class="alert-feedback">
       <ion-button (click)="setFeedBackMensage()">X</ion-button>
-      <p>Olá, Maria! Gostando do aplicativo? Não esqueça de deixar seu feedback para a gente. Isso ajuda o SupportChain a melhorar cada vez mais!</p>
+      <p>Olá, {{userData.actualUser.nome}}! Gostando do aplicativo? Não esqueça de deixar seu feedback para a gente. Isso ajuda o SupportChain a melhorar cada vez mais!</p>
       <ion-router-link routerLink="/tabs/tab2">
         Feedback
       </ion-router-link>
@@ -19,7 +19,7 @@
       <div class="container-welcome">
         <img src="assets/images/logo sc 3.svg" alt="">
         <div>
-          <h1>Olá</h1>
+          <h1>Olá, {{userData.actualUser.nome}}</h1>
           <h2>Seja bem vindo!</h2>
         </div>
       </div>
@@ -30,6 +30,10 @@
           <ion-card button (click)="goToPage(sugestions[0].url)">
             <ion-icon name={{sugestions[0].icon}}></ion-icon>
             <h5>{{sugestions[0].title}}</h5>
+          </ion-card>
+          <ion-card button (click)="goToPage(sugestions[1].url)">
+            <ion-icon name={{sugestions[1].icon}}></ion-icon>
+            <h5>{{sugestions[1].title}}</h5>
           </ion-card>
           <ion-card button (click)="goToPage(sugestions[2].url)">
             <ion-icon name={{sugestions[2].icon}}></ion-icon>
@@ -103,9 +107,6 @@
                   <ion-card class="article-card" *ngFor="let article of articles" button (click)="goToLink(article.link)" >
                     <ion-card-content>
                       <h3>{{ article.title }}</h3>
-                      <div class="tags">
-                        <ion-chip color="secondary" *ngFor="let tag of article.tags">{{ tag }}</ion-chip>
-                      </div>
                       <p class="author">{{ article.authors }}</p>
                     </ion-card-content>
                   </ion-card>

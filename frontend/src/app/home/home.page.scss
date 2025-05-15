@@ -44,6 +44,7 @@
       width: 100%;
   
       h3 {
+        color: white;
         font-size: 16px;
         font-weight: bold;
       }
@@ -270,12 +271,12 @@
     }
 
     h2{
-      color: grey;
+      color: black;
     }
 
     h5{
       margin: 0px;
-      color: black !important;
+      color: grey !important;
     }
     ion-card{
       height: 7.5rem;
@@ -291,6 +292,6 @@
     ion-icon{
       width: 100%;
       font-size: 4rem;
-      color: black;
+      color: #3D348B;
     }
   }

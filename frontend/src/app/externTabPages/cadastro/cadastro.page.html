@@ -4,7 +4,7 @@
       <img src="assets/images/logo.png" alt="SuportChain Logo" class="logo">
     </div>
     <h1>Cadastro</h1>
-    <form (ngSubmit)="onCadastrar()">
+    <form (ngSubmit)="onregister()">
       <ion-input fill="solid" type="text" label="Nome" labelPlacement="floating" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
 
       <ion-input fill="solid" type="text" label="Sobrenome" labelPlacement="floating" [(ngModel)]="usuario.sobrenome" name="sobrenome" required ></ion-input>
@@ -36,7 +36,10 @@
       
       <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required></ion-input>
 
-      <ion-button expand="full" color="primary" type="submit">Próximo</ion-button>
+      <ion-button expand="full"  type="submit">Próximo</ion-button>
     </form>
+    <ion-button class="exit-button" (click)="goToLogin()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
   </div>
 </ion-content>

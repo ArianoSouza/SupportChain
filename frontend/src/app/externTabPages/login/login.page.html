@@ -6,7 +6,7 @@
     <ion-input type="password" label="Senha" labelPlacement="floating" fill="solid" [(ngModel)]="senha"></ion-input>
   <ion-button expand="block" class="login-button" (click)="onLogin()">Entrar</ion-button>
   <div class="register-link">
-    <p>Não possui cadastro? <a href="/register" >Criar conta</a></p>
+    <p>Não possui cadastro? <i button (click)="goToCadastro()">Criar conta</i></p>
   </div>
   <div class="footer">
     <p>by</p>

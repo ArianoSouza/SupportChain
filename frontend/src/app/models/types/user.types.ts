@@ -44,4 +44,18 @@ export type Assistance = {
     desc: string;
     conteudos: string[];
   };
+
+export type userData ={
+    nome:string,
+    sobrenome: string,
+    email:string,
+    senha: string,
+    sexo: string,
+    estado_civil: string,
+    data_de_nascimento: string,
+    numero_de_telefone: string,
+    estado: string,
+    cidade: string,
+    bairro: string
+}
   

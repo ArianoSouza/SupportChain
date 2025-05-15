@@ -1,5 +1,5 @@
 import { ArticlesService } from './../services/articleServices/articles.service';
-import { books } from '../models/types/user.types';
+import { books, userData } from '../models/types/user.types';
 import { Component, OnInit } from '@angular/core';
 import { articles, news } from '../models/types/user.types';
 import { NoticiaService } from '../services/noticia.service';
@@ -7,6 +7,7 @@ import { BookService } from '../services/bookservice/book.service';
 import { forkJoin } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
+import { CadastroService } from '../services/cadastro/cadastro.service';
 
  type sugestionHome={
   id: String
@@ -52,31 +53,32 @@ export class Tab1Page implements OnInit{
     console.log(window.innerWidth)
   
    }
-   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService,private router: Router ) {}
+   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService,private router: Router,public userData:CadastroService ) {}
  
    isLoading = true
   newsTranslante = 0
   booksTranslate = 0
   avaliation = false
   feedBackMensage = true
+  nomeUser = this.userData.actualUser?.nome
 
   sugestions:sugestionHome[] = [
     {
       id: "s01",
       title:"Trilhas",
-      icon:"clipboard-outline",
+      icon:"analytics",
       url:"/tabs/trilhas"
     },
     {
       id: "s02",
-      title:"Nova nota",
-      icon:"document-text-outline",
+      title:"Vídeos",
+      icon:"videocam",
       url:"/tabs/notes"
     },
     {
       id: "s03",
       title:"Serviços",
-      icon:"business-outline",
+      icon:"medical",
       url:"/tabs/medicalassistance"
     }
 ]

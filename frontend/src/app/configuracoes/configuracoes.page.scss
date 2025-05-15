@@ -1,0 +1,19 @@
+ion-list{
+    --background:none;
+    background:none;
+}
+ion-item{
+    --background:white;
+    --color: black;
+}
+ion-icon{
+    color: black;
+}
+ion-card-title,ion-card-subtitle, ion-list-header{
+    --color:black;
+    text-align: center;
+}
+ion-button{
+    --background: #3D348B;
+    color:white;
+}
