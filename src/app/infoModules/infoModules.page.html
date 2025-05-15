@@ -1,0 +1,35 @@
+<ion-content class="intro-container" fullscreen="true">
+  <div class="header">
+    <h2>1</h2>
+    <h1>INTRODUÇÃO AO<br />PROBLEMA</h1>
+    <p>
+      Nesse módulo vamos te orientar sobre a dependência de internet (DI) e mostrar suas possíveis causas e consequências
+    </p>
+    <ion-icon name="chevron-forward-outline" class="forward-icon"></ion-icon>
+  </div>
+
+  <div class="dots">
+    <ion-icon name="ellipse" class="dot selected"></ion-icon>
+    <ion-icon name="ellipse" class="dot"></ion-icon>
+    <ion-icon name="ellipse" class="dot"></ion-icon>
+    <ion-icon name="ellipse" class="dot"></ion-icon>
+    <ion-icon name="ellipse" class="dot"></ion-icon>
+  </div>
+
+  <div class="topics">
+    <div class="topic" (click)="abrirTopico(1)">
+      <ion-icon name="play-outline" class="icon"></ion-icon>
+      <span><strong>O que é dependência digital?</strong></span>
+    </div>
+
+    <div class="topic" (click)="abrirTopico(2)">
+      <ion-icon name="play-outline" class="icon"></ion-icon>
+      <span><strong>Sintomas comuns e impactos na vida pessoal/social</strong></span>
+    </div>
+
+    <div class="topic" (click)="abrirTopico(3)">
+      <ion-icon name="play-outline" class="icon"></ion-icon>
+      <span><strong>Diferença entre uso intenso e uso problemático</strong></span>
+    </div>
+  </div>
+</ion-content>

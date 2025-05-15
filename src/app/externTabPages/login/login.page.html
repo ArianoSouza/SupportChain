@@ -1,0 +1,17 @@
+<ion-content>
+
+<div class="login-container">
+  <img src="assets/images/logo.png" alt="SuportChain Logo" class="logo">
+    <ion-input type="email" label="Email" labelPlacement="floating" fill="solid" [(ngModel)]="email"></ion-input>
+    <ion-input type="password" label="Senha" labelPlacement="floating" fill="solid" [(ngModel)]="senha"></ion-input>
+  <ion-button expand="block" class="login-button" (click)="onLogin()">Entrar</ion-button>
+  <div class="register-link">
+    <p>Não possui cadastro? <a href="/register" >Criar conta</a></p>
+  </div>
+  <div class="footer">
+    <p>by</p>
+    <img src="/assets/images/logoNoilusions.png" alt="">
+  </div>
+</div>
+</ion-content>
+
