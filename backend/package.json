@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "clear && tsc && node ./build/index.js",
+    "start": "tsc && node ./dist/index.js",
     "conect": "tsnd ./src/data/Database.ts"
   },
   "devDependencies": {
