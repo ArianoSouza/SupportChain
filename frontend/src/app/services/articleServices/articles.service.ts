@@ -6,7 +6,7 @@ import { map, Observable, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class ArticlesService {
-  private apiUrl = 'http://localhost:3000/artigos';
+  private apiUrl = 'https://supportchain.onrender.com/Artigos';
 
   constructor(private http: HttpClient) {}
 

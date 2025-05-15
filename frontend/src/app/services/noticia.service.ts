@@ -6,7 +6,7 @@ import { Observable, of, map, tap, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class NoticiaService {
-  private apiUrl = 'http://localhost:3000/noticias';
+  private apiUrl = 'https://supportchain.onrender.com/noticias';
   private localStorageKey = 'noticiasCache';
 
 

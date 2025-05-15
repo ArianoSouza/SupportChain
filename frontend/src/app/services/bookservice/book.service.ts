@@ -7,7 +7,7 @@ import { Observable, of, map, tap } from 'rxjs';
 })
 export class BookService {
 
-  private apiUrl = 'http://localhost:3000/Books';
+  private apiUrl = 'https://supportchain.onrender.com/Books';
 
   constructor(private http: HttpClient) {}
 
