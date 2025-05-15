@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="SuportChain Logo" class="logo">
+    </div>
+    <h1>Cadastro</h1>
+    <form (ngSubmit)="onregister()">
+      <ion-input fill="solid" type="text" label="Nome" labelPlacement="floating" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
+
+      <ion-input fill="solid" type="text" label="Sobrenome" labelPlacement="floating" [(ngModel)]="usuario.sobrenome" name="sobrenome" required ></ion-input>
+
+      <ion-input fill="solid" type="email" label="Email" labelPlacement="floating" [(ngModel)]="usuario.email" name="email" required></ion-input>
+
+      <ion-select fill="solid" label="Sexo" labelPlacement="floating"  [(ngModel)]="usuario.sexo" name="sexo" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+      </ion-select>
+
+      <ion-select  fill="solid" label="Estado Civil" labelPlacement="floating" [(ngModel)]="usuario.estado_civil" name="estado_civil" required>
+        <ion-select-option value="solteiro">Solteiro(a)</ion-select-option>
+        <ion-select-option value="casado">Casado(a)</ion-select-option>
+        <ion-select-option value="divorciado">Divorciado(a)</ion-select-option>
+      </ion-select>
+
+      <ion-input fill="solid" type="date" label="Data de Nascimento" labelPlacement="floating" [(ngModel)]="usuario.data_de_nascimento" name="data_de_nascimento" required></ion-input>
+
+      <ion-input fill="solid" type="tel" label="Nº de Telefone" labelPlacement="floating" [(ngModel)]="usuario.numero_de_telefone" name="numero_de_telefone" required></ion-input>
+
+      <ion-input fill="solid" type="text" label="Cidade" labelPlacement="floating" [(ngModel)]="usuario.cidade" name="cidade" required></ion-input>
+
+   
+      <ion-input fill="solid" type="text" label="Bairro" labelPlacement="floating" [(ngModel)]="usuario.bairro" name="bairro" required></ion-input>
+
+      
+      <ion-input fill="solid" type="text" label="Estado" labelPlacement="floating" [(ngModel)]="usuario.estado" name="estado" required></ion-input>
+      
+      <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required></ion-input>
+
+      <ion-button expand="full"  type="submit">Próximo</ion-button>
+    </form>
+    <ion-button class="exit-button" (click)="goToLogin()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

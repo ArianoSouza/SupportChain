@@ -1,0 +1,16 @@
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="salvar()">
+    <h3>Editar informações</h3>
+      <ion-input [(ngModel)]="actualUserData.nome"  name="nome" label="Nome" labelPlacement="floating" fill="solid" ></ion-input>
+
+      <ion-input [(ngModel)]="actualUserData.sobrenome"  name="sobrenome" label="Sobrenome"labelPlacement="floating" fill="solid" ></ion-input>
+
+      <ion-input type="email" [(ngModel)]="actualUserData.email" name="email" label="Email" labelPlacement="floating" fill="solid"></ion-input>
+
+    <ion-button expand="block" (click)="salvar()">Salvar</ion-button>
+  </form>
+  <ion-button class="exit-button" (click)="closemodal()">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+</ion-content>

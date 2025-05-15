@@ -1,0 +1,38 @@
+form{
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-item{
+    --background:white;
+}
+ion-input{
+    width: 90%;
+    margin-bottom: 1rem;
+    --color: grey;
+    --highlight-color: #3f2b96 !important;
+    --background: rgb(223, 223, 223) !important;
+    align-self: center;
+}
+
+ion-button{
+    width: 80%;
+    --background:#3f2b96;
+    color: white;
+}
+
+.exit-button{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    --background: white;
+    color:#3f2b96;
+    --box-shadow:none;
+    --border-radius: 100px;
+    height:3rem;
+    width: 3rem;
+}

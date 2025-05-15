@@ -1,0 +1,65 @@
+
+<ion-content fullscreen>
+
+   <div class="logo-container">
+    <img src="/assets/images/logo sc 3.svg" alt="Logo" class="logo">
+  </div> 
+
+ <h2 class="titulo_trilha">Bem-vindo as trilhas!</h2>
+ <p class="texto-introducao">Reflita sobre seu uso da tecnologia com nossas atividades rapidas.Identifique padrões, 
+  receba dicas praticas e descubra como equilibar vida online e offline para melhorar seu bem-estar</p>
+
+   <ion-searchbar placeholder="Busque por um assunto..." (ionInput)="onSearch($event)"></ion-searchbar> 
+
+  <h2 class="titulo-sugestoes">Sugestões</h2>
+
+ <ion-grid class="sugestions">
+  <ion-row>
+    <ion-col size="6" size-md="4" size-lg="3">
+      <ion-card class="trilha-card" button id="1" (click)="goToModulos($event)">
+        <ion-card-header>
+          <ion-icon name="wifi-outline"></ion-icon>
+          <ion-card-content>Dependência de internet</ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="6" size-md="4" size-lg="3" >
+      <ion-card class="trilha-card" (click)="goToModulos($event)" button disabled="true">
+        <ion-card-header>
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <ion-card-content>Diálogo ativo</ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="6" size-md="4" size-lg="3">
+      <ion-card class="trilha-card" (click)="goToModulos($event)" button disabled="true">
+        <ion-card-header>
+          <ion-icon name="happy-outline"></ion-icon>
+          <ion-card-content>Guia de saúde emocional</ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+  <p class="todas_trilhas">Todas as trilhas</p>
+
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor="let tema of temasFiltrados" size="6" size-md="4" size-lg="3">
+      <ion-card class="trilha-card" button id={{tema.id}} (click)="goToModulos($event)"
+      [disabled]="tema.id !== '1'  ? 'true' : 'false'">
+        <ion-card-header>
+          <ion-icon [name]="tema.icone"></ion-icon>
+          <ion-card-content>
+            <h3>{{ tema.titulo }}</h3>
+          </ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

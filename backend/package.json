@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "dev": "ts-node-dev ./src/index.ts",
+    "start": "clear && tsc && node ./build/index.js",
+    "conect": "tsnd ./src/data/Database.ts"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.3",
+    "@types/xml2js": "^0.4.14",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/knex": "^0.15.2",
+    "@types/uuid": "^10.0.0",
+    "axios": "^1.9.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.1",
+    "uuid": "^11.1.0",
+    "xml2js": "^0.6.2"
+  }
+}

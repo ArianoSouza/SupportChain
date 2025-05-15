@@ -1,0 +1,32 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+
+.list-ios{
+    background: none;
+}
+
+.scroll-y{
+    overflow-y: hidden;
+  }
+
+  :root {
+    --ion-font-family: 'Lato', sans-serif;
+  }
+
+  p,ion-text,h2,h1,h3{
+    color:black;
+    --color:black;
+  }
+  ion-content,ion-card{
+    --background: white;
+  }
+  ion-input{
+    width: 90%;
+    margin-bottom: 1rem;
+    --color: grey;
+    --highlight-color: #3f2b96;
+    --background: none;
+
+
+  }
