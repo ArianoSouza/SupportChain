@@ -9,7 +9,7 @@ const connection = knex ({
       host:"127.0.0.1",
       port: 3306,
       user: "root" ,
-      password: "lalay1810",
+      password: process.env.DB_PASSWORD,
       database: "SupportChain",
       multipleStatements: true
       }
