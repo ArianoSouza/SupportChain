@@ -1,0 +1,83 @@
+[
+    {
+      "title": "Desconectando para se Reconectar",
+      "desc": "Como reduzir o tempo de tela e melhorar sua qualidade de vida.",
+      "tags": ["desintoxicação digital"],
+      "url": "https://example.com/video1.mp4",
+      "tumbnail": "/assets/images/videothumb.png",
+      "likes": 245
+    },
+    {
+      "title": "Ansiedade e o Mundo Digital",
+      "desc": "O impacto das redes sociais na ansiedade e como lidar com isso.",
+      "tags": ["ansiedade"],
+      "url": "https://example.com/video2.mp4",
+      "tumbnail": ".",
+      "likes": 387
+    },
+    {
+      "title": "Mindfulness na Era Digital",
+      "desc": "Práticas para manter a mente saudável enquanto usa tecnologia.",
+      "tags": ["mindfulness"],
+      "url": "https://example.com/video3.mp4",
+      "tumbnail": ".",
+      "likes": 198
+    },
+    {
+      "title": "Vício em Dopamina: O Loop das Redes Sociais",
+      "desc": "Entenda como os aplicativos te mantêm preso e como escapar.",
+      "tags": ["vício digital"],
+      "url": "https://example.com/video4.mp4",
+      "tumbnail": ".",
+      "likes": 412
+    },
+    {
+      "title": "A Importância do Sono na Saúde Mental",
+      "desc": "Como o uso de telas afeta o sono e estratégias para melhorar sua rotina.",
+      "tags": ["saúde do sono"],
+      "url": "https://example.com/video5.mp4",
+      "tumbnail": ".",
+      "likes": 326
+    },
+    {
+      "title": "Redes Sociais: O Bom, o Ruim e o Perigoso",
+      "desc": "Uma análise dos impactos positivos e negativos das redes sociais.",
+      "tags": ["redes sociais"],
+      "url": "https://example.com/video6.mp4",
+      "tumbnail": ".",
+      "likes": 274
+    },
+    {
+      "title": "A Arte de Desacelerar",
+      "desc": "Como escapar da cultura da hiperconectividade e viver com mais calma.",
+      "tags": ["equilíbrio digital"],
+      "url": "https://example.com/video7.mp4",
+      "tumbnail": ".",
+      "likes": 189
+    },
+    {
+      "title": "Depressão e o Mundo Online",
+      "desc": "O impacto da internet na saúde mental e como buscar ajuda.",
+      "tags": ["depressão"],
+      "url": "https://example.com/video8.mp4",
+      "tumbnail": ".",
+      "likes": 478
+    },
+    {
+      "title": "Produtividade vs. Dependência Digital",
+      "desc": "Como encontrar um equilíbrio saudável entre trabalho e tecnologia.",
+      "tags": ["produtividade"],
+      "url": "https://example.com/video9.mp4",
+      "tumbnail": "",
+      "likes": 312
+    },
+    {
+      "title": "O Efeito das Telas no Bem-Estar",
+      "desc": "O impacto da exposição excessiva às telas na saúde mental.",
+      "tags": ["impacto das telas"],
+      "url": "https://example.com/video10.mp4",
+      "tumbnail": ".",
+      "likes": 256
+    }
+  ]
+  

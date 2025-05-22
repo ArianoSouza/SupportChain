@@ -7,5 +7,18 @@
     <h3>Assista conteúdos sobre os assuntos que você mais se interessa </h3>
   </div>
   <div class="divisor"></div>
-  <app-out-of-service/>
+
+  <h2 class="category">Sugestões</h2>
+  <div class="video-container">
+    <div class="scroll-videos">
+    <div *ngFor="let video of videos" button (click)="goToFullVideo(video.title)" class="video">
+      <img [src]="video.tumbnail" alt="" (error)="onImgError($event)">
+      <div class="container-likes">
+        <ion-icon name="heart"></ion-icon>
+        <p>{{video.likes}}</p>
+      </div>
+      <p class="title">{{video.title}}</p>
+    </div>
+  </div>
+  </div>
 </ion-content>

@@ -1,0 +1,38 @@
+
+<ion-content fullscreen>
+  <div class="header">
+    <img src="../../assets/images/logo sc 3.svg" alt="Logo">
+    <h1>Atividades complementares</h1>
+    <p>As atividades complementares nos ajudam a compreender melhor o problema e adaptar o aplicativo de forma mais eficiente às suas necessidades.</p>
+  </div>
+
+  
+
+  <div class="flex-center">
+    <ion-select (ionChange)="onCategoryChange($event)" [(ngModel)]="selectedTag" placeholder="Filtre por categoria" class="filter" fill="solid">
+      <ion-select-option value="desintoxicação digital">Desintoxicação Digital</ion-select-option>
+      <ion-select-option value="conexão social">Conexão Social</ion-select-option>
+      <ion-select-option value="relaxamento">Relaxamento</ion-select-option>
+      <ion-select-option value="saúde mental">Saúde Mental</ion-select-option>
+      <ion-select-option value="positividade">Positividade</ion-select-option>
+      <ion-select-option value="auto-reflexão">Auto-reflexão</ion-select-option>
+      <ion-select-option value="atividade física">Atividade Física</ion-select-option>
+      <ion-select-option value="bem-estar">Bem-estar</ion-select-option>
+      <ion-select-option value="autocontrole">Autocontrole</ion-select-option>
+    </ion-select>
+    <ion-button (click)="clearFilter()">X</ion-button>
+  </div>
+  <div class="activities">
+    <h2>Todas as atividades</h2>
+
+    <ion-card *ngFor="let activity of filteredActivities" button (click)="goToActivitieDetail(activity.tag,activity.image,activity.title,activity.description)" id={{activity.tag}}>
+      <img [src]="activity.image" [alt]="activity.title" (error)="onImgError($event)">
+      <ion-card-header>
+        <ion-card-title>{{ activity.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ activity.description }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

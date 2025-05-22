@@ -19,6 +19,8 @@ interface cadastro {
     cidade: string;
     bairro: string;
     foto: string;
+    termos_de_uso: boolean;
+    envio_de_dados: boolean;
 }
 
 export default async function GetCadastro(
@@ -27,9 +29,10 @@ export default async function GetCadastro(
 ): Promise<void>
 {
     try{
-        const {nome, sobrenome, email, senha, sexo, estado_civil, data_nascimento, numero_telefone, estado, cidade, bairro, foto}: cadastro = req.body;
-        if(!nome || !sobrenome || !email|| !senha || !sexo || !estado_civil || !data_nascimento || !numero_telefone || !estado || !cidade || !bairro || !foto){ 
-            res.status(422).json({Message: "Preencha os campos corretamente!!",})
+        const {nome, sobrenome, email, senha, sexo, estado_civil, data_nascimento, numero_telefone, estado, cidade, bairro, foto,termos_de_uso,envio_de_dados}: cadastro = req.body;
+        if(!nome || !sobrenome || !email|| !senha || !sexo || !estado_civil || !data_nascimento || !numero_telefone || !estado || !cidade || !bairro || !foto || !termos_de_uso || !envio_de_dados){ 
+        res.status(422).json({Message: "Preencha os campos corretamente!!",})
+        return;
         }
         const [usuario] = await connection("usuario")
         .where ({email})
@@ -43,7 +46,7 @@ export default async function GetCadastro(
 
         const id: string = new GeradorId().GeradorId();
         
-        const novoUsuario: User = { id, nome, sobrenome, email, senha:cripSenha, sexo, estado_civil, data_nascimento, numero_telefone, estado, bairro, foto, cidade}
+        const novoUsuario: User = { id, nome, sobrenome, email, senha:cripSenha, sexo, estado_civil, data_nascimento, numero_telefone, estado, bairro, foto, cidade,termos_de_uso,envio_de_dados}
         await connection("usuario").insert({
             id: novoUsuario.id,
             nome: novoUsuario.nome,
@@ -57,7 +60,9 @@ export default async function GetCadastro(
             estado: novoUsuario.estado,
             cidade: novoUsuario.cidade,
             bairro: novoUsuario.bairro,
-            foto: novoUsuario.foto
+            foto: novoUsuario.foto,
+            termos_de_uso: novoUsuario.termos_de_uso,
+            envio_de_dados: novoUsuario.envio_de_dados,
         });
 
          const auth = new Authenticator();

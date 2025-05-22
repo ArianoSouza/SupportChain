@@ -1,20 +1,5 @@
 <ion-content fullscreen>
 
-    
-
-    <ng-container *ngIf="!feedBackMensage else nofeedBackMensage"></ng-container>
-    <ng-template #nofeedBackMensage>
-    <div class="alert-feedback">
-      <ion-button (click)="setFeedBackMensage()">X</ion-button>
-      <p>Olá, {{userData.actualUser.nome}}! Gostando do aplicativo? Não esqueça de deixar seu feedback para a gente. Isso ajuda o SupportChain a melhorar cada vez mais!</p>
-      <ion-router-link routerLink="/tabs/tab2">
-        Feedback
-      </ion-router-link>
-    </div>
-
-    
-
-    </ng-template>
     <ion-grid>
       <div class="container-welcome">
         <img src="assets/images/logo sc 3.svg" alt="">

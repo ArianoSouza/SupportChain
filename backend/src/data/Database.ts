@@ -20,7 +20,9 @@ const printError = (error: any) => {
           Estado VARCHAR(50),
           Cidade VARCHAR(50),
           Bairro VARCHAR(50),
-          Foto TEXT 
+          Foto TEXT,
+          termos_de_uso BOOLEAN NOT NULL DEFAULT 0,
+          envio_de_dados BOOLEAN NOT NULL DEFAULT 0
           );
              `);
             console.log('tabela criada com sucesso')

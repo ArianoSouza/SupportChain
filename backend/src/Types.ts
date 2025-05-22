@@ -28,14 +28,16 @@ export type User={
     sobrenome:string,
     email: string
     senha: string,
-    sexo: string
-    estado_civil: string 
-    data_nascimento: string
-    numero_telefone: string
-    estado: string
-    cidade: string
-    bairro: string
-    foto: string;
+    sexo: string,
+    estado_civil: string ,
+    data_nascimento: string,
+    numero_telefone: string,
+    estado: string,
+    cidade: string,
+    bairro: string,
+    foto: string,
+    termos_de_uso: boolean,
+    envio_de_dados: boolean,
 }
 
 export type Login = {

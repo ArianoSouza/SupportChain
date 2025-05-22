@@ -1,0 +1,68 @@
+[
+    {
+      "id_atividade": "Ajude um Amigo a Desconectar",
+      "questions": [
+        {
+          "title": "A pessoa demonstrou interesse em desconectar da internet?",
+          "options": ["Sim, estava animado para tentar!", "Sim, mas com alguma hesitação.", "Não, mostrou resistência significativa.", "Não, recusou a ideia completamente."]
+        },
+        {
+          "title": "Durante a atividade, ele(a) se envolveu completamente?",
+          "options": ["Sim, sem distrações.", "Sim, mas olhou o celular algumas vezes.", "Não, usou o celular frequentemente.", "Não, abandonou a atividade."]
+        }
+      ]
+    },
+    {
+      "id_atividade": "Sessão de Meditação Guiada",
+      "questions": [
+        {
+          "title": "A pessoa conseguiu relaxar e se concentrar na meditação?",
+          "options": ["Sim, estava totalmente presente.", "Sim, mas teve dificuldade para se concentrar.", "Não, parecia inquieto(a).", "Não, não quis participar."]
+        },
+        {
+          "title": "Após a atividade, houve alguma mudança perceptível no humor?",
+          "options": ["Sim, parecia mais tranquilo(a).", "Sim, mas pouco perceptível.", "Não, continuou agitado(a).", "Não, afirmou que não gostou da experiência."]
+        }
+      ]
+    },
+    {
+      "id_atividade": "Diário Compartilhado de Gratidão",
+      "questions": [
+        {
+          "title": "A pessoa conseguiu listar aspectos positivos de seu dia?",
+          "options": ["Sim, com facilidade.", "Sim, mas com alguma dificuldade.", "Não, teve dificuldade para encontrar aspectos positivos.", "Não, recusou participar."]
+        },
+        {
+          "title": "Após escrever no diário, houve alguma mudança na perspectiva da pessoa?",
+          "options": ["Sim, ficou mais positivo(a).", "Sim, mas de forma leve.", "Não, disse que não viu diferença.", "Não, ficou indiferente à atividade."]
+        }
+      ]
+    },
+    {
+      "id_atividade": "Caminhada Consciente em Dupla",
+      "questions": [
+        {
+          "title": "A pessoa conseguiu focar na caminhada sem distrações digitais?",
+          "options": ["Sim, esteve presente na experiência.", "Sim, mas verificou o celular algumas vezes.", "Não, parecia distraído(a) o tempo todo.", "Não, abandonou a caminhada."]
+        },
+        {
+          "title": "Houve alguma mudança no estado emocional da pessoa após a caminhada?",
+          "options": ["Sim, parecia mais calmo(a) e relaxado(a).", "Sim, mas de forma sutil.", "Não, continuou ansioso(a).", "Não, disse que não gostou."]
+        }
+      ]
+    },
+    {
+      "id_atividade": "Desafio Conjunto Sem Redes Sociais",
+      "questions": [
+        {
+          "title": "A pessoa conseguiu evitar redes sociais durante o período proposto?",
+          "options": ["Sim, totalmente.", "Sim, mas com algumas dificuldades.", "Não, usou redes sociais algumas vezes.", "Não, não conseguiu se desvincular."]
+        },
+        {
+          "title": "Houve algum impacto positivo percebido após evitar redes sociais?",
+          "options": ["Sim, sentiu-se mais presente e produtivo(a).", "Sim, mas disse que não foi tão significativo.", "Não, não viu diferença alguma.", "Não, afirmou que prefere usar redes sociais."]
+        }
+      ]
+    }
+  ]
+  

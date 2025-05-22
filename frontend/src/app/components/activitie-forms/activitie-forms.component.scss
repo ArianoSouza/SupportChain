@@ -1,0 +1,33 @@
+ion-item{
+    --background: none;
+    color: black;
+}
+
+ion-list{
+    background: none;
+    color: black;
+}
+
+ion-radio{
+    color: #3f2b96;
+    --color: #3f2b96;
+    --color-checked: #004b7e;
+}
+
+.questionnaire{
+    margin-top: 3rem;
+}
+
+.send{
+    --background: #3f2b96;
+    color: white;
+    margin-top: 2rem;
+}
+
+.back{
+    --background: none;
+    --border-style:solid;
+    --border-width: 2px;
+    --border-color: black;
+
+}

@@ -58,4 +58,59 @@ export type userData ={
     cidade: string,
     bairro: string
 }
+
+export type ActivityCategory = {
+    title: string;
+    description: string;
+    image: string;
+    tag:Tag
+  };
   
+export type activityDetails ={
+    title: string;
+    description: string;
+    icon: string;
+    tags: Tag[]
+    activities: activitie[]
+    
+}
+
+export type activitie ={
+    title: string
+    doTime: number
+    objective: string
+    steps: string[]
+}
+
+export type Tag = 
+  | "desintoxicação digital"
+  | "conexão social"
+  | "relaxamento"
+  | "saúde mental"
+  | "positividade"
+  | "auto-reflexão"
+  | "atividade física"
+  | "bem-estar"
+  | "autocontrole";
+  
+
+  export type question ={
+    title: String
+    options:String[]
+  }
+  export type questionFull ={
+    id_atividade:String
+    questions:question[]
+  }
+
+  export type videoTag = 'desintoxicação digital' | 'ansiedade' | 'mindfulness' | 'vício digital' | 'saúde do sono' | 'redes sociais' | 'equilíbrio digital' | 'depressão' | 'produtividade' | 'impacto das telas';
+
+  export type VideoDetails = {
+    title: string;
+    desc: string;
+    tags: Tag[];
+    url: string;
+    tumbnail: string;
+    likes: number; 
+  };
+

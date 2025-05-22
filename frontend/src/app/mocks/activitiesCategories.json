@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Desintoxicação Digital",
+    "description": "Práticas para reduzir o uso excessivo da tecnologia e melhorar o bem-estar.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "tag": "desintoxicação digital"
+  },
+  {
+    "title": "Conexão Social",
+    "description": "Atividades para fortalecer relacionamentos e interações reais.",
+    "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+    "tag": "conexão social"
+  },
+  {
+    "title": "Relaxamento",
+    "description": "Técnicas para aliviar o estresse e promover a tranquilidade.",
+    "image": "https://images.pexels.com/photos/357155/pexels-photo-357155.jpeg",
+    "tag": "relaxamento"
+  },
+  {
+    "title": "Saúde Mental",
+    "description": "Estratégias para cuidar da mente e cultivar equilíbrio emocional.",
+    "image": "https://images.unsplash.com/photo-1588776814546-ec7e1c8f6c6e",
+    "tag": "saúde mental"
+  },
+  {
+    "title": "Positividade",
+    "description": "Hábitos que ajudam a manter uma mentalidade positiva e otimista.",
+    "image": "https://images.pexels.com/photos/3769717/pexels-photo-3769717.jpeg",
+    "tag": "positividade"
+  },
+  {
+    "title": "Auto-reflexão",
+    "description": "Momentos de introspecção para autoconhecimento e crescimento pessoal.",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    "tag": "auto-reflexão"
+  },
+  {
+    "title": "Atividade Física",
+    "description": "Exercícios e práticas para melhorar a saúde e disposição.",
+    "image": "https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg",
+    "tag": "atividade física"
+  },
+  {
+    "title": "Bem-estar",
+    "description": "Rotinas saudáveis para equilibrar corpo e mente.",
+    "image": "https://images.unsplash.com/photo-1504198453319-5ce911bafcde",
+    "tag": "bem-estar"
+  },
+  {
+    "title": "Autocontrole",
+    "description": "Desafios para melhorar a disciplina e controle sobre hábitos.",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    "tag": "autocontrole"
+  }
+]

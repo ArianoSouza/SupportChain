@@ -1,0 +1,17 @@
+<ion-content>
+  <div class="questionnaire">
+    <div *ngFor="let question of questions[0].questions; let i = index">
+      <h2>Pergunta {{ i + 1 }} - {{ question.title }}</h2>
+      <ion-list>
+        <ion-radio-group [(ngModel)]="answers[i]">
+          <ion-item *ngFor="let option of question.options">
+            <ion-label>{{ option }}</ion-label>
+            <ion-radio slot="start" [value]="option"  (click)="onclick()"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <ion-button expand="block" (click)="submitAnswers()" class="send">ENVIAR RESPOSTAS</ion-button>
+    <ion-button expand="block" (click)="goBack()" class="back">Voltar para a página de atividades</ion-button>
+  </div>
+</ion-content>

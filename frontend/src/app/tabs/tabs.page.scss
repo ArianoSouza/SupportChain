@@ -1,6 +1,6 @@
 
 ion-tab-bar{
-    width: 80%;
+    width: 90%;
     align-self: center;
     margin-bottom: 1vh;
     border-radius: 10px;
@@ -23,8 +23,8 @@ ion-tab-button{
   
 }
 ion-tab-button.tab-selected{
-   height: 9vh;
-   width: 25%;
+   height: 8vh;
+   width: 20%;
    transition: 0.3s;
     margin-bottom: 5vh;
     background: white;
@@ -32,4 +32,7 @@ ion-tab-button.tab-selected{
 }
 ion-icon{
     font-size: 4rem;
+}
+ion-tabs{
+    
 }
