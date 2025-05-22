@@ -8,8 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   standalone: false,
 })
 export class TabsPage {
-
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  
+  hideNav = false;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.router.events.subscribe(() => {
+      this.hideNav = this.router.url.includes('/full-video');
+    });
+  }
   usuario: string = '';
   
   ngOnInit() {

@@ -73,7 +73,7 @@ export class Tab1Page implements OnInit{
       id: "s02",
       title:"Vídeos",
       icon:"videocam",
-      url:"/tabs/notes"
+      url:"/tabs/app-videos"
     },
     {
       id: "s03",

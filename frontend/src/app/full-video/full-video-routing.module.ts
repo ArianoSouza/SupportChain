@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppVideosPage } from './app-videos.page';
+import { FullVideoPage } from './full-video.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppVideosPage
-  },
-  
+    component: FullVideoPage
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppVideosPageRoutingModule {}
+export class FullVideoPageRoutingModule {}

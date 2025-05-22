@@ -23,6 +23,17 @@ const routes: Routes = [
     path: 'modulos',
     loadChildren: () => import('./externTabPages/modulos/modulos.module').then( m => m.ModulosPageModule)
   },
+  {
+    path: 'full-video',
+    loadChildren: () => import('./full-video/full-video.module').then( m => m.FullVideoPageModule)
+  }
+ 
+
+  
+
+
+  
+
 
 ];
 @NgModule({

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Ajude um Amigo a Desconectar",
+    "description": "Ajude alguém a reduzir o uso excessivo da internet e se reconectar com o mundo real.",
+    "icon": "person-remove-outline",
+    "tags": ["desintoxicação digital", "conexão social"],
+    "activities": [
+      {
+        "title": "Passe um Tempo Offline Juntos",
+        "doTime": 60,
+        "objective": "Passar uma hora sem dispositivos eletrônicos, focando na interação real.",
+        "steps": ["Convide alguém para um encontro sem celulares", "Escolham uma atividade, como jogar um jogo de tabuleiro ou caminhar", "Compartilhem experiências e conversem sem distrações digitais"]
+      }
+    ]
+  },
+  {
+    "title": "Sessão de Meditação Guiada",
+    "description": "Guie alguém em uma prática de meditação para ajudá-lo a aliviar o estresse digital.",
+    "icon": "leaf-outline",
+    "tags": ["relaxamento", "saúde mental"],
+    "activities": [
+      {
+        "title": "Meditação em Dupla",
+        "doTime": 15,
+        "objective": "Promover o relaxamento e a clareza mental através da meditação.",
+        "steps": ["Escolha um local tranquilo", "Leiam juntos uma meditação guiada ou usem um áudio", "Respirem profundamente e compartilhem como se sentem após a prática"]
+      }
+    ]
+  },
+  {
+    "title": "Diário Compartilhado de Gratidão",
+    "description": "Escrever sobre momentos positivos junto com outra pessoa para fortalecer conexões emocionais.",
+    "icon": "journal-outline",
+    "tags": ["positividade", "auto-reflexão"],
+    "activities": [
+      {
+        "title": "Troca de Gratidão",
+        "doTime": 10,
+        "objective": "Reconhecer aspectos positivos da vida e compartilhar com alguém.",
+        "steps": ["Cada pessoa escreve 3 coisas pelas quais é grato", "Troquem e leiam os textos um do outro", "Discutam o impacto dessas experiências positivas"]
+      }
+    ]
+  },
+  {
+    "title": "Caminhada Consciente em Dupla",
+    "description": "Uma caminhada de mindfulness com um parceiro para se desconectar da tecnologia.",
+    "icon": "walk-outline",
+    "tags": ["atividade física", "bem-estar"],
+    "activities": [
+      {
+        "title": "Exploração Sem Distrações",
+        "doTime": 30,
+        "objective": "Apreciar o ambiente sem dispositivos e fortalecer vínculos.",
+        "steps": ["Escolham um local bonito para caminhar", "Conversem sobre sensações e observações do ambiente", "Façam uma pausa para respirar e refletir sobre a experiência"]
+      }
+    ]
+  },
+  {
+    "title": "Desafio Conjunto Sem Redes Sociais",
+    "description": "Um desafio para dois ou mais amigos passarem um dia sem redes sociais.",
+    "icon": "ban-outline",
+    "tags": ["autocontrole", "desintoxicação digital"],
+    "activities": [
+      {
+        "title": "Dia Digital-Free",
+        "doTime": 1440,
+        "objective": "Evitar redes sociais durante 24 horas em grupo.",
+        "steps": ["Façam um acordo de evitar redes sociais juntos", "Planejem atividades offline para preencher o tempo", "No final do dia, compartilhem como se sentiram sem o uso das redes"]
+      }
+    ]
+  }
+]
