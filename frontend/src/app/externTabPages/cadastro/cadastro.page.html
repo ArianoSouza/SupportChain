@@ -14,7 +14,7 @@
         </li>
       </ul>
     </div>
-    <form (ngSubmit)="onregister()" [style]="errorMenssage.length == 0 ? 'transform:translateY(-8rem)':'transform:translateY(0)'">
+    <form (ngSubmit)="onregister()" [style]="errorMenssage.length == 0 ? 'transform:translateY(-8rem)':'transform:translateY(0)'" >
       <ion-input class="input" fill="solid" type="text" label="Nome" labelPlacement="floating" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
 
       <ion-input fill="solid" type="text" label="Sobrenome" labelPlacement="floating" [(ngModel)]="usuario.sobrenome" name="sobrenome" required ></ion-input>
@@ -47,17 +47,20 @@
       <ion-input fill="solid" type="text" label="Bairro" labelPlacement="floating" [(ngModel)]="usuario.bairro" name="bairro" required [disabled]="listMunicipios.length == 0 ? true : false"></ion-input>
       
       
-      <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required (ionInput)="verificarForcaSenha()"></ion-input>
+      <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required (ionInput)="verificarForcaSenha()">
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
       <ion-label [color]="corForca" class="senha-verifier">
         Nível da senha:
         <ion-icon [name]="iconForca"></ion-icon>
         {{ textoForca }}
       </ion-label>
 
-      <ion-button expand="full"  type="submit">Próximo</ion-button>
+      <ion-button expand="full"  type="submit" id="open-toast">Próximo</ion-button>
     </form>
-    <ion-button class="exit-button" (click)="goToLogin()">
+    <ion-button class="exit-button" (click)="goToLogin()" >
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-button>
   </div>
+  <ion-toast trigger="open-toast" [message]="errorMenssage.length == 0 ? 'Cadastro realizado com sucesso!':'Erro ao realizar cadastro'" [duration]="1000" [icon]="errorMenssage.length == 0 ? 'checkbox' :'warning'"></ion-toast>
 </ion-content>

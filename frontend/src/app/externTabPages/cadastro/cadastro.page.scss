@@ -87,3 +87,12 @@
       text-align: center;
     }
   }
+
+  ion-toast{
+    --background: #3f2b96;
+    --color: white;
+  }
+  ion-input-password-toggle{
+    color: #3f2b96 !important;
+    --color: #3f2b96 !important;
+  }
