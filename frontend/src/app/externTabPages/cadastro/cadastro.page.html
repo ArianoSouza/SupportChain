@@ -1,11 +1,21 @@
-<ion-content>
+<ion-content #content>
   <div class="container">
     <div class="logo">
       <img src="assets/images/logo.png" alt="SuportChain Logo" class="logo">
     </div>
     <h1>Cadastro</h1>
-    <form (ngSubmit)="onregister()">
-      <ion-input fill="solid" type="text" label="Nome" labelPlacement="floating" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
+
+    <div [style]="errorMenssage.length == 0 ? 'visibility:collapse': 'visibility:visible'" class="container-error">
+      <h3>Erro no cadastro</h3>
+      <p>Alguns erros foram encontrados ao realizar o seu cadastro:</p>
+      <ul>
+        <li *ngFor="let erro of errorMenssage">
+          {{erro}}
+        </li>
+      </ul>
+    </div>
+    <form (ngSubmit)="onregister()" [style]="errorMenssage.length == 0 ? 'transform:translateY(-8rem)':'transform:translateY(0)'">
+      <ion-input class="input" fill="solid" type="text" label="Nome" labelPlacement="floating" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
 
       <ion-input fill="solid" type="text" label="Sobrenome" labelPlacement="floating" [(ngModel)]="usuario.sobrenome" name="sobrenome" required ></ion-input>
 
@@ -26,15 +36,23 @@
 
       <ion-input fill="solid" type="tel" label="Nº de Telefone" labelPlacement="floating" [(ngModel)]="usuario.numero_de_telefone" name="numero_de_telefone" required></ion-input>
 
-      <ion-input fill="solid" type="text" label="Cidade" labelPlacement="floating" [(ngModel)]="usuario.cidade" name="cidade" required></ion-input>
+      <ion-select  fill="solid" label="Estado" labelPlacement="floating" [(ngModel)]="usuario.estado" name="estado" required (ionChange)="getIdForMunicipio()">
+        <ion-select-option *ngFor=" let estado of listEstados" [value]="estado?.nome">{{estado.nome}}</ion-select-option>
+      </ion-select>
 
-   
-      <ion-input fill="solid" type="text" label="Bairro" labelPlacement="floating" [(ngModel)]="usuario.bairro" name="bairro" required></ion-input>
+      <ion-select  fill="solid" label="Cidade" labelPlacement="floating" [(ngModel)]="usuario.cidade" name="cidade" required [disabled]="listMunicipios.length == 0 ? true : false">
+        <ion-select-option *ngFor=" let municipio of listMunicipios" [value]="municipio">{{municipio}}</ion-select-option>
+      </ion-select>
 
+      <ion-input fill="solid" type="text" label="Bairro" labelPlacement="floating" [(ngModel)]="usuario.bairro" name="bairro" required [disabled]="listMunicipios.length == 0 ? true : false"></ion-input>
       
-      <ion-input fill="solid" type="text" label="Estado" labelPlacement="floating" [(ngModel)]="usuario.estado" name="estado" required></ion-input>
       
-      <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required></ion-input>
+      <ion-input fill="solid" type="text" label="Senha" labelPlacement="floating" [(ngModel)]="usuario.senha" name="senha" required (ionInput)="verificarForcaSenha()"></ion-input>
+      <ion-label [color]="corForca" class="senha-verifier">
+        Nível da senha:
+        <ion-icon [name]="iconForca"></ion-icon>
+        {{ textoForca }}
+      </ion-label>
 
       <ion-button expand="full"  type="submit">Próximo</ion-button>
     </form>

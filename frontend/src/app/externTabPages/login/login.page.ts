@@ -16,6 +16,11 @@ export class LoginPage  {
   email = '';
   senha = '';
 
+  errorMensageEmail:string = 'Insira um email válido'
+  errorMensagePassword:string = 'Senha incorreta'
+  errorEmail:Boolean = false
+  errorPassword:Boolean = false
+
   constructor(
 
     private alertCtrl: AlertController,
@@ -28,8 +33,15 @@ export class LoginPage  {
    onLogin() {
     const userEmail = this.userData.getDados().filter(user=> user.email.includes(this.email))
 
+    if(this.email.length === 0){
+      this.errorMensageEmail = "Campo em branco"
+      this.errorEmail = true
+    }
     if(userEmail.length === 0){
+      this.errorMensageEmail = "Usuário não cadastrado"
       console.log("usuário não cadastrado")
+      this.senha = ''
+      this.errorEmail = true
     }
     else{
       if (userEmail[0].senha === this.senha){
@@ -43,6 +55,8 @@ export class LoginPage  {
       }
       else{
         console.log("senha incorreta")
+        this.senha = ''
+        this.errorPassword = true
       }
     }
   }
@@ -50,4 +64,17 @@ export class LoginPage  {
   goToCadastro(){
     this.navCtrl.navigateForward('/cadastro')
   }
+
+  errorMensageSwitch(event:Event){
+    const target = event.target as HTMLInputElement 
+    const tType = target.type
+
+    if (tType === 'email'){
+      this.errorEmail = false;
+    }
+    if (tType === 'password'){
+      this.errorPassword = false;
+    }
+  }
+
 }

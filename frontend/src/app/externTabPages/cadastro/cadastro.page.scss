@@ -31,7 +31,7 @@
         --color: grey !important;
         color: grey;
         --highlight-color: #3f2b96 !important;
-        --background: rgb(255, 255, 255) !important;
+        --background: rgb(226, 226, 226) !important;
         align-items: start;
         text-align: start;
     }
@@ -53,4 +53,37 @@
     --box-shadow:none;
     --border-radius: 100px;
     height:3rem;
+  }
+  .senha-verifier{
+    width: 90%;
+    text-align: start;
+  }
+
+  .container-error{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: rgb(173, 3, 3);
+    text-align: start;
+    border: 2px solid rgb(172, 0, 9);
+    background-color: rgb(253, 124, 131);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+
+    ul{
+      margin-bottom:0.5rem;
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+    p{
+      text-align: start;
+      padding: 0rem 2rem;
+      color: rgb(173, 3, 3);
+      margin-top: 0px;
+    }
+    h3{
+      margin: 0.5rem 0px;
+      color: rgb(173, 3, 3);
+      text-align: center;
+    }
   }
