@@ -9,7 +9,7 @@ export default async function GetEtapa(
     try{
     const titulo = req.query.titulo;
 
-    const result = await connection('Etapas')
+    const result = await connection('etapa')
     .select('*').where('titulo',String(titulo))
 
     res.status(200).json(result[0]);

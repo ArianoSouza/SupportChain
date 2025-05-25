@@ -24,6 +24,24 @@ const printError = (error: any) => {
           termos_de_uso BOOLEAN NOT NULL DEFAULT 0,
           envio_de_dados BOOLEAN NOT NULL DEFAULT 0
           );
+
+          CREATE TABLE IF NOT EXISTS etapa (
+          id_etapa INT AUTO_INCREMENT PRIMARY KEY,
+          id_trilha INT NOT NULL,
+          ordem INT NOT NULL,
+          titulo VARCHAR(255) NOT NULL,
+          descricao TEXT
+           );
+          
+          CREATE TABLE IF NOT EXISTS Progresso(
+          id_progresso INT AUTO_INCREMENT PRIMARY KEY,
+          id_user VARCHAR(36) NOT NULL,
+          id_etapa INT NOT NULL,
+          concluida BOOLEAN NOT NULL DEFAULT 0,
+          data_conclusao DATE,
+          FOREIGN KEY (id_user) REFERENCES usuario(id),
+          FOREIGN KEY (id_etapa) REFERENCES etapa(id_etapa)
+          );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

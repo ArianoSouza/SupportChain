@@ -7,13 +7,12 @@ import InsertTrilha from './Controlles/InsertTrilha';
 import InsertEtapa from './Controlles/InsetEtapa';
 import GetTrilha from './Controlles/GetTrilha';
 import GetEtapa from './Controlles/GetEtapa';
-import dotenv from "dotenv";
 import { Router } from 'express';
 import GetCadastro from './Controlles/usuarioRoutes';
 import GetLogin from './Controlles/usuarioLogin';
 import autenticarToken from './Serviços/autenticarToken';
-
-dotenv.config();
+import { PostProgresso } from './Controlles/PostProgresso';
+import { GetProcesso } from './Controlles/GetProcesso';
 
 const router = express.Router();
 
@@ -27,12 +26,14 @@ app.use(router);
 app.get("/noticias",GetNews);
 app.get("/Books", GetBooks);
 app.get("/Artigos",GetArtigos);
-router.post("/Trilhas",InsertTrilha); //inserir depois a autentificação
+router.post("/Trilhas",InsertTrilha); 
 router.post("/Etapas",InsertEtapa);
-router.get("/trilha",GetTrilha);
-router.get("/etapa",GetEtapa);
+router.get("/trilha",autenticarToken,GetTrilha);
+router.get("/etapa",autenticarToken,GetEtapa);
 router.post("/user/cadastro", GetCadastro);
 router.post("/user/login", GetLogin);
+router.post("/progresso",PostProgresso);
+router.get("/Progresso/:id_user",autenticarToken,GetProcesso);
 
 app.listen(3000, () => {
   console.log("Server is running  in http://localhost:3000")
