@@ -37,7 +37,7 @@ export class LoginPage  {
       this.errorMensageEmail = "Campo em branco"
       this.errorEmail = true
     }
-    if(userEmail.length === 0){
+    if(userEmail.length === 0 || this.email !== userEmail[0].email ){
       this.errorMensageEmail = "Usuário não cadastrado"
       console.log("usuário não cadastrado")
       this.senha = ''

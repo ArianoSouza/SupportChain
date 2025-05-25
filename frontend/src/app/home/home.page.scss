@@ -16,11 +16,7 @@
     color: white !important;
   }
   
-  .section-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 4rem ;
-  }
+  
   
   .news-card {
     position: relative;
@@ -154,7 +150,21 @@
     width: fit-content;
     transition: 0.5s;
     animation: ease-in-out;
-
+    
+    ion-icon{
+      margin-left: 3px;
+    }
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3rem;
+      width: 100%;
+      text-align: center;
+      text-justify: center;
+      color: #3D348B;
+      text-decoration: none;
+    }
     ion-card{
       img{
         width: 50%;  
@@ -165,25 +175,33 @@
         border-radius: 8px;   
       }
       width: 11rem;
-      height: 14rem;
+      height: 16rem;
+      border: 2px solid #3D348B;
+      border-radius: 15px;
     }
     
     ion-card-title{
       font-size: 1rem;
-      max-height: 2rem;
+      height: 3rem;
       white-space:unset;
       box-sizing: border-box;
       overflow: hidden;
      text-overflow: ellipsis;
+     color: #3D348B;
+     display: flex;
+     align-items: center;
 
     }
     ion-card-subtitle{
-      height: 4rem;
+      height: 3rem;
       width: 100%;
       white-space:unset;
       box-sizing: border-box;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: black;
+      display: flex;
+     align-items: center;
 
     }
   }
@@ -294,4 +312,31 @@
       font-size: 4rem;
       color: #3D348B;
     }
+  }
+
+  .sugestoes{
+    color: grey;
+  }
+
+  .container-section-title{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4rem ;
+    align-items: center;
+    
+  }
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .divisor{
+    height: 2px;
+    background-color:  rgb(145, 145, 145);
+    width: 25%;
+
   }

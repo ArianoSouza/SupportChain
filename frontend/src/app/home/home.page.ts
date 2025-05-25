@@ -35,7 +35,7 @@ export class Tab1Page implements OnInit{
     // Use forkJoin se quiser esperar todas as chamadas
     forkJoin([
       this.noticiaService.getNoticias(),
-      this.bookService.getBooks('tecnologia'),
+      this.bookService.getBooks('saude mental'),
       this.articleService.getArticles()
     ]).subscribe(
       ([noticias, books, articles]) => {
@@ -61,6 +61,8 @@ export class Tab1Page implements OnInit{
   avaliation = false
   feedBackMensage = true
   nomeUser = this.userData.actualUser?.nome
+
+  genericImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8lRbS7eKYzDq-Ftxc1p8G_TTw2unWBMEYUw&s'
 
   sugestions:sugestionHome[] = [
     {
@@ -98,6 +100,33 @@ goToLink = (link:String)=>{
 
 goToPage(link:String){
   this.router.navigate([link as string])
+}
+
+
+limitChar(text:String ):String{
+  if (text.length >= 30){
+    return text.slice(0,29)+' ...'
+  }
+  else{
+    return text
+  }
+}
+
+handleImageError(event: Event) {
+  const imgElement = event.target as HTMLImageElement;
+  imgElement.src = this.genericImage;
+}
+
+ gerarLinkAmazon(titulo: String, autor:String): string {
+  const baseUrl = 'https://www.amazon.com.br/s?k=';
+  let query = ''
+
+  if(autor==='Desconhecido'){
+    query = encodeURIComponent(titulo.trim())
+  }else{
+    query = encodeURIComponent(titulo.trim())+' '+encodeURIComponent(autor.trim());
+  }
+  return `${baseUrl}${query}`;
 }
 
 

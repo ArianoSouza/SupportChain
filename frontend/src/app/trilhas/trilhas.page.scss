@@ -50,10 +50,11 @@ body{
 
  ion-searchbar {
     margin-bottom: 24px;
+    color: black;
     --background:	#ffffff;
     --border-radius: 12px;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+ }
 
   ion-grid {
   --ion-grid-column-gap: 4px; 
@@ -67,10 +68,15 @@ body{
   text-align: center;
   box-shadow: none;
   height: auto;
-  padding: 16px; 
+  padding: 16px 0px; 
   width: 100%;
   max-width: 120px; 
   margin:0 auto; 
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   ion-card-header {
     display: flex;

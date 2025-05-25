@@ -6,6 +6,8 @@ import { userData } from 'src/app/models/types/user.types';
 import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
 import { ApiEstadosService } from 'src/app/services/apiEstados/api-estados.service';
 import zxcvbn from 'zxcvbn';
+import { TextMaskModule } from 'angular2-text-mask';
+
 
 
 type estado ={
@@ -131,18 +133,12 @@ export class CadastroPage implements OnInit {
       this.errorMenssage.push("Campo 'Nome' faltando")
     }
 
-    if (this.usuario.nome.length > 15){
-       this.errorMenssage.push("O máximo de caracteres no campo 'Nome' é de 15")
-    }
 
     // verifica sobrenome
     if (this.usuario.sobrenome.length == 0){
       this.errorMenssage.push("campo 'Sobrenome' vazio")
     }
-
-    if (this.usuario.sobrenome.length > 15){
-      this.errorMenssage.push("O máximo de caracteres no campo 'Sobrenome' é de 15")
-    }
+  
 
     // verifica email
     if (this.usuario.nome.length == 0){
@@ -181,16 +177,13 @@ export class CadastroPage implements OnInit {
        this.errorMenssage.push("Campo 'Telefone' vazio")
     }
 
-    if (this.usuario.numero_de_telefone.length != 11){
+    if (this.usuario.numero_de_telefone.length < 15){
       this.errorMenssage.push("Insira um número válido")
     }
 
     // verifica endereço
     if (this.usuario.estado.length == 0 || this.usuario.cidade.length == 0 || this.usuario.bairro.length == 0){
        this.errorMenssage.push("Faltam informações de endereço")
-    }
-    if (this.usuario.bairro.length>15) {
-       this.errorMenssage.push("O máximo de caracteres no campo 'Bairro' é de 20")
     }
 
     // verifica senha
@@ -229,5 +222,19 @@ export class CadastroPage implements OnInit {
     this.textoForca = niveis[score];
     this.corForca = cores[score];
     this.iconForca = icons[score]
+  }
+
+  formatarTelefone(event: any) {
+    let valor = event.detail.value.replace(/\D/g, '');
+  
+    if (valor.length > 11) {
+      valor = valor.slice(0, 11);
+    }
+  
+    if (valor.length <= 10) {
+      this.usuario.numero_de_telefone = valor.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3').trim();
+    } else {
+      this.usuario.numero_de_telefone = valor.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3').trim();
+    }
   }
 }

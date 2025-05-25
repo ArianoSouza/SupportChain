@@ -11,14 +11,29 @@
   <h2 class="category">Sugestões</h2>
   <div class="video-container">
     <div class="scroll-videos">
-    <div *ngFor="let video of videos" button (click)="goToFullVideo(video.title)" class="video">
-      <img [src]="video.tumbnail" alt="" (error)="onImgError($event)">
-      <div class="container-likes">
-        <ion-icon name="heart"></ion-icon>
-        <p>{{video.likes}}</p>
-      </div>
-      <p class="title">{{video.title}}</p>
+    
     </div>
   </div>
+  
+  <div class="flex-center">
+    <ion-select [(ngModel)]="selectedTag" placeholder="Filtre por categoria" (ionChange)="filterVideos($event)" class="filter" fill="solid">
+      <ion-select-option *ngFor="let categoria of videosCategories" [value]="categoria">
+        {{categoria}}
+      </ion-select-option>
+    </ion-select>
+    <ion-button (click)="clearFilter()">X</ion-button>
+  </div>
+
+  <div class="video-container">
+    <div class="scroll-videos">
+      <div *ngFor="let video of fiteredVideos" button (click)="goToFullVideo(video.title)" class="video" >
+        <img [src]="video.tumbnail" alt="" (error)="onImgError($event)">
+        <div class="container-likes">
+          <ion-icon name="heart"></ion-icon>
+          <p>{{video.likes}}</p>
+        </div>
+        <p class="title">{{video.title}}</p>
+      </div>
+    </div>
   </div>
 </ion-content>
