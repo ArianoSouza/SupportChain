@@ -42,6 +42,14 @@ const printError = (error: any) => {
           FOREIGN KEY (id_user) REFERENCES usuario(id),
           FOREIGN KEY (id_etapa) REFERENCES etapa(id_etapa)
           );
+
+          CREATE TABLE IF NOT EXISTS media(
+          id_media INT AUTO_INCREMENT PRIMARY KEY,
+          id_user VARCHAR(36) NOT NULL,
+          file_name VARCHAR(255) NOT NULL,
+          url TEXT NOT NULL,
+          FOREIGN KEY (id_user) REFERENCES usuario(id)
+          );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

@@ -54,4 +54,10 @@ export interface AuthenticationData {
   id_etapa: string;
   concluida: boolean;
   data_conclusao?: Date;
-};
+}
+
+export type TMidia ={
+id_user: string,
+file_name: string,
+url: string
+}

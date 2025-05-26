@@ -13,15 +13,19 @@ import GetLogin from './Controlles/usuarioLogin';
 import autenticarToken from './Serviços/autenticarToken';
 import { PostProgresso } from './Controlles/PostProgresso';
 import { GetProcesso } from './Controlles/GetProcesso';
+import { UploadFile } from './Controlles/UploadsFile';
+import multer from 'multer';
 
 const router = express.Router();
 
 const app = express();
 
+const upload = multer({ dest: "uploads/" });
+
 app.use(express.json());
 app.use(cors());
 app.use(router);
-
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/noticias",GetNews);
 app.get("/Books", GetBooks);
@@ -34,6 +38,7 @@ router.post("/user/cadastro", GetCadastro);
 router.post("/user/login", GetLogin);
 router.post("/progresso",PostProgresso);
 router.get("/Progresso/:id_user",autenticarToken,GetProcesso);
+router.post("/uploads",upload.single("file"),UploadFile);
 
 app.listen(3000, () => {
   console.log("Server is running  in http://localhost:3000")
