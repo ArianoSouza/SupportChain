@@ -14,6 +14,8 @@ import autenticarToken from './Serviços/autenticarToken';
 import { PostProgresso } from './Controlles/PostProgresso';
 import { GetProcesso } from './Controlles/GetProcesso';
 import { UploadFile } from './Controlles/UploadsFile';
+import { GetUpload } from './Controlles/GetUpload';
+import { addVideoInfo } from './Controlles/addVideoInfo';
 import multer from 'multer';
 
 const router = express.Router();
@@ -39,6 +41,9 @@ router.post("/user/login", GetLogin);
 router.post("/progresso",PostProgresso);
 router.get("/Progresso/:id_user",autenticarToken,GetProcesso);
 router.post("/uploads",upload.single("file"),UploadFile);
+router.post("/videos/info", addVideoInfo);
+router.get("/Videos/:userId", GetUpload);
+
 
 app.listen(3000, () => {
   console.log("Server is running  in http://localhost:3000")

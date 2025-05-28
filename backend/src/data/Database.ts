@@ -50,6 +50,17 @@ const printError = (error: any) => {
           url TEXT NOT NULL,
           FOREIGN KEY (id_user) REFERENCES usuario(id)
           );
+
+          CREATE TABLE IF NOT EXISTS videos_info(
+           id_video INT AUTO_INCREMENT PRIMARY KEY,
+           media_id INT NOT NULL,
+           title VARCHAR(255),
+           description TEXT,
+           views INT DEFAULT 0,
+           viewed BOOLEAN DEFAULT FALSE,
+           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+           FOREIGN KEY (media_id) REFERENCES media(id_media)
+         );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

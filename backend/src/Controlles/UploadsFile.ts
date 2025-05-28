@@ -2,14 +2,11 @@ import multer from "multer";
 import { Request,Response } from "express";
 import connection from "../data/connection";
 import { v2 as cloudinary } from "cloudinary";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret:process.env.CLOUDINARY_API_SECRET,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const upload= multer({ dest: 'uploads/' });
@@ -33,14 +30,19 @@ export async function UploadFile(
     return;
     }
 
-    const result = await cloudinary.uploader.upload(req.file.path);
+    const result = await cloudinary.uploader.upload(req.file.path,{
+    resource_type: "video"
+    });
 
     const file_name = req.file.originalname;
     const url = result.secure_url;
+    const file_extension = file_name.split('.').pop()?.toLowerCase();
+    const file_type = ["mp4", "mov", "avi", "mkv"].includes(file_extension!) ? "video" : "image";
     await connection("media").insert({
     id_user: user_id,
     file_name,
     url,
+    file_type,
 });
    res.json({ message: "Upload bem-sucedido!", media: { id_user: user_id, file_name, url } });
     }catch(error:any){
