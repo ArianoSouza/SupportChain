@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1; /* Termina totalmente visível */
+  }
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -32,16 +41,7 @@
       color: #4b0082;
     }
 
-  
-    .login-button {
-      width: 90%;
-      height: 3rem;
-      font-size: 1rem;
-      color: #fff;
-      --background: #3D348B;
-      --background-activated:#251d6d ;
-      margin-top: 2rem;
-    }
+
       
   
     .register-link {
@@ -72,14 +72,57 @@
 
 ion-label{
   width: 90%;
-  color:red;
+  color:#a72424;
   display: flex;
   align-items: center;
-  gap: 0.5rem
+  gap: 0.5rem;
 }
 ion-toast{
   --background: #3f2b96;
   --color: white;
 }
-//
+
+ion-spinner{
+  --color:white;
+  color:white;
+}
+
+.button-style{
+  opacity: 0; /* Começa totalmente transparente */
+  animation: fadeIn 0.5s ease-in forwards; /* Aplica a animação */
+  color: white;
+  margin-left: 10px;
+
+}
+
+.button-style-fail{
+  width: 90%;
+  height: 3rem;
+  font-size: 1rem;
+  color: #fff;
+  --ion-color-primary: linear-gradient(to bottom right, #3D348B, #a72424);
+  margin-top: 2rem;
+  transition: 1s;
+}
+.button-style-sucess{
+  width: 90%;
+  height: 3rem;
+  font-size: 1rem;
+  color: #fff;
+  --ion-color-primary:linear-gradient(to bottom right, #3D348B, #34778b);
+  margin-top: 2rem;
+  transition: 1s;
+}
+.button-style-default {
+  width: 90%;
+  height: 3rem;
+  font-size: 1rem;
+  color: #fff;
+  --ion-color-primary:#3f2b96; 
+  --background-activated:#251d6d ;
+  margin-top: 2rem;
+  transition: 1s;
+}
+
+
 

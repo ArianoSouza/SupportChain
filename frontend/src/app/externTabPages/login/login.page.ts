@@ -5,6 +5,7 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,10 +17,14 @@ export class LoginPage  {
   email = '';
   senha = '';
 
+  loginButtonChangeIcon:String = 'default'
+  
+
   errorMensageEmail:string = 'Insira um email válido'
   errorMensagePassword:string = 'Senha incorreta'
   errorEmail:Boolean = false
   errorPassword:Boolean = false
+  toastMansage:Boolean = false
 
   constructor(
 
@@ -36,33 +41,43 @@ export class LoginPage  {
     if(this.email.length === 0){
       this.errorMensageEmail = "Campo em branco"
       this.errorEmail = true
+      this.loginButtonChangeIcon = 'fail'
+
     }
     if(userEmail.length === 0 || this.email !== userEmail[0].email ){
       this.errorMensageEmail = "Usuário não cadastrado"
       console.log("usuário não cadastrado")
       this.senha = ''
       this.errorEmail = true
+      this.loginButtonChangeIcon = 'fail'
+   
+      
     }
     else{
       if (userEmail[0].senha === this.senha){
         this.userData.setActualUser(userEmail[0])
+        this.loginButtonChangeIcon = 'sucess'
+        this.toastMansage = true
+
+        setTimeout(()=>{  
         this.router.navigate(['/tabs/home'],{
           queryParams:{
             id:userEmail[0].nome
           }
         })
-
+      }, 2000)
       }
       else{
         console.log("senha incorreta")
         this.senha = ''
         this.errorPassword = true
+        this.loginButtonChangeIcon = 'fail'
       }
     }
   }
   
   goToCadastro(){
-    this.navCtrl.navigateForward('/cadastro')
+   this.navCtrl.navigateForward('/cadastro')
   }
 
   errorMensageSwitch(event:Event){
