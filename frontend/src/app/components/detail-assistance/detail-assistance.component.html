@@ -7,7 +7,7 @@
     <img [src]="assistance.image" alt="{{ assistance.name }}" (error)="assistance.image = genericImage">
 
     <h2>{{ assistance.name }}</h2>
-    <p class="location">{{ assistance.location }}</p>
+    <p class="location" button (click)="abrirGoogleMaps(assistance.location)">{{ assistance.location }}</p>
     <p class="phone">{{ assistance.phone }}</p>
 
     <p class="description">{{ assistance.description }}</p>

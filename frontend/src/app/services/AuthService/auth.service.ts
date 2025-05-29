@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { userData } from 'src/app/models/types/user.types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiLogin = 'http://localhost:3000/user/login'; // URL da sua API
-  private apiCadastro = 'http://localhost:3000/user/cadastro'
+  private apiLogin = 'https://supportchain.onrender.com/user/login'; // URL da sua API
+  private apiCadastro = 'https://supportchain.onrender.com/user/cadastro'
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,9 @@ export class AuthService {
     return this.http.post(this.apiLogin, { email, senha });
   }
   
-  cadastrar(usuario: any): Observable<any> {
+  cadastrar(usuario: userData): Observable<any> {
     return this.http.post(this.apiCadastro, usuario);
   }
+
+
 }

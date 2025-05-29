@@ -48,3 +48,16 @@ export type Login = {
 export interface AuthenticationData {
     id: string;
  }
+
+ export type TProgresso = {
+  id_user: string;
+  id_etapa: string;
+  concluida: boolean;
+  data_conclusao?: Date;
+}
+
+export type TMidia ={
+id_user: string,
+file_name: string,
+url: string
+}

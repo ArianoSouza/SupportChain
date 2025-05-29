@@ -4,6 +4,8 @@ import testAssistances from '../mocks/testAssistancesToGetAll.json';
 import { ModalController } from '@ionic/angular';
 import { DetailsAssistanceComponent } from '../components/detail-assistance/detail-assistance.component';
 
+
+
 @Component({
   selector: 'app-medical-assistance',
   templateUrl: './medical-assistance.page.html',
@@ -25,6 +27,8 @@ export class MedicalAssistancePage implements OnInit {
 
   genericImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8lRbS7eKYzDq-Ftxc1p8G_TTw2unWBMEYUw&s'
 
+  
+  
   searchAssistances(query: string): Assistance[] {
     const lowerQuery = query.toLowerCase().trim();
   
@@ -54,6 +58,9 @@ export class MedicalAssistancePage implements OnInit {
     });
     await modal.present();
   }
+
+ 
+ 
 }
 
 

@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { Assistance } from 'src/app/models/types/user.types';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-details-assistance',
@@ -33,6 +34,10 @@ export class DetailsAssistanceComponent {
     });
   }
   
+  async abrirGoogleMaps(endereco: string) {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
+    await Browser.open({ url });
+  }
 }
 
 

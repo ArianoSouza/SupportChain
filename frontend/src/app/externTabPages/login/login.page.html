@@ -1,10 +1,50 @@
-<ion-content>
+<ion-content #content>
 
 <div class="login-container">
   <img src="assets/images/logo.png" alt="SuportChain Logo" class="logo">
-    <ion-input type="email" label="Email" labelPlacement="floating" fill="solid" [(ngModel)]="email"></ion-input>
-    <ion-input type="password" label="Senha" labelPlacement="floating" fill="solid" [(ngModel)]="senha"></ion-input>
-  <ion-button expand="block" class="login-button" (click)="onLogin()">Entrar</ion-button>
+    <ion-input type="email" label="Email" labelPlacement="floating" fill="solid" [(ngModel)]="email" [style]="errorEmail ? '--color:#a72424; --border-color: #a72424;':(loginButtonChangeIcon === 'sucess' ? ' --border-color: #34778b; --color:#34778b'  : '')" (click)="errorMensageSwitch($event)"></ion-input>
+    <ion-label [style]="errorEmail ? '': 'visibility:collapse'">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      {{errorMensageEmail}}
+    </ion-label>
+    <ion-input type="password" label="Senha" labelPlacement="floating" fill="solid" [(ngModel)]="senha" [style]="errorPassword ? '--color:#a72424; --border-color:#a72424':(loginButtonChangeIcon === 'sucess' ? ' --border-color: #34778b; --color:#34778b'  : '')" (click)="errorMensageSwitch($event)" (click)="errorMensageSwitch($event)">
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+    <ion-label [style]="errorPassword ? '': 'visibility:collapse'">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      {{errorMensagePassword}}
+    </ion-label>
+  <ion-button expand="block" [class]="loginButtonChangeIcon === 'fail' ? 'button-style-fail' : (loginButtonChangeIcon === 'sucess' ? 'button-style-sucess' : 'button-style-default')" (click)="onLogin()" id="open-login-toast">
+    <ng-container [ngSwitch]="loginButtonChangeIcon" >
+      <ng-template [ngSwitchCase]="'syncing'">
+        <ion-spinner name="circular"></ion-spinner>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'sucess'">
+        <p class="button-style">Concluido! Bem vindo</p>
+        <lord-icon
+        class="button-style"
+        src="https://cdn.lordicon.com/rxgzsafd.json"
+        trigger="in"
+        colors="primary:#ffffff"
+        style="width:30px;height:30px">
+      </lord-icon>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'fail'">
+        <p class="button-style">Tente novamente</p>
+        <lord-icon
+          class="button-style"
+          src="https://cdn.lordicon.com/ebyacdql.json"
+          trigger="in"
+          colors="primary:#ffffff"
+          style="width:30px;height:30px">
+      </lord-icon>
+      </ng-template>
+      <ng-template [ngSwitchDefault]>
+        <p class="button-style">Entrar</p>
+      </ng-template>
+    </ng-container>
+    
+  </ion-button>
   <div class="register-link">
     <p>Não possui cadastro? <i button (click)="goToCadastro()">Criar conta</i></p>
   </div>
@@ -13,5 +53,6 @@
     <img src="/assets/images/logoNoilusions.png" alt="">
   </div>
 </div>
+<ion-toast trigger="open-login-toast" [message]="toastMansage ? 'Login realizado com sucesso!':'Erro ao realizar Login'"  position="top" [duration]="1000" [icon]="toastMansage ? 'checkbox' :'warning'"></ion-toast>
 </ion-content>
 

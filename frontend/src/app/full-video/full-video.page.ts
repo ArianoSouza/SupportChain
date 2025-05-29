@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import allVideos from '../mocks/videos.json'
-import { VideoDetails } from '../models/types/user.types';
+import { VideoInfo } from '../models/types/user.types';
+
 
 @Component({
   selector: 'app-full-video',
@@ -23,7 +24,7 @@ export class FullVideoPage implements OnInit {
 
   title:string = ''
 
-  actualVideo:VideoDetails[] = []
+  actualVideo:VideoInfo[] = []
 
   toggleVideo() {
     const video = document.getElementById('videoPlayer') as HTMLVideoElement;
@@ -41,8 +42,9 @@ export class FullVideoPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      const cache = localStorage.getItem('uploadsCache')
       this.title = params['title']; 
-      this.actualVideo = allVideos.filter(video=> video.title.toLocaleLowerCase()===this.title.toLocaleLowerCase()) as VideoDetails[]
+      console.log(cache)
     }
   )
 
@@ -60,7 +62,7 @@ export class FullVideoPage implements OnInit {
 
   like(){
     if(this.isLiked == false){
-      this.actualVideo[0].likes+=1
+    
     }
     this.isLiked = true
   }

@@ -14,7 +14,7 @@ export default async function InsertEtapa(
       res.status(422).json({ message: "Preencha todos os campos: 'id_trilha', 'ordem', 'titulo', 'descricao'" })
       }
 
-      const ultimaEtapa = await connection("Etapas")
+      const ultimaEtapa = await connection("etapa")
       .where({ id_trilha })
       .orderBy("ordem", "desc")
       .first();
@@ -22,7 +22,7 @@ export default async function InsertEtapa(
       const novaOrdem = ultimaEtapa ? ultimaEtapa.ordem + 1 : 1;
 
       const InsertnaEtapa: TEtapas ={id_trilha,ordem: novaOrdem,titulo,descricao}
-      await connection("Etapas")
+      await connection("etapa")
      .insert(InsertnaEtapa)
 
       res.status(200).json({etapa: InsertnaEtapa })

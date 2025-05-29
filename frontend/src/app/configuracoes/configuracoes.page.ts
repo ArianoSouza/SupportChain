@@ -4,7 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { ConfigPerfilComponent } from 'src/app/components/config-perfil/config-perfil.component';
 import { Router } from '@angular/router';
 import { IonHeader } from "@ionic/angular/standalone";
-import { CadastroService } from '../services/cadastro/cadastro.service';
+
 
 @Component({
   selector: 'app-configuracoes',
@@ -13,9 +13,9 @@ import { CadastroService } from '../services/cadastro/cadastro.service';
   standalone: false
 })
 export class ConfiguracoesPage {
-  constructor(private modalCtrl: ModalController, private router: Router, private userData:CadastroService) {}
+  constructor(private modalCtrl: ModalController, private router: Router) {}
 
-  actualUser: userData | undefined = this.userData.actualUser
+  actualUser: userData | undefined = undefined
 
   async openModal() {
     const modal = await this.modalCtrl.create({

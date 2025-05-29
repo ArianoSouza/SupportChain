@@ -1,7 +1,9 @@
 
 
 <ion-content [fullscreen]="true">
-  <div class="header">
+
+  <app-out-of-service/>
+  <!-- <div class="header">
     <img src="assets/images/logo sc 3.svg" alt="">
     <h1>Videos para você!</h1>
     <h3>Assista conteúdos sobre os assuntos que você mais se interessa </h3>
@@ -9,16 +11,19 @@
   <div class="divisor"></div>
 
   <h2 class="category">Sugestões</h2>
+  
   <div class="video-container">
     <div class="scroll-videos">
-    <div *ngFor="let video of videos" button (click)="goToFullVideo(video.title)" class="video">
-      <img [src]="video.tumbnail" alt="" (error)="onImgError($event)">
-      <div class="container-likes">
-        <ion-icon name="heart"></ion-icon>
-        <p>{{video.likes}}</p>
+      <div *ngFor="let video of videos" button (click)="goToFullVideo(video.title)" class="video" >
+        <img [src]="" alt="" (error)="onImgError($event)">
+        <div class="container-likes">
+          <ion-icon name="heart"></ion-icon>
+        </div>
+        <p class="title">{{video.title}}</p>
       </div>
-      <p class="title">{{video.title}}</p>
     </div>
   </div>
-  </div>
+  <ion-button (click)="goToFullVideo('aloha')">
+    test
+  </ion-button> -->
 </ion-content>

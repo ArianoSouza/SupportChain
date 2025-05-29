@@ -5,7 +5,7 @@ import { AuthenticationData } from "../Types";
 const chaveSecreta: string = "lalay2002"
 
 export default async function autenticarToken(
-    req:Request,
+    req:any,
     res:Response,
     next:NextFunction
 ):Promise<void> {
@@ -26,7 +26,7 @@ export default async function autenticarToken(
      const decodifica = jwt.verify(rawToken, chaveSecreta, { algorithms: ["HS256"] }) as AuthenticationData;
      console.log("Token decodificado:", decodifica);
 
-     req.body.usuario = decodifica;
+      req.usuario = decodifica;
      next();
     }catch(error:any){
        console.error("Erro ao verificar token:", error.message);
