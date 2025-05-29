@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { userData } from 'src/app/models/types/user.types';
+import { firstValueFrom } from 'rxjs';
 
 
 
@@ -56,14 +57,17 @@ export class LoginPage implements OnInit {
    onLogin() {
   
       this.loginButtonChangeIcon='syncing'
+      
       this.authService.login(this.email,this.senha).subscribe({
-        next: async(res) =>{
+        
+        next: async() =>{
+          const res = await firstValueFrom(this.authService.login(this.email, this.senha));
           this.errorEmail = false
           this.errorPassword = false
           this.loginButtonChangeIcon = 'sucess'
           this.toastMansage = true
-          setTimeout(()=>{
           localStorage.setItem('token', res.token);
+          setTimeout(()=>{
           this.navCtrl.navigateForward('/tabs')
           }, 2000)
           
