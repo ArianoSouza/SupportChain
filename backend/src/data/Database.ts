@@ -61,6 +61,14 @@ const printError = (error: any) => {
            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
            FOREIGN KEY (media_id) REFERENCES media(id_media)
          );
+
+         CREATE TABLE IF NOT EXISTS topicos(
+         id_topicos INT AUTO_INCREMENT PRIMARY KEY,
+         order_position INT NOT NULL,
+         title VARCHAR(255),
+         description TEXT,
+         conteudos JSON
+         );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

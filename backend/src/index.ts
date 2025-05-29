@@ -16,6 +16,8 @@ import { GetProcesso } from './Controlles/GetProcesso';
 import { UploadFile } from './Controlles/UploadsFile';
 import { GetUpload } from './Controlles/GetUpload';
 import { addVideoInfo } from './Controlles/addVideoInfo';
+import { PostTopicos } from './Controlles/PostTopicos';
+import { GetTopicos } from './Controlles/GetTopicos';
 import multer from 'multer';
 
 const router = express.Router();
@@ -43,6 +45,8 @@ router.get("/Progresso/:id_user",autenticarToken,GetProcesso);
 router.post("/uploads",upload.single("file"),UploadFile);
 router.post("/videos/info", addVideoInfo);
 router.get("/Videos/:userId", GetUpload);
+router.post("/topicos", PostTopicos);
+router.get("/topics/:id_topicos", GetTopicos);
 
 
 app.listen(3000, () => {
