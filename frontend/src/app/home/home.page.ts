@@ -49,7 +49,7 @@ export class Tab1Page implements OnInit{
         //console.log(this.errorPageMensage)
        // setTimeout(()=>{
          // localStorage.removeItem('token');
-          this.navctrl.navigateBack("/login")
+          //this.navctrl.navigateBack("/login")
        // },3000)
       }
     );
