@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+
 
 
 export interface Tema {
@@ -16,12 +16,11 @@ export interface Tema {
   providedIn: 'root'
 })
 export class TrilhasService {
-
+    private baseUrl = 'http://localhost:3000/trilha';
   constructor(private http: HttpClient) { }
 
-  getTemas(): Observable<Tema[]> {
-   return this.http.get<{ temas: Tema[] }>('src/app/mocks/trilhas.json').pipe(
-  map(response => response.temas)
-);
+  getTemas(nome: string): Observable<Tema[]> {
+  return this.http.get<Tema[]>(`${this.baseUrl}?nome=${encodeURIComponent(nome)}`);
+  
   }
 }

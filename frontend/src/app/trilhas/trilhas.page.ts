@@ -1,7 +1,8 @@
 import { Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {TrilhasService, Tema} from '../services/trilhas.service';
-import trilhas from 'src/app/mocks/trilhas.json'
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-trilhas',
@@ -11,20 +12,21 @@ import trilhas from 'src/app/mocks/trilhas.json'
 })
 export class TrilhasPage implements OnInit {
 
- temas: Tema[] = trilhas.temas as Tema[]; 
- temasFiltrados: Tema[] = this.temas;
+temas: Tema[] = [];
+temasFiltrados: Tema[] = [];
 
   constructor(private trilhasService: TrilhasService, private router: Router) { }
 
   ngOnInit() {
-     //this.carregarTemas();
+     this.carregarTemas();
   }
 
  carregarTemas() {
-  this.trilhasService.getTemas().subscribe(
+  this.trilhasService.getTemas('Trilha XYZ').subscribe(
     data => {
       console.log('Dados carregados:', data); 
       this.temas = data;
+      this.temasFiltrados = data;
     },
     error => {
       console.error('Erro ao carregar temas:', error);
