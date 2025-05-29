@@ -15,6 +15,6 @@ export default async function GetTrilha(
 
       res.status(200).json(result[0])
     }catch(error:any){
-    res.status(500).json({message:"erro ao buscar trilha"})
+    res.status(500).json({message:"erro ao buscar trilha", showError:error.message})
     }
 }

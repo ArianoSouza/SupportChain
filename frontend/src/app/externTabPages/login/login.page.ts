@@ -16,7 +16,7 @@ import { userData } from 'src/app/models/types/user.types';
 export class LoginPage implements OnInit {
 
   ngOnInit(): void {
-    this.testToken()
+   // this.testToken()
   }
 
   email = '';
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   
   token = localStorage.getItem('token')
 
-  testToken(){
+  /*testToken(){
     if (this.token){
         this.errorEmail = false
           this.errorPassword = false
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
         this.navCtrl.navigateForward('/tabs')
         }, 2000)
     }
-  }
+  }*/
 
   errorMensageEmail:string = ''
   errorMensagePassword:string = ''

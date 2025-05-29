@@ -19,6 +19,8 @@ import { addVideoInfo } from './Controlles/addVideoInfo';
 import { PostTopicos } from './Controlles/PostTopicos';
 import { GetTopicos } from './Controlles/GetTopicos';
 import multer from 'multer';
+import { testConnection } from './Controlles/testBanco';
+import GetAllTrilhas from './Controlles/getAllTrilhas';
 
 const router = express.Router();
 
@@ -47,6 +49,8 @@ router.post("/videos/info", addVideoInfo);
 router.get("/Videos/:userId", GetUpload);
 router.post("/topicos", PostTopicos);
 router.get("/topics/:id_topicos", GetTopicos);
+router.get("/testBanco", testConnection);
+router.get("/allTrilhas",autenticarToken,GetAllTrilhas);
 
 
 app.listen(3000, () => {

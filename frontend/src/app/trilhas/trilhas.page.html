@@ -49,12 +49,11 @@
 <ion-grid>
   <ion-row>
     <ion-col *ngFor="let tema of temasFiltrados" size="4" size-md="4" size-lg="3">
-      <ion-card class="trilha-card" button id={{tema.id}} (click)="goToModulos($event)"
-      [disabled]="tema.id !== '1'  ? 'true' : 'false'">
+      <ion-card class="trilha-card" button id={{tema.id}} (click)="goToModulos($event)">
         <ion-card-header>
-          <ion-icon [name]="tema.icone"></ion-icon>
+          <ion-icon [name]="tema.nome"></ion-icon>
           <ion-card-content>
-            <h3>{{ tema.titulo }}</h3>
+            <h3>{{ tema.nome }}</h3>
           </ion-card-content>
         </ion-card-header>
       </ion-card>

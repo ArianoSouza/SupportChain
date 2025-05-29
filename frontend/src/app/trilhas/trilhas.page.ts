@@ -4,6 +4,7 @@ import {TrilhasService, Tema} from '../services/trilhas.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-trilhas',
   templateUrl: './trilhas.page.html',
@@ -12,8 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class TrilhasPage implements OnInit {
 
-temas: Tema[] = [];
-temasFiltrados: Tema[] = [];
+temas:Tema[] = [];
+temasFiltrados:Tema[] = [];
 
   constructor(private trilhasService: TrilhasService, private router: Router) { }
 
@@ -38,7 +39,7 @@ temasFiltrados: Tema[] = [];
   const lowerQuery = query.toLowerCase().trim();
 
   return this.temas.filter(tema => {
-    const tituloMatch = tema.titulo.toLowerCase().includes(lowerQuery);
+    const tituloMatch = tema.nome.toLowerCase().includes(lowerQuery);
     const descricaoMatch = tema.descricao.toLowerCase().includes(lowerQuery);
     return tituloMatch || descricaoMatch;
   });
