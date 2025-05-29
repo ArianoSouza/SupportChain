@@ -44,13 +44,13 @@ export class Tab1Page implements OnInit{
       },
       error => {
         console.error(error);
-        this.errorPageMensage = ` ERRO ${error.status}! Não foi possivel autentificar o usuário, por favor faça login novamente`
-        this.isLoading = false;
-        console.log(this.errorPageMensage)
-        setTimeout(()=>{
-          localStorage.removeItem('token');
+        //this.errorPageMensage = ''//` ERRO ${error.status}! Não foi possivel autentificar o usuário, por favor faça login novamente`
+      //  this.isLoading = false;
+        //console.log(this.errorPageMensage)
+       // setTimeout(()=>{
+         // localStorage.removeItem('token');
           this.navctrl.navigateBack("/login")
-        },3000)
+       // },3000)
       }
     );
     console.log(window.innerWidth)
