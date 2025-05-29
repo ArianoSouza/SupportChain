@@ -1,10 +1,20 @@
 <ion-content fullscreen>
-
+  <ng-container *ngIf="errorPageMensage.length != 0 else noError">
+    <h1>{{errorPageMensage}}</h1>
+    <h2>Retornando ao login...</h2>
+    <lord-icon
+    src="https://cdn.lordicon.com/ircnfpus.json"
+    trigger="loop"
+    delay="100"
+    style="width:30px;height:30px; rotate: 180deg;">
+</lord-icon>
+  </ng-container>
+  <ng-template #noError>
     <ion-grid>
       <div class="container-welcome">
         <img src="assets/images/logo sc 3.svg" alt="">
         <div>
-          <h1>Olá, {{userData.actualUser.nome}}</h1>
+          <h1>Olá, </h1>
           <h2>Seja bem vindo!</h2>
         </div>
       </div>
@@ -128,4 +138,5 @@
       </ng-template>
   
     </ion-grid>
+  </ng-template>
 </ion-content>

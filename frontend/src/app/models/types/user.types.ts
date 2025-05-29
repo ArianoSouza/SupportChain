@@ -46,17 +46,20 @@ export type Assistance = {
   };
 
 export type userData ={
-    nome:string,
-    sobrenome: string,
-    email:string,
-    senha: string,
-    sexo: string,
-    estado_civil: string,
-    data_de_nascimento: string,
-    numero_de_telefone: string,
-    estado: string,
-    cidade: string,
-    bairro: string
+  nome: string;
+  sobrenome: string;
+  email: string;
+  senha: string;
+  sexo: string;
+  estado_civil: string;
+  data_nascimento: string;
+  numero_telefone: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+  foto: string;
+  termos_de_uso: boolean;
+  envio_de_dados: boolean;
 }
 
 export type ActivityCategory = {
@@ -105,12 +108,11 @@ export type Tag =
 
   export type videoTag = 'desintoxicação digital' | 'ansiedade' | 'mindfulness' | 'vício digital' | 'saúde do sono' | 'redes sociais' | 'equilíbrio digital' | 'depressão' | 'produtividade' | 'impacto das telas';
 
-  export type VideoDetails = {
-    title: string;
-    desc: string;
-    tags: Tag[];
+  export interface VideoInfo {
     url: string;
-    tumbnail: string;
-    likes: number; 
-  };
-
+    file_name: string;
+    title: string;
+    description: string;
+    views: number;
+    viewed: boolean;
+  }

@@ -1,5 +1,6 @@
 import connection from "../data/connection";
 import { Request,Response } from "express";
+import { Authenticator } from '../Serviços/Authention';
 
 
 export async function GetUpload(
@@ -7,12 +8,16 @@ export async function GetUpload(
     res:Response
 ):Promise<void>{
     try{
-    const { userId } = req.params;
+    const userToken  = req.headers.authorization;
+    const auth = new Authenticator()
+    console.log(userToken)
 
-    if (!userId) {
+    if (!userToken) {
     res.status(400).json({ message: "ID do usuário obrigatório" });
     return;
         }
+
+    const  userId  = auth.getTokenData(userToken)?.id
 
   const videos = await connection("media")
             .join("videos_info", "media.id_media", "videos_info.media_id")
@@ -33,6 +38,7 @@ export async function GetUpload(
      }
 
         res.json({ videos });
+        return;
     }catch(error:any){
  console.error("Erro ao buscar vídeos:", error);
         res.status(500).json({ message: "Erro ao buscar vídeos", error: error.message });

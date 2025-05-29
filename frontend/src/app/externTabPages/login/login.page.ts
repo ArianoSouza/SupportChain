@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
-import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
+import { userData } from 'src/app/models/types/user.types';
+
 
 
 @Component({
@@ -12,16 +13,33 @@ import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
   styleUrls: ['./login.page.scss'],
   standalone: false
 })
-export class LoginPage  {
+export class LoginPage implements OnInit {
+
+  ngOnInit(): void {
+    this.testToken()
+  }
 
   email = '';
   senha = '';
 
   loginButtonChangeIcon:String = 'default'
   
+  token = localStorage.getItem('token')
 
-  errorMensageEmail:string = 'Insira um email válido'
-  errorMensagePassword:string = 'Senha incorreta'
+  testToken(){
+    if (this.token){
+        this.errorEmail = false
+          this.errorPassword = false
+          this.loginButtonChangeIcon = 'sucess'
+          this.toastMansage = true
+      setTimeout(()=>{
+        this.navCtrl.navigateForward('/tabs')
+        }, 2000)
+    }
+  }
+
+  errorMensageEmail:string = ''
+  errorMensagePassword:string = ''
   errorEmail:Boolean = false
   errorPassword:Boolean = false
   toastMansage:Boolean = false
@@ -31,50 +49,63 @@ export class LoginPage  {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private userData:CadastroService,
+    private authService:AuthService,
     private navCtrl:NavController
   ) {}
 
    onLogin() {
-    const userEmail = this.userData.getDados().filter(user=> user.email.includes(this.email))
-
-    if(this.email.length === 0){
-      this.errorMensageEmail = "Campo em branco"
-      this.errorEmail = true
-      this.loginButtonChangeIcon = 'fail'
-
-    }
-    if(userEmail.length === 0 || this.email !== userEmail[0].email ){
-      this.errorMensageEmail = "Usuário não cadastrado"
-      console.log("usuário não cadastrado")
-      this.senha = ''
-      this.errorEmail = true
-      this.loginButtonChangeIcon = 'fail'
-   
-      
-    }
-    else{
-      if (userEmail[0].senha === this.senha){
-        this.userData.setActualUser(userEmail[0])
-        this.loginButtonChangeIcon = 'sucess'
-        this.toastMansage = true
-
-        setTimeout(()=>{  
-        this.router.navigate(['/tabs/home'],{
-          queryParams:{
-            id:userEmail[0].nome
+  
+      this.loginButtonChangeIcon='syncing'
+      this.authService.login(this.email,this.senha).subscribe({
+        next: async(res) =>{
+          this.errorEmail = false
+          this.errorPassword = false
+          this.loginButtonChangeIcon = 'sucess'
+          this.toastMansage = true
+          setTimeout(()=>{
+          localStorage.setItem('token', res.token);
+          this.navCtrl.navigateForward('/tabs')
+          }, 2000)
+          
+        },
+        error: async (err) => {
+          this.errorEmail = true
+          this.errorPassword = true
+          if (err.status === 400){
+            this.errorEmail = true
+            this.errorMensageEmail = 'Usuário não encontrado'
+             this.loginButtonChangeIcon = 'fail'
+             this.toastMansage = false
           }
-        })
-      }, 2000)
-      }
-      else{
-        console.log("senha incorreta")
-        this.senha = ''
-        this.errorPassword = true
-        this.loginButtonChangeIcon = 'fail'
-      }
+          else if(err.status === 401){
+            this.errorEmail = false
+            this.errorPassword = true
+             this.loginButtonChangeIcon = 'fail'
+            this.errorMensagePassword = "Senha incorreta"
+            this.senha =''
+            this.toastMansage = false
+          }
+          else if (err.status === 422){
+            this.errorEmail = true
+            this.errorPassword = true
+            this.errorMensageEmail = "Preencha o campo 'Email'"
+            this.errorMensagePassword = "Preencha o campo 'Senha'"
+             this.loginButtonChangeIcon = 'fail'
+             this.toastMansage = false
+          }
+          else{
+            this.errorEmail = true
+            this.errorPassword = true
+            this.errorMensageEmail = "Algo deu errado. Tente novamente mais tarde'"
+             this.loginButtonChangeIcon = 'fail'
+             this.toastMansage = false
+          }
+        }
+      });
+
     }
-  }
+    
+  
   
   goToCadastro(){
    this.navCtrl.navigateForward('/cadastro')

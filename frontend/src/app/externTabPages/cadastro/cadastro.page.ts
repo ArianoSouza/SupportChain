@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController, IonContent, LoadingController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { userData } from 'src/app/models/types/user.types';
-import { CadastroService } from 'src/app/services/cadastro/cadastro.service';
 import { ApiEstadosService } from 'src/app/services/apiEstados/api-estados.service';
 import zxcvbn from 'zxcvbn';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -42,11 +41,14 @@ export class CadastroPage implements OnInit {
     senha: '',
     sexo: '',
     estado_civil: '',
-    data_de_nascimento: '',
-    numero_de_telefone: '',
+    data_nascimento: '',
+    numero_telefone: '',
     estado: '',
     cidade: '',
     bairro: '',
+    foto:'teste',
+    termos_de_uso: true,
+    envio_de_dados: true
   };
 
   ngOnInit(): void {
@@ -66,7 +68,6 @@ export class CadastroPage implements OnInit {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private userService:CadastroService,
     private NavController:NavController,
     private apiEstados:ApiEstadosService
   ) {}
@@ -76,10 +77,22 @@ export class CadastroPage implements OnInit {
     this.cheackInfo()
 
     if(this.errorMenssage.length == 0){
-      // substituir por logica do back
-    this.userService.setDados(this.usuario)
-    this.NavController.navigateForward('/login')
-    console.log(this.userService.getDados())
+      this.authService.cadastrar(this.usuario).subscribe({
+        next: async(res) =>{
+          localStorage.setItem('token', res.token);
+          this.NavController.navigateForward('/login')
+        },
+        error: async (err) => {
+          const alert = await this.alertCtrl.create({
+            header: 'Erro ao cadastrar',
+            message: err.error.Message || 'Erro inesperado.',
+            buttons: ['OK']
+          });
+          await alert.present();
+          console.log(this.usuario)
+        }
+      });
+ 
     }else{
       if (this.content) {
         this.content?.scrollToTop(500); // scroll suave para o topo
@@ -89,37 +102,6 @@ export class CadastroPage implements OnInit {
     }
   }
 
- /* async onCadastrar() {
-    const loading = await this.loadingCtrl.create({ message: 'Cadastrando...' });
-    await loading.present();
-
-    this.authService.cadastrar(this.usuario).subscribe({
-      next: async (res) => {
-        await loading.dismiss();
-        const alert = await this.alertCtrl.create({
-          header: 'Sucesso',
-          message: 'Usuário cadastrado com sucesso!',
-          buttons: [{text:'OK',
-            handler: () => {
-              this.router.navigate(['/login']); // <-- redireciona para login
-            }
-          }]
-        });
-        await alert.present();
-
-      },
-      error: async (err) => {
-        await loading.dismiss();
-        const alert = await this.alertCtrl.create({
-          header: 'Erro ao cadastrar',
-          message: err.error.Message || 'Erro inesperado.',
-          buttons: ['OK']
-        });
-        await alert.present();
-      }
-    });
-  }
-    */
 
   goToLogin(){
       this.NavController.navigateBack('/login')
@@ -163,21 +145,21 @@ export class CadastroPage implements OnInit {
     }
 
     // verifica Data de nascimento
-    const ano = Number(this.usuario.data_de_nascimento.substring(6,this.usuario.data_de_nascimento.length-1));
+    const ano = Number(this.usuario.data_nascimento.substring(6,this.usuario.data_nascimento.length-1));
 
-    if (this.usuario.data_de_nascimento.length == 0){
+    if (this.usuario.data_nascimento.length == 0){
       this.errorMenssage.push("Campo 'Data de nascimento' vazio")
-    }else if (this.usuario.data_de_nascimento.length > 0 && ano>2007){
+    }else if (this.usuario.data_nascimento.length > 0 && ano>2007){
       this.errorMenssage.push("Você precisa ter mais de 18 anos para criar uma conta")
     }
 
 
      // verifica Telefone
-    if (this.usuario.numero_de_telefone.length == 0){
+    if (this.usuario.numero_telefone.length == 0){
        this.errorMenssage.push("Campo 'Telefone' vazio")
     }
 
-    if (this.usuario.numero_de_telefone.length < 15){
+    if (this.usuario.numero_telefone.length < 15){
       this.errorMenssage.push("Insira um número válido")
     }
 
@@ -232,9 +214,9 @@ export class CadastroPage implements OnInit {
     }
   
     if (valor.length <= 10) {
-      this.usuario.numero_de_telefone = valor.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3').trim();
+      this.usuario.numero_telefone = valor.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3').trim();
     } else {
-      this.usuario.numero_de_telefone = valor.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3').trim();
+      this.usuario.numero_telefone = valor.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3').trim();
     }
   }
 }

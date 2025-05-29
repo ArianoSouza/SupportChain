@@ -13,15 +13,18 @@ export default async function GetLogin(
         const { email, senha } = req.body;
         if (!email || !senha) {
             res.status(422).json({Message: "Preencha os campos a seguir!!"});
+            return;
         }
         const [User] = await connection("usuario").where({email});
 
         if (!User) {
             res.status(400).json({Messagen: "Usuario não existente"});
+            return;
         }
         const cripSenha = await bcrypt.compare(senha, User.senha)
         if (!cripSenha) {
             res.status(401).json({Messagen: "Senha invalida"});
+            return;
         }
 
        const auth = new Authenticator();

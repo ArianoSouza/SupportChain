@@ -32,9 +32,9 @@
         <ion-select-option value="divorciado">Divorciado(a)</ion-select-option>
       </ion-select>
 
-      <ion-input fill="solid" type="date" label="Data de Nascimento" labelPlacement="floating" [(ngModel)]="usuario.data_de_nascimento" name="data_de_nascimento" required></ion-input>
+      <ion-input fill="solid" type="date" label="Data de Nascimento" labelPlacement="floating" [(ngModel)]="usuario.data_nascimento" name="data_de_nascimento" required></ion-input>
 
-      <ion-input fill="solid" type="tel" label="Nº de Telefone" labelPlacement="floating" [(ngModel)]="usuario.numero_de_telefone" name="numero_de_telefone" required (ionInput)="formatarTelefone($event)" maxlength="15" ></ion-input>
+      <ion-input fill="solid" type="tel" label="Nº de Telefone" labelPlacement="floating" [(ngModel)]="usuario.numero_telefone" name="numero_de_telefone" required (ionInput)="formatarTelefone($event)" maxlength="15" ></ion-input>
 
       <ion-select  fill="solid" label="Estado" labelPlacement="floating" [(ngModel)]="usuario.estado" name="estado" required (ionChange)="getIdForMunicipio()">
         <ion-select-option *ngFor=" let estado of listEstados" [value]="estado?.nome">{{estado.nome}}</ion-select-option>

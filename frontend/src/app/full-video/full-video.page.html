@@ -6,11 +6,10 @@
   <ion-icon name="arrow-back-outline"></ion-icon>
 </ion-button>
 <div class="container-likes" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'">
-  <p>{{actualVideo[0].likes}}</p>
+  <p>{{actualVideo[0]}}</p>
   <ion-icon button name="heart" class="like-button" (click)="like()"></ion-icon>
 </div>
 <div class="info" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'" button (click)="toggleShowAll()">
   <h3>{{actualVideo[0].title}}</h3>
-  <p>{{actualVideo[0].desc}}</p>
-  <ion-chip *ngFor="let tags of actualVideo[0].tags">{{tags}}</ion-chip>
+  <p>{{actualVideo[0].title}}</p>
 </div>

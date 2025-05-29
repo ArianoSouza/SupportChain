@@ -29,7 +29,7 @@ app.use(cors());
 app.use(router);
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/noticias",GetNews);
+app.get("/noticias",autenticarToken,GetNews);
 app.get("/Books", GetBooks);
 app.get("/Artigos",GetArtigos);
 router.post("/Trilhas",InsertTrilha); 

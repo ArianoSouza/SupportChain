@@ -7,7 +7,8 @@ import { BookService } from '../services/bookservice/book.service';
 import { forkJoin } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
-import { CadastroService } from '../services/cadastro/cadastro.service';
+import { NavController } from '@ionic/angular';
+
 
  type sugestionHome={
   id: String
@@ -26,10 +27,7 @@ import { CadastroService } from '../services/cadastro/cadastro.service';
 })
 export class Tab1Page implements OnInit{
    ngOnInit(){
-    if (this.avaliation == false){
-      this.feedBackMensage = true
-    }
-
+    
     this.isLoading = true;
 
     // Use forkJoin se quiser esperar todas as chamadas
@@ -46,21 +44,30 @@ export class Tab1Page implements OnInit{
       },
       error => {
         console.error(error);
+        this.errorPageMensage = ` ERRO ${error.status}! Não foi possivel autentificar o usuário, por favor faça login novamente`
         this.isLoading = false;
+        console.log(this.errorPageMensage)
+        setTimeout(()=>{
+          localStorage.removeItem('token');
+          this.navctrl.navigateBack("/login")
+        },3000)
       }
     );
-
     console.log(window.innerWidth)
   
    }
-   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService,private router: Router,public userData:CadastroService ) {}
+   constructor(private noticiaService: NoticiaService, private bookService: BookService,private articleService: ArticlesService,private router: Router, private navctrl:NavController ) {}
  
-   isLoading = true
+  
+
+  isLoading = true
   newsTranslante = 0
   booksTranslate = 0
   avaliation = false
   feedBackMensage = true
-  nomeUser = this.userData.actualUser?.nome
+  //nomeUser = this.userData.actualUser?.nome
+
+  errorPageMensage = ''
 
   genericImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8lRbS7eKYzDq-Ftxc1p8G_TTw2unWBMEYUw&s'
 

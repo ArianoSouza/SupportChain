@@ -1,7 +1,8 @@
-import { VideoDetails, Tag } from './../models/types/user.types';
+import { VideoInfo, Tag } from './../models/types/user.types';
 import { Component, OnInit } from '@angular/core';
 import allVideos from '../mocks/videos.json'
 import { NavController } from '@ionic/angular';
+import { VideoService } from '../services/videoservice/video.service';
 
 @Component({
   selector: 'app-app-videos',
@@ -11,18 +12,23 @@ import { NavController } from '@ionic/angular';
 })
 export class AppVideosPage implements OnInit {
 
-  constructor(private navCtrl:NavController) { }
+  constructor(private navCtrl:NavController, private videoService:VideoService) { }
 
-  videos:VideoDetails[] = allVideos as VideoDetails[]
+  videos:VideoInfo[] = []
+
   genericImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8lRbS7eKYzDq-Ftxc1p8G_TTw2unWBMEYUw&s'
-  videosCategories: string[] = []
-  fiteredVideos:VideoDetails[] = this.videos
-  categoria:string=''
-  selectedTag:string | null= ''
 
-  ngOnInit() {
-    this.videosCategories.push(...this.videos.map(video=>video.tags[0]))
-    console.log(this.videosCategories)
+  ngOnInit(): void {
+    this.videoService.getUploads().subscribe({
+      next: (response) => {
+        this.videos = response.videos;
+        console.log('Fetched videos:', this.videos);
+      },
+      error: (error) => {
+        console.error('Error fetching uploads:', error);
+        // Handle error appropriately
+      },
+    });
   }
 
   goToFullVideo(title:string){
@@ -40,19 +46,7 @@ export class AppVideosPage implements OnInit {
     evento.src = this.genericImage; // Caminho da imagem substituta
   }
 
-  filterVideos(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const valor = target.value.trim().toLowerCase();
-  
-    this.fiteredVideos = this.videos.filter(video =>
-      video.tags.some(tag => tag.toLowerCase() === valor)
-    );
-  }
 
-  clearFilter(){
-    this.fiteredVideos = this.videos
-    this.selectedTag= null
-  }
   
 
 }
