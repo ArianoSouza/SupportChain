@@ -1,6 +1,6 @@
 import connection from "../data/connection";
 import { Request,Response } from "express";
-import { Authenticator } from '../Serviços/Authention';
+import { Authenticator } from '../services/Authention';
 
 
 export async function GetUpload(

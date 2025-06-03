@@ -1,3 +1,5 @@
+/*
+
 import { User } from './../Types';
 import { Express } from 'express';
 import * as bcrypt from "bcryptjs";
@@ -37,3 +39,4 @@ export default async function GetLogin(
    res.json({ message: error.message })
     }
 }
+*/

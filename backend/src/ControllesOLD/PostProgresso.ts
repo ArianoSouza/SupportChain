@@ -1,7 +1,7 @@
 import { Response,Request } from "express";
-import { TProgresso } from "../Types";
+import { TProgresso } from "../models/Types";
 import connection from "../data/connection";
-import { GeradorId } from "../Serviços/geradorId";
+import { GeradorId } from "../services/geradorId";
 
 interface Progresso {
   id_user: string;

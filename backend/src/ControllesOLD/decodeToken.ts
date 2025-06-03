@@ -1,4 +1,4 @@
-import { Authenticator } from '../Serviços/Authention';
+import { Authenticator } from '../services/Authention';
 import { Request,Response } from "express";
 
 

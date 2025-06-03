@@ -1,13 +1,22 @@
-import connection from "./connection";
+import { Request, Response } from "express";
+import testDbConnection from "../dataTest/connectionTestServer";
 
+/**
+ * Função auxiliar para imprimir erros.
+ * @param {any} error - O objeto de erro.
+ */
 const printError = (error: any) => {
-    console.log(error.sqlMessage || error.message);
-  };
+  console.log(error.sqlMessage || error.message);
+};
 
-  const createTable = async () =>{
-    try{
-        await connection.raw(`
-          -- Tabela users
+// CRIA TODAS AS TEBALS NO BANCO DE TESTE
+export default async function createTestDBTable(
+    req: Request,
+    res: Response
+): Promise<void> {
+  try {
+    await testDbConnection.raw(`
+        -- Tabela users
     CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY,
         nome VARCHAR(255),
@@ -35,7 +44,7 @@ const printError = (error: any) => {
 
     -- Tabela topics
     CREATE TABLE IF NOT EXISTS topics (
-        id VARCHAR(60) PRIMARY KEY,
+        id VARCHAR(60) PRIMARY KEY, -- CORRIGIDO AQUI: Removido o PRIMARY duplicado
         fk_id_trilha VARCHAR(60) REFERENCES trilhas(id),
         order_position INTEGER,
         description TEXT,
@@ -61,11 +70,11 @@ const printError = (error: any) => {
     );
 
     -- Tabela activitieStage
-    CREATE TABLE IF NOT EXISTS activitieStage (
+    CREATE TABLE IF NOT EXISTS activitie_stage (
         id VARCHAR(60) PRIMARY KEY,
         fk_id_activitie VARCHAR(60) REFERENCES activities(id),
         title VARCHAR(255),
-        "doTime" INTEGER,
+        do_Time INTEGER,
         objective TEXT,
         steps TEXT[]
     );
@@ -100,6 +109,7 @@ const printError = (error: any) => {
     -- Tabela assistance
     CREATE TABLE IF NOT EXISTS assistance (
         id VARCHAR(60) PRIMARY KEY,
+        image VARCHAR(60),
         name VARCHAR(255),
         description TEXT,
         specialities TEXT,
@@ -116,20 +126,23 @@ const printError = (error: any) => {
         trilhas TEXT[],
         videos TEXT[]
     );
-             `);
-            console.log('tabela criada com sucesso')
-      }catch(error){
-        printError(error);
-    }finally{
-        closeConnection();
-      }
-    }
+    `);
+    console.log('Tabelas criadas com sucesso!');
+    res.status(200).send({mensage:'Tabelas criadas com sucesso!'})
+  } catch (error) {
+    printError(error);
+    res.status(500).send({error:error})
 
-    const closeConnection = () => {
-        connection.destroy();
-      };
+  } finally {
+    // Garante que a conexão seja fechada, independentemente de sucesso ou falha.
+    closeConnection();
+  }
+};
 
+/**
+ * Função para fechar a conexão com o banco de dados.
+ */
+const closeConnection = () => {
+  testDbConnection.destroy();
+};
 
-      createTable();
-
-      export default createTable;

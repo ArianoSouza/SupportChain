@@ -1,6 +1,6 @@
 import { Request,Response,NextFunction } from "express";
 import * as jwt from "jsonwebtoken";
-import { AuthenticationData } from "../Types";
+import { AuthenticationData } from "../models/Types";
 
 const chaveSecreta: string = "lalay2002"
 

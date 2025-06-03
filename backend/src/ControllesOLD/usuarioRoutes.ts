@@ -1,3 +1,5 @@
+/*
+
 import * as bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import connection from "../data/connection";
@@ -75,3 +77,5 @@ export default async function GetCadastro(
         res.json({ message: error.message })
     }
 }
+
+*/

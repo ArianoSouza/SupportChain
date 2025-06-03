@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { AuthenticationData } from "../Types";
+import { AuthenticationData } from "../models/Types";
 
 
 const secretKey = "lalay2002";

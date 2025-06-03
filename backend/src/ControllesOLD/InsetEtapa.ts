@@ -1,6 +1,6 @@
 import { Request,Response } from "express";
 import connection from "../data/connection";
-import { TEtapas } from "../Types";
+import { TEtapas } from "../models/Types";
 
 export default async function InsertEtapa(
     req:Request,

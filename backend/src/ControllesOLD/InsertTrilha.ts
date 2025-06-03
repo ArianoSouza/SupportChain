@@ -1,3 +1,4 @@
+/*
 import { Request, Response } from "express";
 import connection from "../data/connection";
 import { TTrilhas } from "../Types";
@@ -42,3 +43,4 @@ export default async function InsertTrilha(
     res.status(500).json({ message: "Erro interno ao inserir trilha", error: error.message });
   }
 }
+*/
