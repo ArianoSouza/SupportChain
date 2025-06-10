@@ -1,15 +1,16 @@
 
 
 
-  <video id="videoPlayer" src="../../assets/mockVideos/videoplayback.mp4" autoplay loop (click)="toggleVideo()"></video>
+  <video id="videoPlayer" [src]="video?.URL" autoplay loop (click)="toggleVideo()"></video>
 <ion-button class="exit-button" (click)="backToVideos()">
   <ion-icon name="arrow-back-outline"></ion-icon>
 </ion-button>
 <div class="container-likes" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'">
-  <p>{{actualVideo[0]}}</p>
+  <p>{{video?.likesNumber}}</p>
   <ion-icon button name="heart" class="like-button" (click)="like()"></ion-icon>
 </div>
 <div class="info" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'" button (click)="toggleShowAll()">
-  <h3>{{actualVideo[0].title}}</h3>
-  <p>{{actualVideo[0].title}}</p>
+  <h3>{{video?.title}}</h3>
+  <p>{{video?.description}}</p>
+  <ion-chip *ngFor="let tag of video?.tags">{{tag}}</ion-chip>
 </div>

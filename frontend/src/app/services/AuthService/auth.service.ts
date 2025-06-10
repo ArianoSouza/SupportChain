@@ -7,8 +7,8 @@ import { userData } from 'src/app/models/types/user.types';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiLogin = 'https://localhost:3000/user/login'; // URL da sua API
-  private apiCadastro = 'https://supportchain.onrender.com/user/cadastro'
+  private apiLogin = 'http://localhost:3000/loginUserOnTestDB';
+  private apiCadastro = ''
 
   constructor(private http: HttpClient) {}
 

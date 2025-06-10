@@ -19,12 +19,12 @@ export class AppVideosPage implements OnInit {
   genericImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8lRbS7eKYzDq-Ftxc1p8G_TTw2unWBMEYUw&s'
 
   ngOnInit(): void {
-    this.videoService.getUploads().subscribe({
-      next: (response) => {
+    this.videoService.getSuggestedVideos().subscribe({
+      next: (response:any) => {
         this.videos = response.videos;
         console.log('Fetched videos:', this.videos);
       },
-      error: (error) => {
+      error: (error:any) => {
         console.error('Error fetching uploads:', error);
         // Handle error appropriately
       },
@@ -35,7 +35,7 @@ export class AppVideosPage implements OnInit {
     this.navCtrl.navigateForward('/full-video',
       {
         queryParams:{
-          title:title
+          id:title
         }
       }
     )

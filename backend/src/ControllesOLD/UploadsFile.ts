@@ -15,7 +15,11 @@ export async function UploadFile(
     req:Request,
     res:Response
 ):Promise<void> {
+
+
     try{
+
+    // bloco 1
     console.log("Headers recebidos:", req.headers);
     const user_id = req.headers["user_id"] || req.headers["user_id"]; 
     console.log("User ID capturado:", user_id);
@@ -34,6 +38,8 @@ export async function UploadFile(
     resource_type: "video"
     });
 
+    //bloco 2
+
     const file_name = req.file.originalname;
     const url = result.secure_url;
     const file_extension = file_name.split('.').pop()?.toLowerCase();
@@ -44,6 +50,8 @@ export async function UploadFile(
     url,
     file_type,
 });
+
+// bloco 3
    res.json({ message: "Upload bem-sucedido!", media: { id_user: user_id, file_name, url } });
     }catch(error:any){
     console.error("Erro no upload:", error);

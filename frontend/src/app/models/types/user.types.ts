@@ -108,11 +108,20 @@ export type Tag =
 
   export type videoTag = 'desintoxicação digital' | 'ansiedade' | 'mindfulness' | 'vício digital' | 'saúde do sono' | 'redes sociais' | 'equilíbrio digital' | 'depressão' | 'produtividade' | 'impacto das telas';
 
-  export interface VideoInfo {
-    url: string;
-    file_name: string;
+  export interface Video {
+    id: string;
     title: string;
     description: string;
-    views: number;
-    viewed: boolean;
+    tags: string[];
+    likesNumber: number;
+    tumbURL: string;
+    URL: string;
+  }
+
+  export type VideoInfo={
+      id: string;
+      title: string;
+      tags: string[];
+      likesNumber: number;
+      tumbURL: string;
   }

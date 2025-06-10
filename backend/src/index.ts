@@ -24,12 +24,19 @@ import GetAllTrilhas from './ControllesOLD/getAllTrilhas';
 import createTestDBTable from './dataTest/DatabaseTest';
 
 
+
+
 // BANCO DE TESTE
 import { testDBTestConnection } from './ContollerTest/testDBTest';
 import InsertTrilhaNoTestDB from './ContollerTest/InsertTrilhaOnTestDB';
 import InsertTopicosNoTestDB from './ContollerTest/insertTopicosToTestDB';
 import InsertActivitiesaAndStagesNoTestDB from './ContollerTest/insertActivitiesAndStagesToTestDB';
 import InsertAssistancesOnTestDB from './ContollerTest/insertAssistanceOnTestDB';
+import PostNewVideoOnTestDB from './ContollerTest/UploadAndPostNewVideoToTestDB';
+import GetVideoByIdFromTestDB from './ContollerTest/GetVideoByIdFromTestDB';
+import insertNewUserRegisterToTestDB from './ContollerTest/insertNewUserRegister';
+import postUserLoginOnTestDB from './ContollerTest/postUserLoginOnTestDB';
+import GetAllVideosInfoOrderBySugestion from './ContollerTest/GetAllVideosInfoOrderedBySugestion';
 
 
 // CONFIGURAÇÃO
@@ -83,6 +90,8 @@ router.post("/topicos", PostTopicos);
 
 //testeconection
 router.get("/testDBTest", testDBTestConnection)
+router.get("/getVideoFromTestDB/:id",GetVideoByIdFromTestDB)
+router.get("/getAllVideoInfoFromTestDB", GetAllVideosInfoOrderBySugestion);
 
 //config DBTest
 router.post("/addAllTabesToTestDB",createTestDBTable)
@@ -95,6 +104,13 @@ router.post("/trilhasOnTestDB",InsertTrilhaNoTestDB);
 router.post("/topicosOnTestDB", InsertTopicosNoTestDB);
 router.post("/atividadesOnTestDB", InsertActivitiesaAndStagesNoTestDB);
 router.post("/assistancesOnTestDB", InsertAssistancesOnTestDB);
+
+router.post("/videosOnTestDB",upload.fields([
+  { name: 'videoFile', maxCount: 1 },
+  { name: 'thumbnailFile', maxCount: 1 }
+]), PostNewVideoOnTestDB);
+router.post("/registerUserOnTestDB", insertNewUserRegisterToTestDB);
+router.post("/loginUserOnTestDB",postUserLoginOnTestDB);
 
 
 
