@@ -92,7 +92,7 @@ export default async function createTestDBTable(
         id VARCHAR(60) PRIMARY KEY,
         fk_user_id UUID REFERENCES users(id),
         fk_questionarie_id VARCHAR(60) REFERENCES questionaries(id),
-        answers INTEGER[]
+        answers TEXT[]
     );
 
     -- Tabela videos

@@ -38,14 +38,14 @@ export type User = {
     media: any[];
   };
   
-  export type Tag = string; // Assuming Tag is just a string
+   // Assuming Tag is just a string
   
   export type Activity = {
     id: string;
     title: string;
     description: string;
     icon: string;
-    tags: Tag[];
+    tags: string[];
   };
   
   export type ActivitieStage = {
@@ -68,7 +68,7 @@ export type User = {
     id: string;
     fk_user_id: string;
     fk_questionarie_id: string;
-    answers: number[];
+    answers: string[];
   };
   
   export type Video = {
@@ -99,6 +99,13 @@ export type User = {
     trilhas: string[];
     videos: string[];
   };
+
+  export type content ={
+    id:string;
+    fk_id_topic:string;
+    titles: string[]
+    paragraphs:string[]
+  }
 
   export type AuthenticationData = {
     id: string;

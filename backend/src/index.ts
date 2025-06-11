@@ -37,6 +37,20 @@ import GetVideoByIdFromTestDB from './ContollerTest/GetVideoByIdFromTestDB';
 import insertNewUserRegisterToTestDB from './ContollerTest/insertNewUserRegister';
 import postUserLoginOnTestDB from './ContollerTest/postUserLoginOnTestDB';
 import GetAllVideosInfoOrderBySugestion from './ContollerTest/GetAllVideosInfoOrderedBySugestion';
+import GetActivitiesFromActivitiesTag from './ContollerTest/GetActivitiesByTagFromTestDB';
+import GetAllTrilhasFromTestDB from './ContollerTest/GetAllTrilhasFromTestDB';
+import GetAllAssistancesFromUserAdressFromTestDB from './ContollerTest/GetAssistancesByUserLocationFromTestDB';
+import GetContentFromTopicsIdFromTestDB from './ContollerTest/GetContentByTopicIdFromTestDB';
+import GetQuestionsFromActivitieIdFromTestDB from './ContollerTest/GetQuestionaryByActivitieIdFromTestDB';
+import GetStagesFromActivitieIdFromTestDB from './ContollerTest/GetStagesByActivitieIdFromTestDB';
+import GetTopicsFromTrilhaIdFromTestDB from './ContollerTest/GetTopicsByTrilhaIdFromTestDB';
+import GetUserInfoFromIdFromTestDB from './ContollerTest/GetUserInfoByIDFromTestDB';
+import PostNewUserAnswersOnTestDB from './ContollerTest/PostNewUserAnswersOnTestDB';
+import AlterClickTagsVideoFromUserIdOnTestDB from './ContollerTest/PutClickTagsVideoFromUserId';
+import AlterUserInfoFromIdOnTestDB from './ContollerTest/PutUserInfoOnTestDB';
+import AddLikeOnVideoOnTestBD from './ContollerTest/PostAddLikeToVideo';
+import PostNewContentOnTestDB from './ContollerTest/PostNewContentOnTestDB';
+import PostNewQuestionaryOnTestDB from './ContollerTest/PostNewQuestionaryOnTestDB';
 
 
 // CONFIGURAÇÃO
@@ -90,28 +104,46 @@ router.post("/topicos", PostTopicos);
 
 //testeconection
 router.get("/testDBTest", testDBTestConnection)
-router.get("/getVideoFromTestDB/:id",GetVideoByIdFromTestDB)
-router.get("/getAllVideoInfoFromTestDB", GetAllVideosInfoOrderBySugestion);
+
 
 //config DBTest
 router.post("/addAllTabesToTestDB",createTestDBTable)
 
 //gets
+router.get("/GetActivitiesFromActivitiesTag/:tag", GetActivitiesFromActivitiesTag) //testado
+router.get("/getVideoFromTestDB/:id",GetVideoByIdFromTestDB)//testado
+router.get("/getAllVideoInfoFromTestDB", GetAllVideosInfoOrderBySugestion);//testado
+router.get("/GetAllTrilhasFromTestDB",GetAllTrilhasFromTestDB) //testado
+router.get("/GetAllAssistancesFromUserAdressFromTestDB", GetAllAssistancesFromUserAdressFromTestDB) //testado
+router.get("/GetContentFromTopicsIdFromTestDB/:id",GetContentFromTopicsIdFromTestDB) //testado
+router.get("/GetQuestionsFromActivitieIdFromTestDB/:id",GetQuestionsFromActivitieIdFromTestDB) //testado
+router.get("/GetStagesFromActivitieIdFromTestDB/:id",GetStagesFromActivitieIdFromTestDB) //testado
+router.get("/GetTopicsFromTrilhaIdFromTestDB/:id",GetTopicsFromTrilhaIdFromTestDB)  //testado
+router.get("/GetUserInfoFromIdFromTestDB", GetUserInfoFromIdFromTestDB) //testado
+
 
 
 //insers
-router.post("/trilhasOnTestDB",InsertTrilhaNoTestDB); 
-router.post("/topicosOnTestDB", InsertTopicosNoTestDB);
-router.post("/atividadesOnTestDB", InsertActivitiesaAndStagesNoTestDB);
-router.post("/assistancesOnTestDB", InsertAssistancesOnTestDB);
+router.post("/trilhasOnTestDB",InsertTrilhaNoTestDB);  //testado
+router.post("/topicosOnTestDB", InsertTopicosNoTestDB); //testado
+router.post("/atividadesOnTestDB", InsertActivitiesaAndStagesNoTestDB); //testado
+router.post("/assistancesOnTestDB", InsertAssistancesOnTestDB); //testado
 
 router.post("/videosOnTestDB",upload.fields([
   { name: 'videoFile', maxCount: 1 },
   { name: 'thumbnailFile', maxCount: 1 }
-]), PostNewVideoOnTestDB);
-router.post("/registerUserOnTestDB", insertNewUserRegisterToTestDB);
-router.post("/loginUserOnTestDB",postUserLoginOnTestDB);
+]), PostNewVideoOnTestDB); //testado
+router.post("/registerUserOnTestDB", insertNewUserRegisterToTestDB); //testado
+router.post("/loginUserOnTestDB",postUserLoginOnTestDB); //testado
+router.post("/PostNewUserAnswersOnTestDB", PostNewUserAnswersOnTestDB)
+router.post("/AddLikeOnVideoOnTestBD/:id",AddLikeOnVideoOnTestBD) //testado
+router.post("/PostNewContentOnTestDB", PostNewContentOnTestDB)//testado
+router.post("/PostNewQuestionaryOnTestDB",PostNewQuestionaryOnTestDB) //testado
 
+
+//Puts ou Alters
+router.put("/AlterClickTagsVideoFromUserIdOnTestDB",AlterClickTagsVideoFromUserIdOnTestDB) //testado
+router.put("/AlterUserInfoFromIdOnTestDB",AlterUserInfoFromIdOnTestDB) //testado
 
 
 app.listen(3000, () => {
