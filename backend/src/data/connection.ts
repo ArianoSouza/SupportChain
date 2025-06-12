@@ -11,7 +11,6 @@ const connection = knex ({
     user: process.env.DB_USER, // Usando variáveis de ambiente do Render
     password: process.env.DB_PASSWORD, // Usando variáveis de ambiente do Render
     database: process.env.DB_NAME, // Usando variáveis de ambiente do Render
-    ssl: { rejectUnauthorized: false } // PostgreSQL na Render requer SSL
   },
   pool: { min: 2, max: 10 }
 })
