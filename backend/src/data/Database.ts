@@ -47,7 +47,7 @@ const createTable = async () => {
         id VARCHAR(60) PRIMARY KEY,
         fk_id_topic VARCHAR(60) REFERENCES topics(id),
         titles TEXT[],
-        paragraphs TEXT[] -- A VÍRGULA FOI REMOVIDA AQUI
+        paragraphs TEXT[]
     );
 
     -- Tabela activities
@@ -79,7 +79,7 @@ const createTable = async () => {
 
     -- Tabela userAnswers
     CREATE TABLE IF NOT EXISTS userAnswers (
-        id VARCHAR(60) PRIMARY NULL,
+        id VARCHAR(60) PRIMARY KEY, -- CORRIGIDO AQUI
         fk_user_id UUID REFERENCES users(id),
         fk_questionarie_id VARCHAR(60) REFERENCES questionaries(id),
         answers TEXT[]
