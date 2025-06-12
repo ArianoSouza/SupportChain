@@ -207,8 +207,8 @@ router.put("/AlterClickTagsVideoFromUser",AlterClickTagsVideoFromUserIdProductio
 router.put("/AlterUserInfoFromId",AlterUserInfoFromIdProduction) //testado
 
 
-app.listen(process.env.DB_PORT, () => {
-  console.log(`Server is running  in PORT ${process.env.DB_PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running  in PORT ${process.env.PORT}`)
 })
 
 export default app;
