@@ -7,7 +7,7 @@
 </ion-button>
 <div class="container-likes" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'">
   <p>{{video?.likesNumber}}</p>
-  <ion-icon button name="heart" class="like-button" (click)="like()"></ion-icon>
+  <ion-icon button name="heart" class="like-button" (click)="onLikeVideo(videoId)"></ion-icon>
 </div>
 <div class="info" [style]="showAll == false ? 'transform:translateY(110px)':'transform:translateY(0)'" button (click)="toggleShowAll()">
   <h3>{{video?.title}}</h3>

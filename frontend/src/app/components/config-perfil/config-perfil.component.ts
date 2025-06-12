@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {  ModalController } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import {  AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormGroup, ReactiveFormsModule, Validators, FormBuilder} from "@angular/forms";
 import { IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonContent, IonLabel, IonBackButton, IonList, IonItem, IonIcon } from "@ionic/angular/standalone";
-import { userData } from 'src/app/models/types/user.types';
+import { userData, UserInfo } from 'src/app/models/types/user.types';
 import { FormsModule } from '@angular/forms';
+import { UserService } from 'src/app/services/UserInfoService/user-info.service';
 
 interface userMiniData{
   nome:string,
@@ -26,48 +27,62 @@ interface userMiniData{
 })
 export class ConfigPerfilComponent  implements OnInit {
 
-  
+  constructor(
+    private userService: UserService,
+    private loadingController: LoadingController,
+    private alertController: AlertController,
+    private toastController: ToastController, // Injete ToastController
+    private fb: FormBuilder, 
+    private modalCtrl:ModalController // <-- Injete FormBuilder
+  ){}
 
-  actualUserData:userData = {
-    nome: '',
-    sobrenome: '',
-    email: '',
-    senha: '',
-    sexo: '',
-    estado_civil: '',
-    data_nascimento: '',
-    numero_telefone: '',
-    estado: '',
-    cidade: '',
-    bairro: '',
-    foto:'',
-    termos_de_uso: true,
-    envio_de_dados: true
-  };
-  saveName:string =''
-  saveSobreNome: string =''
-  saveEmail:string = ''
-
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder) {}
+  @Input() user!: UserInfo;
+  loading: HTMLIonLoadingElement | null = null;
 
   ngOnInit() {
-     this.saveName = this.actualUserData.nome
-   this.saveSobreNome = this.actualUserData.sobrenome
-   this.saveEmail = this.actualUserData.email
   
   } 
 
-  salvar() {
+  async salvar() {
    
-    console.log(this.actualUserData)
-    this.modalCtrl.dismiss();
+    const loader = await this.loadingController.create({
+      message: 'Salvando alterações...',
+    });
+    this.userService.updateUserInfo(this.user).subscribe({
+      next: (response) => {
+        loader.dismiss();
+        this.presentToast(response.message, 'success');
+        this.modalCtrl.dismiss();
+      },
+      error: async (err: Error) => {
+        loader.dismiss();
+        console.error('Erro ao salvar perfil:', err);
+        this.presentAlert('Erro ao Salvar Perfil', err.message || 'Falha ao salvar as alterações.');
+      }
+    });
      
   }
 
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  async presentToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      color: color
+    });
+    toast.present();
+  }
+
     closemodal(){
-      this.actualUserData.email = this.saveEmail
-      this.actualUserData.sobrenome = this.saveSobreNome
-      this.actualUserData.nome = this.saveName
     this.modalCtrl.dismiss();
   }
 

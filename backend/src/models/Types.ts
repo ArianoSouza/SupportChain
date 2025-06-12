@@ -85,7 +85,7 @@ export type User = {
     name: string;
     image:string;
     description: string;
-    specialities: string;
+    specialities: string[];
     phoneNumber: string;
     estado: string;
     cidade: string;

@@ -7,7 +7,7 @@
   </div>
 
   <div class="container-search">
-    <ion-input placeholder="Pesquisar" fill="solid" (ionInput)="onSearch($event)">
+    <ion-input placeholder="Pesquisar" fill="solid" (ionInput)="onSearchChange($event)">
       <ion-icon slot="start" name="search" aria-hidden="true" ></ion-icon>
     </ion-input>
   </div>
@@ -22,14 +22,14 @@
       <ion-card-content>
         <div class="container-map">
           <ion-icon name="map"></ion-icon>
-          <ion-card-subtitle>{{ assistance.location }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ assistance.bairro }}, {{assistance.cidade}} - {{assistance.estado}}</ion-card-subtitle>
         </div>
         <div class="container-phone">
           <ion-icon name="call"></ion-icon>
-          <p>{{ assistance.phone }}</p>
+          <p>{{ assistance.phoneNumber }}</p>
         </div>
         <div class="services">
-          <ion-chip *ngFor="let service of assistance.services">
+          <ion-chip *ngFor="let service of assistance.specialities">
             {{ service }}
           </ion-chip>
         </div>

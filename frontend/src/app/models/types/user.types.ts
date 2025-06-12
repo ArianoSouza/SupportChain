@@ -27,15 +27,7 @@ export type userNotes = {
     noteType:String
     noteDate: String
 }
-export type Assistance = {
-    id:string
-    image: string;
-    name: string;
-    location: string;
-    phone: string;
-    services: string[];
-    description:string
-  }
+
 
   
 
@@ -103,6 +95,8 @@ export type Tag =
 
   export type videoTag = 'desintoxicação digital' | 'ansiedade' | 'mindfulness' | 'vício digital' | 'saúde do sono' | 'redes sociais' | 'equilíbrio digital' | 'depressão' | 'produtividade' | 'impacto das telas';
 
+
+    // novos
   export interface Video {
     id: string;
     title: string;
@@ -120,10 +114,15 @@ export type Tag =
       likesNumber: number;
       tumbURL: string;
   }
+  export interface AddLikeApiResponse {
+    message: string;
+    videoId: string;
+    totalLikes: number;
+  }
 
 
 
-  // novos
+
   export type Trilha = {
     id: string;
     title: string;
@@ -219,3 +218,76 @@ export type Tag =
     message: string;
     answerId: string; // A API retorna o ID da nova resposta criada
   }
+
+  // src/app/models/click-tag.model.ts
+
+export interface ClickTag {
+  id: string;
+  fk_user_id: string;
+  trilhas: string[];
+  videos: string[]; // Array de strings, como definido no seu backend
+}
+
+// Interface para o corpo da requisição PUT
+export interface AlterClickTagsVideoRequestBody {
+  tags: string[]; // As novas tags a serem adicionadas
+}
+
+// Interface para a resposta da requisição PUT
+export interface AlterClickTagsVideoApiResponse {
+  message: string;
+  updatedTags: string[]; // Retorna o array completo de tags após a atualização
+}
+
+export interface Assistance {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  specialities: string;
+  phoneNumber: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+}
+
+// Interface para as informações de endereço do usuário retornadas pela API
+export interface UserAddress {
+  estado: string;
+  cidade: string;
+  bairro: string;
+}
+
+// Interface para a resposta completa da API
+export interface GetAllAssistancesApiResponse {
+  message: string;
+  userAddress: UserAddress;
+  assistances: Assistance[];
+}
+
+export interface UserInfo {
+  id: string;
+  nome: string;
+  sobrenome: string;
+  email: string;
+  sexo: string;
+  estado_civil: string;
+  data_nascimento: string;
+  numero_telefone: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+  foto: string;
+  termos_de_uso?: boolean; // Opcional, dependendo se a API sempre retorna
+  envio_de_dados?: boolean; // Opcional, dependendo se a API sempre retorna
+}
+
+// Interface para a resposta completa da API
+export interface GetUserInfoApiResponse {
+  message: string;
+  user: UserInfo; // A API retorna um objeto 'user' dentro da resposta
+}
+
+export interface AlterUserInfoApiResponse {
+  message: string;
+}

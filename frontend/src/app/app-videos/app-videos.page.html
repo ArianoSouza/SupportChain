@@ -18,7 +18,7 @@
     <ion-col *ngFor="let video of videos" size="4z">
       <div class="video-container">
         <div class="scroll-videos">
-          <div button (click)="goToFullVideo(video.id)" class="video" >
+          <div button (click)="onVideoClick(video,video.id)" class="video" >
             <img [src]="video.tumbURL" alt="" (error)="onImgError($event)">
             <div class="container-likes">
               <ion-icon name="heart"></ion-icon>

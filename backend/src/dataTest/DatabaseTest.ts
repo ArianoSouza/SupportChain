@@ -111,7 +111,7 @@ export default async function createTestDBTable(
         image VARCHAR(60),
         name VARCHAR(255),
         description TEXT,
-        specialities TEXT,
+        specialities TEXT[],
         "phoneNumber" VARCHAR(50),
         estado VARCHAR(100),
         cidade VARCHAR(100),
