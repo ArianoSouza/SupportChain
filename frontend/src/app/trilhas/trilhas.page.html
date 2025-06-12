@@ -9,51 +9,18 @@
  <p class="texto-introducao">Reflita sobre seu uso da tecnologia com nossas atividades rapidas.Identifique padrões, 
   receba dicas praticas e descubra como equilibar vida online e offline para melhorar seu bem-estar</p>
 
-   <ion-searchbar placeholder="Busque por um assunto..." (ionInput)="onSearch($event)"></ion-searchbar> 
-
-  <h2 class="titulo-sugestoes">Sugestões</h2>
-
- <ion-grid class="sugestions">
-  <ion-row>
-    <ion-col size="4" size-md="4" size-lg="3">
-      <ion-card class="trilha-card" button id="1" (click)="goToModulos($event)">
-        <ion-card-header>
-          <ion-icon name="wifi-outline"></ion-icon>
-          <ion-card-content>Dependência de internet</ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-
-    <ion-col size="4" size-md="4" size-lg="3" >
-      <ion-card class="trilha-card" (click)="goToModulos($event)" button disabled="true">
-        <ion-card-header>
-          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-          <ion-card-content>Diálogo ativo</ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-
-    <ion-col size="4" size-md="4" size-lg="3">
-      <ion-card class="trilha-card" (click)="goToModulos($event)" button disabled="true">
-        <ion-card-header>
-          <ion-icon name="happy-outline"></ion-icon>
-          <ion-card-content>Guia de saúde emocional</ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+   <ion-searchbar placeholder="Busque por um assunto..." (ionInput)="onSearchChange($event)"></ion-searchbar> 
 
   <p class="todas_trilhas">Todas as trilhas</p>
 
 <ion-grid>
   <ion-row>
-    <ion-col *ngFor="let tema of temasFiltrados" size="4" size-md="4" size-lg="3">
-      <ion-card class="trilha-card" button id={{tema.id}} (click)="goToModulos($event)">
+    <ion-col *ngFor="let trilha of trilhas" size="4" size-md="4" size-lg="3">
+      <ion-card class="trilha-card" button id={{trilha.id}} (click)="goToModulos(trilha.id)">
         <ion-card-header>
-          <ion-icon [name]="tema.nome"></ion-icon>
+          <ion-icon [name]="trilha.icon"></ion-icon>
           <ion-card-content>
-            <h3>{{ tema.nome }}</h3>
+            <h3>{{ trilha.title }}</h3>
           </ion-card-content>
         </ion-card-header>
       </ion-card>

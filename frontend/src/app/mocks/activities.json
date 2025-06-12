@@ -68,5 +68,19 @@
         "steps": ["Façam um acordo de evitar redes sociais juntos", "Planejem atividades offline para preencher o tempo", "No final do dia, compartilhem como se sentiram sem o uso das redes"]
       }
     ]
+  },
+  {
+    "title": "Desafio Conjunto Sem Redes Sociais",
+    "description": "Um desafio para dois ou mais amigos passarem um dia sem redes sociais.",
+    "icon": "ban-outline",
+    "tags": ["culinária", "desintoxicação digital"],
+    "activities": [
+      {
+        "title": "Dia Digital-Free",
+        "doTime": 1440,
+        "objective": "Evitar redes sociais durante 24 horas em grupo.",
+        "steps": ["Façam um acordo de evitar redes sociais juntos", "Planejem atividades offline para preencher o tempo", "No final do dia, compartilhem como se sentiram sem o uso das redes"]
+      }
+    ]
   }
 ]

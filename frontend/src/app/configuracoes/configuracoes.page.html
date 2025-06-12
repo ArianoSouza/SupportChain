@@ -2,10 +2,10 @@
   <ion-card class="profile-card">
 
     <ion-card-header>
-      <ion-card-title>{{actualUser?.nome}} {{actualUser?.sobrenome}}</ion-card-title>
-      <ion-card-subtitle>{{actualUser?.email}}</ion-card-subtitle>
+      <ion-card-title>{{user?.nome}} {{user?.sobrenome}}</ion-card-title>
+      <ion-card-subtitle>{{user?.email}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-button expand="block" (click)="openModal()">
+    <ion-button expand="block" (click)="openModal(user)">
       Editar Perfil
     </ion-button>
   </ion-card>

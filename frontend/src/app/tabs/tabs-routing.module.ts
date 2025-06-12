@@ -35,6 +35,7 @@ const routes: Routes = [
         path: 'atividades',
         loadChildren: () => import('../atividades/atividades.module').then( m => m.AtividadesPageModule)
       },
+
       {
         path: '',
         redirectTo: '/tabs/home',

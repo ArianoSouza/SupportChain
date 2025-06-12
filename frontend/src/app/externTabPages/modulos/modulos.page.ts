@@ -1,59 +1,100 @@
-import { ModalController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import moduloMock from '../../mocks/modulos.json'
-import { ActivatedRoute, Router } from '@angular/router';
-import {TrilhaModulo} from '../../models/types/user.types'
+import { ActivatedRoute, Router } from '@angular/router'; // Para obter o ID da URL
+import { TopicService } from '../../services/topicService/topics.service';
+import { Topic } from '../../models/types/user.types';
+import { LoadingController, AlertController, ModalController, NavController } from '@ionic/angular';
 import { ConteudoComponent } from 'src/app/components/conteudo/conteudo.component';
-import { animate, animateChild, animation } from '@angular/animations';
 
 @Component({
   selector: 'app-modulos',
   templateUrl: './modulos.page.html',
   styleUrls: ['./modulos.page.scss'],
-  standalone: false
+  standalone:false
 })
 export class ModulosPage implements OnInit {
 
-  constructor(private route:ActivatedRoute, private router:Router, private modalContoller:ModalController, private navCtrl: NavController) { }
+  trilhaId: string | null = null;
+  topics: Topic[] = [];
+  loading: HTMLIonLoadingElement | null = null;
+  errorMessage: string | null = null;
+
+  constructor(
+    private activatedRoute: ActivatedRoute, // Para ler o ID da trilha da rota
+    private topicService: TopicService,
+    private loadingController: LoadingController,
+    private alertController: AlertController,
+    private modalContoler:ModalController,
+    private navCtrl: NavController,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    console.log(this.allmodules.length)
-  }
-  number = 0
-  trilhaId = this.route.snapshot.queryParamMap.get('id')
-  allmodules:TrilhaModulo[] = moduloMock.filter(modulo=>modulo.id.toString()== this.trilhaId as String) 
+    // Obtém o ID da trilha da URL (ex: /modulos/:trilhaId)
+    // Configure sua rota em app-routing.module.ts como: { path: 'modulos/:trilhaId', component: ModulosPage }
+    this.trilhaId = this.activatedRoute.snapshot.paramMap.get('id');
 
-
-  minus(){
-    if (this.number<=0){
-      console.log('cannot')
-    }else{
-      console.log(this.number)
-      this.number-=1
-    }
-  }
-  plus(){
-    if (this.number>=this.allmodules.length-1){
-      console.log('cannot')
-    }else{
-      console.log(this.number)
-      this.number+=1
+    if (this.trilhaId) {
+      this.loadTopics(this.trilhaId);
+    } else {
+      this.presentAlert('Erro', 'ID da trilha não fornecido na URL para buscar tópicos.');
+      this.router.navigateByUrl('/tabs/trilhas'); // Redireciona para a página de trilhas
     }
   }
 
-  defineMinusColor(){
-    if (this.number = 0){
-      return  {
-        color: "grey"    
+  async loadTopics(trilhaId: string) {
+    this.errorMessage = null;
+    this.loading = await this.loadingController.create({
+      message: 'Carregando tópicos...',
+    });
+    await this.loading.present();
+
+    this.topicService.getTopicsByTrilhaId(trilhaId).subscribe({
+      next: (topicsResponse: Topic[]) => { // Espera Topic[] diretamente do serviço
+        this.topics = topicsResponse;
+        console.log(topicsResponse)
+        this.loading?.dismiss();
+        console.log(`Tópicos para a trilha ${trilhaId} carregados:`, this.topics);
+      },
+      error: async (err: Error) => {
+        this.loading?.dismiss();
+        console.error('Erro ao carregar tópicos no componente:', err);
+        this.errorMessage = err.message || 'Erro desconhecido ao carregar tópicos.';
+
+        const alert = await this.alertController.create({
+          header: 'Erro',
+          message: this.errorMessage,
+          buttons: ['OK'],
+        });
+        await alert.present();
+        // Opcional: Redirecionar se o erro for fatal (ex: trilha não encontrada)
+        // this.router.navigateByUrl('/trilhas');
       }
+    });
   }
-    else{
-      return {}
+
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  // Opcional: Para pull-to-refresh
+  handleRefresh(event: any) {
+    if (this.trilhaId) {
+      this.loadTopics(this.trilhaId).finally(() => {
+        event.target.complete();
+      });
+    } else {
+      event.target.complete();
     }
   }
 
-  async openModal(id: number) {
-      const modal = await this.modalContoller.create({
+
+  async openModal(id: string) {
+      const modal = await this.modalContoler.create({
         component: ConteudoComponent,
         componentProps: { id }
       });

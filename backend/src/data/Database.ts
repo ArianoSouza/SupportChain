@@ -7,68 +7,115 @@ const printError = (error: any) => {
   const createTable = async () =>{
     try{
         await connection.raw(`
-          CREATE TABLE IF NOT EXISTS usuario (
-          id VARCHAR(36) PRIMARY KEY PRIMARY KEY,
-          Nome VARCHAR(100) NOT NULL,
-          Sobrenome VARCHAR(100) NOT NULL,
-          Email VARCHAR(100) NOT NULL UNIQUE,
-          senha VARCHAR(255) NOT NULL,
-          sexo VARCHAR(20) NOT NULL,
-          Estado_Civil VARCHAR(50),
-          data_nascimento VARCHAR(10) ,
-          numero_telefone VARCHAR(20),
-          Estado VARCHAR(50),
-          Cidade VARCHAR(50),
-          Bairro VARCHAR(50),
-          Foto TEXT,
-          termos_de_uso BOOLEAN NOT NULL DEFAULT 0,
-          envio_de_dados BOOLEAN NOT NULL DEFAULT 0
-          );
+          -- Tabela users
+    CREATE TABLE IF NOT EXISTS users (
+        id UUID PRIMARY KEY,
+        nome VARCHAR(255),
+        sobrenome VARCHAR(255),
+        email VARCHAR(255),
+        senha VARCHAR(255),
+        sexo VARCHAR(50),
+        estado_civil VARCHAR(50),
+        data_nascimento VARCHAR(50),
+        numero_telefone VARCHAR(50),
+        estado VARCHAR(100),
+        cidade VARCHAR(100),
+        bairro VARCHAR(100),
+        foto VARCHAR(255),
+        termos_de_uso BOOLEAN,
+        envio_de_dados BOOLEAN
+    );
 
-          CREATE TABLE IF NOT EXISTS etapa (
-          id_etapa INT AUTO_INCREMENT PRIMARY KEY,
-          id_trilha INT NOT NULL,
-          ordem INT NOT NULL,
-          titulo VARCHAR(255) NOT NULL,
-          descricao TEXT
-           );
-          
-          CREATE TABLE IF NOT EXISTS Progresso(
-          id_progresso INT AUTO_INCREMENT PRIMARY KEY,
-          id_user VARCHAR(36) NOT NULL,
-          id_etapa INT NOT NULL,
-          concluida BOOLEAN NOT NULL DEFAULT 0,
-          data_conclusao DATE,
-          FOREIGN KEY (id_user) REFERENCES usuario(id),
-          FOREIGN KEY (id_etapa) REFERENCES etapa(id_etapa)
-          );
+    -- Tabela trilhas
+    CREATE TABLE IF NOT EXISTS trilhas (
+        id VARCHAR(60) PRIMARY KEY,
+        title VARCHAR(255),
+        icon VARCHAR(255)
+    );
 
-          CREATE TABLE IF NOT EXISTS media(
-          id_media INT AUTO_INCREMENT PRIMARY KEY,
-          id_user VARCHAR(36) NOT NULL,
-          file_name VARCHAR(255) NOT NULL,
-          url TEXT NOT NULL,
-          FOREIGN KEY (id_user) REFERENCES usuario(id)
-          );
+    -- Tabela topics
+    CREATE TABLE IF NOT EXISTS topics (
+        id VARCHAR(60) PRIMARY KEY, -- CORRIGIDO AQUI: Removido o PRIMARY duplicado
+        fk_id_trilha VARCHAR(60) REFERENCES trilhas(id),
+        order_position INTEGER,
+        description TEXT,
+        title VARCHAR(255)
+    );
 
-          CREATE TABLE IF NOT EXISTS videos_info(
-           id_video INT AUTO_INCREMENT PRIMARY KEY,
-           media_id INT NOT NULL,
-           title VARCHAR(255),
-           description TEXT,
-           views INT DEFAULT 0,
-           viewed BOOLEAN DEFAULT FALSE,
-           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-           FOREIGN KEY (media_id) REFERENCES media(id_media)
-         );
+    -- Tabela contents
+    CREATE TABLE IF NOT EXISTS contents (
+        id VARCHAR(60) PRIMARY KEY,
+        fk_id_topic VARCHAR(60) REFERENCES topics(id),
+        titles TEXT[],
+        paragraphs TEXT[],
+    );
 
-         CREATE TABLE IF NOT EXISTS topicos(
-         id_topicos INT AUTO_INCREMENT PRIMARY KEY,
-         order_position INT NOT NULL,
-         title VARCHAR(255),
-         description TEXT,
-         conteudos JSON
-         );
+    -- Tabela activities
+    CREATE TABLE IF NOT EXISTS activities (
+        id VARCHAR(60) PRIMARY KEY,
+        title VARCHAR(255),
+        description TEXT,
+        icon VARCHAR(255),
+        tags TEXT[]
+    );
+
+    -- Tabela activitieStage
+    CREATE TABLE IF NOT EXISTS activitie_stage (
+        id VARCHAR(60) PRIMARY KEY,
+        fk_id_activitie VARCHAR(60) REFERENCES activities(id),
+        title VARCHAR(255),
+        do_Time INTEGER,
+        objective TEXT,
+        steps TEXT[]
+    );
+
+    -- Tabela questionaries
+    CREATE TABLE IF NOT EXISTS questionaries (
+        id VARCHAR(60) PRIMARY KEY,
+        fk_id_activitie VARCHAR(60) REFERENCES activities(id),
+        questions TEXT[],
+        options TEXT[]
+    );
+
+    -- Tabela userAnswers
+    CREATE TABLE IF NOT EXISTS userAnswers (
+        id VARCHAR(60) PRIMARY KEY,
+        fk_user_id UUID REFERENCES users(id),
+        fk_questionarie_id VARCHAR(60) REFERENCES questionaries(id),
+        answers TEXT[]
+    );
+
+    -- Tabela videos
+    CREATE TABLE IF NOT EXISTS videos (
+        id VARCHAR(60) PRIMARY KEY,
+        title VARCHAR(255),
+        description TEXT,
+        tags TEXT[],
+        likes TEXT[],
+        "tumbURL" VARCHAR(255),
+        "URL" VARCHAR(255)
+    );
+
+    -- Tabela assistance
+    CREATE TABLE IF NOT EXISTS assistance (
+        id VARCHAR(60) PRIMARY KEY,
+        image VARCHAR(60),
+        name VARCHAR(255),
+        description TEXT,
+        specialities TEXT[],
+        "phoneNumber" VARCHAR(50),
+        estado VARCHAR(100),
+        cidade VARCHAR(100),
+        bairro VARCHAR(100)
+    );
+
+    -- Tabela clickTags
+    CREATE TABLE IF NOT EXISTS clickTags (
+        id VARCHAR(60) PRIMARY KEY,
+        fk_user_id UUID REFERENCES users(id),
+        trilhas TEXT[],
+        videos TEXT[]
+    );
              `);
             console.log('tabela criada com sucesso')
       }catch(error){

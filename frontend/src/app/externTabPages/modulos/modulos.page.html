@@ -1,23 +1,15 @@
 
 
 <ion-content [fullscreen]="true">
-  <div class="container-title" >
-    <h2>{{allmodules[number].order}}</h2>
-    <h2>{{allmodules[number].title}}</h2>
-    <h3>{{allmodules[number].desc}}</h3>
-    <ion-button (click)="minus()" class="minus-button" [style.color]="number === 0 ? 'grey' : '#3D348B'">
-      <ion-icon name="caret-back"></ion-icon>
-    </ion-button>
-    <ion-button (click)="plus()" class="plus-button" [style.color]="number === allmodules.length-1 ? 'grey' : '#3D348B'">
-      <ion-icon name="caret-forward" ></ion-icon>
-    </ion-button>
-  </div>
-  <div class="divider"></div>
+<h1 class="titulo-pag">Módulos</h1>
   <ion-list>
-    <ion-item *ngFor="let conteudo of allmodules[number].conteudos" button (click)="openModal(allmodules[number].id)">
-      <ion-icon name="caret-forward"></ion-icon>
-      <ion-text>{{conteudo}}</ion-text>
-    </ion-item>
+    <div *ngFor="let topico of topics" class="container-topicos" button (click)="openModal(topico.id)">
+      <h1>{{topico.order_position}}</h1>
+      <div class="container-title-descripition">
+        <h5>{{topico.title}}</h5>
+        <p>{{topico.description}}</p>
+      </div>
+    </div>
   </ion-list>
   <ion-button class="close-button" (click)="goBack()">
     <ion-icon name="chevron-back"></ion-icon>

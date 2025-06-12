@@ -1,10 +1,19 @@
 <ion-content>
-  <app-out-of-service class="compact"></app-out-of-service>
-  <div>
+  <h3>Nesse modulo:</h3>
+  <ion-list>
+    <h4 *ngFor="let title of content?.titles">
+    -> {{title}}
+    </h4>
+  </ion-list>
+  <ion-list>
+    <p *ngFor="let paragraph of content?.paragraphs">
+      {{paragraph}}
+    </p>
+  </ion-list>
  
   <ion-button (click)="closeModal()">
     <ion-icon name="chevron-back"></ion-icon>
   </ion-button>
   
-</div>
+
 </ion-content>

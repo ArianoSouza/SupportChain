@@ -23,7 +23,8 @@ export class AtividadesPage implements OnInit {
     "auto-reflexão",
     "atividade física",
     "bem-estar",
-    "autocontrole"
+    "autocontrole",
+    "culinária"
   ];
 
   allactivities: ActivityCategory[] = dataAtvCategories as ActivityCategory[]
@@ -44,7 +45,7 @@ export class AtividadesPage implements OnInit {
   }
 
   goToActivitieDetail(tag: string, img:String, title:String, desc:String){
-    this.navCtrl.navigateForward('/tabs/atividades/detailActivitie',
+    this.navCtrl.navigateForward(['/tabs/atividades/detailActivitie',tag],
       {
         queryParams:{
           tag: tag,

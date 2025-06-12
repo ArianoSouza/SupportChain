@@ -7,18 +7,18 @@
     <img [src]="assistance.image" alt="{{ assistance.name }}" (error)="assistance.image = genericImage">
 
     <h2>{{ assistance.name }}</h2>
-    <p class="location" button (click)="abrirGoogleMaps(assistance.location)">{{ assistance.location }}</p>
-    <p class="phone">{{ assistance.phone }}</p>
+    <p class="location" button (click)="abrirGoogleMaps(assistance.name)">{{ assistance.bairro }}, {{assistance.cidade}} - {{assistance.estado}}</p>
+    <p class="phone">{{ assistance.phoneNumber }}</p>
 
     <p class="description">{{ assistance.description }}</p>
 
     <div class="services">
-      <ion-chip *ngFor="let service of assistance.services">
+      <ion-chip *ngFor="let service of assistance.specialities">
         {{ service }}
       </ion-chip>
     </div>
 
-    <ion-button class="contact" (click)="copyToClipboard(assistance.phone)">
+    <ion-button class="contact" (click)="copyToClipboard(assistance.phoneNumber)">
       <ion-icon name="call" class="icon" slot="start"></ion-icon>
       Entrar em contato
     </ion-button>

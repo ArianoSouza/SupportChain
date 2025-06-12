@@ -14,3 +14,30 @@ app-out-of-service.compact {
     display: block;
     overflow: hidden;
   }
+
+ion-list{
+    --background:white;
+    background:white;
+}
+
+p{
+    width: 100%;
+    padding: 0px 1rem;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+h3{
+    margin: 0px;
+    margin-top: 5rem;
+    width: 100%;
+    padding-left: 2rem;
+    color: #3D348B;
+    font-size: 1.5rem;
+}
+h4{
+    width: 100%;
+    padding: 0px 1rem;
+    border-bottom: 1px solid #3D348B;
+    padding-bottom: 1rem;
+}

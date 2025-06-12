@@ -11,17 +11,17 @@
     <h1>{{title}}</h1>
   </div>
  
-  <div *ngFor="let atividade of allActivitie[0].activities" >
+  <div *ngFor="let stage of stages" >
     <div class="title-activities">
-      <h2>{{ atividade.title }}</h2>
-      <p>{{ formatMinutesHours(atividade.doTime) }} </p>
+      <h2>{{ stage.title }}</h2>
+      <p>{{ formatMinutesHours(stage.do_time) }} </p>
     </div>
     
     <div class="container-objetivo">
-      <strong>Objetivo:</strong> {{ atividade.objective }}
+      <strong>Objetivo:</strong> {{ stage.objective }}
     </div>
     <ul>
-      <li *ngFor="let step of atividade.steps">{{ step }}</li>
+      <li *ngFor="let step of stage.steps">{{ step }}</li>
     </ul>
     <hr>
   </div> 
