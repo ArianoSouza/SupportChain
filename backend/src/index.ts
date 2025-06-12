@@ -1,27 +1,7 @@
 
 import express from 'express';
 import cors from "cors";
-import { GetNews } from './APIs/getNews';
-import { GetBooks } from './APIs/BooksAPi';
-import { GetArtigos } from './APIs/ArtigosApi';
-//import InsertTrilha from './Controlles/InsertTrilha';
-import InsertEtapa from './ControllesOLD/InsetEtapa';
-import GetTrilha from './ControllesOLD/GetTrilha';
-import GetEtapa from './ControllesOLD/GetEtapa';
-import { Router } from 'express';
-//import GetCadastro from './Controlles/usuarioRoutes';
-//import GetLogin from './Controlles/usuarioLogin';
-import autenticarToken from './services/autenticarToken';
-import { PostProgresso } from './ControllesOLD/PostProgresso';
-import { GetProcesso } from './ControllesOLD/GetProcesso';
-import { UploadFile } from './ControllesOLD/UploadsFile';
-import { GetUpload } from './ControllesOLD/GetUpload';
-import { addVideoInfo } from './ControllesOLD/addVideoInfo';
-import { PostTopicos } from './ControllesOLD/PostTopicos';
-import { GetTopicos } from './ControllesOLD/GetTopicos';
 import multer from 'multer';
-import { testConnection } from './ControllesOLD/testBanco';
-import GetAllTrilhas from './ControllesOLD/getAllTrilhas';
 import createTestDBTable from './dataTest/DatabaseTest';
 
 
