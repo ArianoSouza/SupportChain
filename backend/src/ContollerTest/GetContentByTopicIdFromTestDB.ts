@@ -40,7 +40,6 @@ export default async function GetContentFromTopicsIdFromTestDB(
       ...content,
       titles: typeof content.titles === 'string' ? JSON.parse(content.titles) : content.titles,
       paragraphs: typeof content.paragraphs === 'string' ? JSON.parse(content.paragraphs) : content.paragraphs,
-      media: typeof content.media === 'string' ? JSON.parse(content.media) : content.media,
     };
 
     // 5. Retorna o conteúdo encontrado
@@ -75,7 +74,6 @@ Status: 200 OK
     "fk_id_topic": "topic_html_basic",
     "titles": ["O que é HTML?", "Estrutura Básica"],
     "paragraphs": ["HTML (HyperText Markup Language) é a linguagem padrão...", "Todo documento HTML começa com <!DOCTYPE html>..."],
-    "media": [{ "type": "image", "url": "html_example.png" }, { "type": "video", "url": "intro_html.mp4" }]
   }
 }
 

@@ -57,7 +57,6 @@ export default async function createTestDBTable(
         fk_id_topic VARCHAR(60) REFERENCES topics(id),
         titles TEXT[],
         paragraphs TEXT[],
-        media JSONB[]
     );
 
     -- Tabela activities

@@ -68,7 +68,7 @@ export default async function GetQuestionsFromActivitieIdFromTestDB(
 
     // 6. Busca na tabela UserAnswer se o usuário já respondeu a este questionário
     // Supondo que a tabela se chame 'user_answers'
-    const userAnswer: UserAnswer | undefined = await testDbConnection("user_answers")
+    const userAnswer: UserAnswer | undefined = await testDbConnection("useranswers")
       .where({
         fk_user_id: userId,
         fk_questionarie_id: parsedQuestionary.id

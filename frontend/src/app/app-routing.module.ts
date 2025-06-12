@@ -20,8 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./externTabPages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
   {
-    path: 'modulos',
+    path: 'modulos/:id',
     loadChildren: () => import('./externTabPages/modulos/modulos.module').then( m => m.ModulosPageModule)
+  },
+  {
+    path: 'activitie-content/:id',
+    loadChildren: () => import('./activitie-content/activitie-content.module').then( m => m.ActivitieContentPageModule)
   },
   {
     path: 'full-video',

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: AtividadesPage
   },
   {
-    path: 'detailActivitie',
+    path: 'detailActivitie/:tag',
     loadChildren: () => import('../detail-activitie/detail-activitie.module').then( m => m.DetailActivitiePageModule)
   },
 ];

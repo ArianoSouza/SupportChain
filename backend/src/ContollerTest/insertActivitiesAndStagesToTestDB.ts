@@ -27,7 +27,7 @@ export default async function InsertActivitiesaAndStagesNoTestDB(
         }
 
         for (const stage of activitieStagesToInsert) {
-            if (!stage.title || !stage.objective || !stage.doTime || !stage.steps) {
+            if (!stage.title || !stage.objective || !stage.do_time || !stage.steps) {
                 res.status(422).json({ message: "Todos os objetos em 'activitieStages' devem conter os campos corretos." });
                 return;
             }
@@ -71,7 +71,7 @@ export default async function InsertActivitiesaAndStagesNoTestDB(
                 steps: stage.steps,
                 title: stage.title,
                 objective: stage.objective,
-                do_time: stage.doTime
+                do_time: stage.do_time
             });
         }
 

@@ -1,17 +1,63 @@
 <ion-content>
-  <div class="questionnaire">
-    <div *ngFor="let question of questions[0].questions; let i = index">
-      <h2>Pergunta {{ i + 1 }} - {{ question.title }}</h2>
-      <ion-list>
-        <ion-radio-group [(ngModel)]="answers[i]">
-          <ion-item *ngFor="let option of question.options">
-            <ion-label>{{ option }}</ion-label>
-            <ion-radio slot="start" [value]="option"  (click)="onclick()"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div id="container">
+    <div *ngIf="errorMessage" class="ion-text-center ion-padding">
+      <ion-text color="danger">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
     </div>
-    <ion-button expand="block" (click)="submitAnswers()" class="send">ENVIAR RESPOSTAS</ion-button>
-    <ion-button expand="block" (click)="goBack()" class="back">Voltar para a página de atividades</ion-button>
+
+    <div *ngIf="questionary; else loadingOrEmpty">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Questionário da Atividade</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="!hasAnswered">
+          <ion-list *ngFor="let question of questionary.questions; let qIndex = index">
+            <ion-item>
+              <ion-label position="stacked"><strong>{{ qIndex + 1 }}. {{ question }}</strong></ion-label>
+            </ion-item>
+            <ion-radio-group [value]="selectedAnswers[qIndex]" (ionChange)="onAnswerSelected(qIndex, $event.detail.value)">
+              <ion-item *ngFor="let option of questionary.options[qIndex]; let oIndex = index">
+                <ion-label>{{ option }}</ion-label>
+                <ion-radio [value]="oIndex" slot="start"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+            <ion-note *ngIf="selectedAnswers[qIndex] === null" color="warning" class="ion-padding-horizontal">
+              Por favor, selecione uma opção.
+            </ion-note>
+          </ion-list>
+
+          <ion-button expand="full" (click)="submitAnswers()" class="ion-margin-top">
+            Enviar Respostas
+          </ion-button>
+        </ion-card-content>
+
+        <ion-card-content *ngIf="hasAnswered">
+          <ion-text color="success" class="ion-text-center">
+            <h2>🎉 Você já respondeu a este questionário! 🎉</h2>
+            <p>Não é possível responder novamente.</p>
+          </ion-text>
+          <ion-button expand="full" (click)="goBack()">Voltar às Atividades</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ng-template #loadingOrEmpty>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+          <ion-col size="10" class="ion-text-center">
+            <ion-text color="medium">
+              <p *ngIf="loading">Carregando questionário...</p>
+              <p *ngIf="!loading && !errorMessage">Nenhum questionário disponível para esta atividade.</p>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
   </div>
 </ion-content>

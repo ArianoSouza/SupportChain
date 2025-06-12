@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: DetailActivitiePage
-  },
-  {
-    path: 'activitie-content',
-    loadChildren: () => import('../activitie-content/activitie-content.module').then( m => m.ActivitieContentPageModule)
   }
 ];
 

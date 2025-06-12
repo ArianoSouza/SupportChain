@@ -35,7 +35,6 @@ export type User = {
     fk_id_topic: string;
     titles: string[];
     paragraphs: string[];
-    media: any[];
   };
   
    // Assuming Tag is just a string
@@ -52,7 +51,7 @@ export type User = {
     id: string;
     fk_id_activitie: string;
     title: string;
-    doTime: number;
+    do_time: number;
     objective: string;
     steps: string[];
   };

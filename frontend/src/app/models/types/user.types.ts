@@ -37,13 +37,7 @@ export type Assistance = {
     description:string
   }
 
-  export type TrilhaModulo = {
-    id: number;
-    order: number;
-    title: string;
-    desc: string;
-    conteudos: string[];
-  };
+  
 
 export type userData ={
   nome: string;
@@ -94,7 +88,8 @@ export type Tag =
   | "auto-reflexão"
   | "atividade física"
   | "bem-estar"
-  | "autocontrole";
+  | "autocontrole"
+  | "culinária"
   
 
   export type question ={
@@ -124,4 +119,103 @@ export type Tag =
       tags: string[];
       likesNumber: number;
       tumbURL: string;
+  }
+
+
+
+  // novos
+  export type Trilha = {
+    id: string;
+    title: string;
+    icon: string;
+  };
+  export interface GetAllTrilhasApiResponse {
+    message: string;
+    trilhas: Trilha[];
+  }
+
+  export type Topic = {
+    id: string;
+    fk_id_trilha: string;
+    order_position: number;
+    description: string;
+    title: string;
+  };
+
+  export interface GetTopicsByTrilhaIdApiResponse {
+    message: string;
+    topics: Topic[];
+  }
+
+  export interface Content {
+    id: string;
+    fk_id_topic: string;
+    titles: string[];
+    paragraphs: string[];
+    // Se a API retornar 'media', adicione aqui, por exemplo:
+    // media?: any[]; // ou um tipo mais específico se souber a estrutura
+  }
+  
+  export interface GetContentByTopicIdApiResponse {
+    message: string;
+    content: Content; // A API retorna um objeto 'content' dentro da resposta
+  }
+
+  export interface Activity {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+    tags: string[];
+  }
+  
+  export interface GetActivitiesByTagApiResponse {
+    message: string;
+    activities: Activity[];
+  }
+
+  export interface ActivitieStage {
+    id: string;
+    fk_id_activitie: string;
+    title: string;
+    do_time: number; // No backend, você usou 'do_time', certifique-se de que o mapping está correto
+    objective: string;
+    steps: string[];
+  }
+  
+  export interface GetStagesByActivitieIdApiResponse {
+    message: string;
+    stages: ActivitieStage[];
+  }
+
+  export interface Questionary {
+    id: string;
+    fk_id_activitie: string;
+    questions: string[];
+    options: any[]; // Pode ser array de arrays ou array de strings, dependendo da sua estrutura
+  }
+  
+  export interface GetQuestionaryByActivitieIdApiResponse {
+    message: string;
+    questionary: Questionary;
+    hasAnswered: boolean;
+  }
+
+  export interface UserAnswer {
+    id: string;
+    fk_user_id: string;
+    fk_questionarie_id: string;
+    answers: string[];
+  }
+  
+  // Interface para o corpo da requisição POST
+  export interface PostUserAnswersRequestBody {
+    fk_questionarie_id: string;
+    answers: string[];
+  }
+  
+  // Interface para a resposta da requisição POST
+  export interface PostUserAnswersApiResponse {
+    message: string;
+    answerId: string; // A API retorna o ID da nova resposta criada
   }

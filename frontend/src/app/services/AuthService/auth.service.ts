@@ -8,7 +8,7 @@ import { userData } from 'src/app/models/types/user.types';
 })
 export class AuthService {
   private apiLogin = 'http://localhost:3000/loginUserOnTestDB';
-  private apiCadastro = ''
+  private apiCadastro = 'http://localhost:3000/registerUserOnTestDB'
 
   constructor(private http: HttpClient) {}
 
