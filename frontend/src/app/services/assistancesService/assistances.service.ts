@@ -34,7 +34,7 @@ export class AssistanceService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-assistances-by-user-address'
-    const endpoint = `${this.apiUrl}/GetAllAssistancesFromUserAdressFromTestDB`;
+    const endpoint = `${this.apiUrl}/GetAllAssistancesFromUserAdress`;
 
     return this.http.get<GetAllAssistancesApiResponse>(endpoint, { headers }).pipe(
       catchError(error => {

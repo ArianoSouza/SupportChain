@@ -1,9 +1,11 @@
+
 // src/app/services/video.service.ts
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AddLikeApiResponse, AlterClickTagsVideoApiResponse, AlterClickTagsVideoRequestBody, Video } from 'src/app/models/types/user.types';
+import { environment } from '../../environments/environment';
 // Para sua URL da API
 
 // Defina as interfaces para os dados que você espera receber da API
@@ -27,7 +29,7 @@ export interface ApiResponse {
   providedIn: 'root'
 })
 export class VideoService {
-  private apiUrl = 'http://localhost:3000' // Ex: 'http://localhost:3000'
+  private apiUrl = environment.apiBaseUrl;// Ex: 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
 
@@ -52,7 +54,7 @@ export class VideoService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ajuste '/getAllVideoInfoFromTestDB' se a rota for diferente no seu Express.js
-    return this.http.get<ApiResponse>(`${this.apiUrl}/getAllVideoInfoFromTestDB`, { headers });
+    return this.http.get<ApiResponse>(`${this.apiUrl}/getAllVideoInfo`, { headers });
   }
 
   getVideoById(videoId: string): Observable<Video> {
@@ -70,7 +72,7 @@ export class VideoService {
 
     // A rota no seu Express.js deve ser algo como '/videos/:id' ou '/getVideoInfoFromTestDB/:id'
     // Ajuste a URL abaixo para corresponder à sua rota de API
-    return this.http.get<Video>(`${this.apiUrl}/getVideoFromTestDB/${videoId}`, { headers });
+    return this.http.get<Video>(`${this.apiUrl}/getVideo/${videoId}`, { headers });
   }
 
 
@@ -101,7 +103,7 @@ export class VideoService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/alter-clicktags-video'
-    const endpoint = `${this.apiUrl}/AlterClickTagsVideoFromUserIdOnTestDB`;
+    const endpoint = `${this.apiUrl}/AlterClickTagsVideoFromUserId`;
 
     return this.http.put<AlterClickTagsVideoApiResponse>(endpoint, body, { headers }).pipe(
       catchError(error => {
@@ -135,7 +137,7 @@ export class VideoService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/like-video/ID_DO_VIDEO_AQUI'
-    const endpoint = `${this.apiUrl}/AddLikeOnVideoOnTestBD/${videoId}`;
+    const endpoint = `${this.apiUrl}/AddLikeOnVideo/${videoId}`;
 
     // A API é um POST, mas o corpo pode ser vazio se todas as informações estiverem na URL/cabeçalho
     return this.http.post<AddLikeApiResponse>(endpoint, {}, { headers }).pipe( // Passa um objeto vazio como corpo

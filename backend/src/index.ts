@@ -1,3 +1,4 @@
+
 import express from 'express';
 import cors from "cors";
 import { GetNews } from './APIs/getNews';
@@ -51,6 +52,37 @@ import AlterUserInfoFromIdOnTestDB from './ContollerTest/PutUserInfoOnTestDB';
 import AddLikeOnVideoOnTestBD from './ContollerTest/PostAddLikeToVideo';
 import PostNewContentOnTestDB from './ContollerTest/PostNewContentOnTestDB';
 import PostNewQuestionaryOnTestDB from './ContollerTest/PostNewQuestionaryOnTestDB';
+
+
+
+
+import { testDBProductionn } from './Controller/testDBTest';
+import createTable from './data/Database';
+import GetActivitiesFromActivitiesTagProduction from './Controller/GetActivitiesByTagProduction';
+import GetVideoByIdProduction from './Controller/GetVideoByIdFromTestDB';
+import GetAllVideosInfoOrderBySugestionProduction from './Controller/GetAllVideosInfoOrderedBySugestion';
+import GetAllTrilhasProduction from './Controller/GetAllTrilhasFromTestDB';
+import GetAllAssistancesFromUserAdressProduction from './Controller/GetAssistancesByUserLocation';
+import GetContentFromTopicsIdProduction from './Controller/GetContentByTopicIdFromTestDB';
+import GetQuestionsFromActivitieIdProduction from './Controller/GetQuestionaryByActivitieIdFromTestDB';
+import GetStagesFromActivitieIdProduction from './Controller/GetStagesByActivitieIdFromTestDB';
+import GetTopicsFromTrilhaIdProduction from './Controller/GetTopicsByTrilhaIdFromTestDB';
+import GetUserInfoFromIdProduction from './Controller/GetUserInfoByIDFromTestDB';
+import InsertTrilhaProduction from './Controller/InsertTrilhaOnTestDB';
+import InsertTopicosProduction from './Controller/insertTopicosToTestDB';
+import InsertActivitiesaAndStagesProduction from './Controller/insertActivitiesAndStagesToTestDB';
+import InsertAssistancesProduction from './Controller/insertAssistanceOnTestDB';
+import PostNewVideoOnProduction from './Controller/UploadAndPostNewVideoToTestDB';
+import insertNewUserRegisterProduction from './Controller/insertNewUserRegister';
+import postUserLoginProduction from './Controller/postUserLoginOnTestDB';
+import PostNewUserAnswersProduction from './Controller/PostNewUserAnswersOnTestDB';
+import AddLikeOnVideoProduction from './Controller/PostAddLikeToVideo';
+import PostNewContentProduction from './Controller/PostNewContentOnTestDB';
+import PostNewQuestionaryProduction from './Controller/PostNewQuestionaryOnTestDB';
+import AlterClickTagsVideoFromUserIdProduction from './Controller/PutClickTagsVideoFromUserId';
+import AlterUserInfoFromIdProduction from './Controller/PutUserInfoOnTestDB';
+
+
 
 
 // CONFIGURAÇÃO
@@ -110,7 +142,7 @@ router.get("/testDBTest", testDBTestConnection)
 router.post("/addAllTabesToTestDB",createTestDBTable)
 
 //gets
-router.get("/GetActivitiesFromActivitiesTag/:tag", GetActivitiesFromActivitiesTag) //testado
+router.get("/GetActivitiesFromActivitiesTagFromTestDB/:tag", GetActivitiesFromActivitiesTag) //testado
 router.get("/getVideoFromTestDB/:id",GetVideoByIdFromTestDB)//testado
 router.get("/getAllVideoInfoFromTestDB", GetAllVideosInfoOrderBySugestion);//testado
 router.get("/GetAllTrilhasFromTestDB",GetAllTrilhasFromTestDB) //testado
@@ -146,8 +178,57 @@ router.put("/AlterClickTagsVideoFromUserIdOnTestDB",AlterClickTagsVideoFromUserI
 router.put("/AlterUserInfoFromIdOnTestDB",AlterUserInfoFromIdOnTestDB) //testado
 
 
-app.listen(3000, () => {
-  console.log("Server is running  in http://localhost:3000")
+////------------------------------------------------------------------------------------------------
+//ROTAS produção
+//use o /alltablestotestdb pra configurar o banco LOCAL
+
+//testeconection
+router.get("/testDB", testDBProductionn)
+
+
+//config DBTest
+router.post("/addAllTabes",createTable)
+
+//gets
+router.get("/GetActivitiesFromActivitiesTag/:tag", GetActivitiesFromActivitiesTagProduction) //testado
+router.get("/getVideo/:id",GetVideoByIdProduction)//testado
+router.get("/getAllVideoInfo", GetAllVideosInfoOrderBySugestionProduction);//testado
+router.get("/GetAllTrilhas",GetAllTrilhasProduction) //testado
+router.get("/GetAllAssistancesFromUserAdress", GetAllAssistancesFromUserAdressProduction) //testado
+router.get("/GetContentFromTopicsId/:id",GetContentFromTopicsIdProduction) //testado
+router.get("/GetQuestionsFromActivitieId/:id",GetQuestionsFromActivitieIdProduction) //testado
+router.get("/GetStagesFromActivitieId/:id",GetStagesFromActivitieIdProduction) //testado
+router.get("/GetTopicsFromTrilhaId/:id",GetTopicsFromTrilhaIdProduction)  //testado
+router.get("/GetUserInfoFromId", GetUserInfoFromIdProduction) //testado
+
+
+
+//insers
+router.post("/trilhas",InsertTrilhaProduction);  //testado
+router.post("/topicos", InsertTopicosProduction); //testado
+router.post("/atividades", InsertActivitiesaAndStagesProduction); //testado
+router.post("/assistances", InsertAssistancesProduction); //testado
+
+router.post("/videos",upload.fields([
+  { name: 'videoFile', maxCount: 1 },
+  { name: 'thumbnailFile', maxCount: 1 }
+]), PostNewVideoOnProduction); //testado
+
+router.post("/registerUser", insertNewUserRegisterProduction); //testado
+router.post("/loginUser",postUserLoginProduction); //testado
+router.post("/PostNewUserAnswers", PostNewUserAnswersProduction)
+router.post("/AddLikeOnVideo/:id",AddLikeOnVideoProduction) //testado
+router.post("/PostNewContent", PostNewContentProduction)//testado
+router.post("/PostNewQuestionary",PostNewQuestionaryProduction) //testado
+
+
+//Puts ou Alters
+router.put("/AlterClickTagsVideoFromUser",AlterClickTagsVideoFromUserIdProduction) //testado
+router.put("/AlterUserInfoFromId",AlterUserInfoFromIdProduction) //testado
+
+
+app.listen(process.env.DB_PORT, () => {
+  console.log(`Server is running  in PORT ${process.env.DB_PORT}`)
 })
 
 export default app;

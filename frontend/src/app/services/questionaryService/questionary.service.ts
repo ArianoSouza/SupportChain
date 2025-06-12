@@ -39,7 +39,7 @@ export class QuestionaryService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-questions-by-activitie/ID_DA_ATIVIDADE_AQUI'
-    const endpoint = `${this.apiUrl}/GetQuestionsFromActivitieIdFromTestDB/${activitieId}`;
+    const endpoint = `${this.apiUrl}/GetQuestionsFromActivitieId/${activitieId}`;
 
     return this.http.get<GetQuestionaryByActivitieIdApiResponse>(endpoint, { headers }).pipe(
       catchError(error => {
@@ -82,7 +82,7 @@ export class QuestionaryService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/post-user-answers'
-    const endpoint = `${this.apiUrl}/PostNewUserAnswersOnTestDB`;
+    const endpoint = `${this.apiUrl}/PostNewUserAnswers`;
 
     return this.http.post<PostUserAnswersApiResponse>(endpoint, body, { headers }).pipe(
       catchError(error => {

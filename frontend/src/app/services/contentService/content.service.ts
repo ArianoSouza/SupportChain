@@ -29,7 +29,7 @@ export class ContentService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-content-by-topic/ID_DO_TOPICO_AQUI'
-    const endpoint = `${this.apiUrl}/GetContentFromTopicsIdFromTestDB/${topicId}`;
+    const endpoint = `${this.apiUrl}/GetContentFromTopicsId/${topicId}`;
 
     return this.http.get<GetContentByTopicIdApiResponse>(endpoint).pipe(
       // Transforma a resposta da API para extrair o objeto Content

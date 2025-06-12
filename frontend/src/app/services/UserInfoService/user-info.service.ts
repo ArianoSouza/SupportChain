@@ -32,7 +32,7 @@ export class UserService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-user-info'
-    const endpoint = `${this.apiUrl}/GetUserInfoFromIdFromTestDB`;
+    const endpoint = `${this.apiUrl}/GetUserInfoFromId`;
 
     return this.http.get<GetUserInfoApiResponse>(endpoint, { headers }).pipe(
       // Transforma a resposta da API para extrair o objeto UserInfo
@@ -65,7 +65,7 @@ export class UserService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/alter-user-info'
-    const endpoint = `${this.apiUrl}/AlterUserInfoFromIdOnTestDB`;
+    const endpoint = `${this.apiUrl}/AlterUserInfoFromId`;
 
     // O backend já lida com a remoção de 'senha' e 'id' do objeto 'updates'
     // mas por segurança extra, podemos filtrar aqui também no frontend.

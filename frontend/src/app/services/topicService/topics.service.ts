@@ -27,7 +27,7 @@ export class TopicService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-topics-by-trilha/ID_DA_TRILHA_AQUI'
-    const endpoint = `${this.apiUrl}/GetTopicsFromTrilhaIdFromTestDB/${trilhaId}`;
+    const endpoint = `${this.apiUrl}/GetTopicsFromTrilhaId/${trilhaId}`;
 
     return this.http.get<GetTopicsByTrilhaIdApiResponse>(endpoint).pipe(
       // Transforma a resposta da API para extrair o array de tópicos

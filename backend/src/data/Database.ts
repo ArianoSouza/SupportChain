@@ -35,7 +35,7 @@ const printError = (error: any) => {
 
     -- Tabela topics
     CREATE TABLE IF NOT EXISTS topics (
-        id VARCHAR(60) PRIMARY KEY,
+        id VARCHAR(60) PRIMARY KEY, -- CORRIGIDO AQUI: Removido o PRIMARY duplicado
         fk_id_trilha VARCHAR(60) REFERENCES trilhas(id),
         order_position INTEGER,
         description TEXT,
@@ -48,7 +48,6 @@ const printError = (error: any) => {
         fk_id_topic VARCHAR(60) REFERENCES topics(id),
         titles TEXT[],
         paragraphs TEXT[],
-        media JSONB[]
     );
 
     -- Tabela activities
@@ -61,11 +60,11 @@ const printError = (error: any) => {
     );
 
     -- Tabela activitieStage
-    CREATE TABLE IF NOT EXISTS activitieStage (
+    CREATE TABLE IF NOT EXISTS activitie_stage (
         id VARCHAR(60) PRIMARY KEY,
         fk_id_activitie VARCHAR(60) REFERENCES activities(id),
         title VARCHAR(255),
-        "doTime" INTEGER,
+        do_Time INTEGER,
         objective TEXT,
         steps TEXT[]
     );
@@ -83,7 +82,7 @@ const printError = (error: any) => {
         id VARCHAR(60) PRIMARY KEY,
         fk_user_id UUID REFERENCES users(id),
         fk_questionarie_id VARCHAR(60) REFERENCES questionaries(id),
-        answers INTEGER[]
+        answers TEXT[]
     );
 
     -- Tabela videos
@@ -100,9 +99,10 @@ const printError = (error: any) => {
     -- Tabela assistance
     CREATE TABLE IF NOT EXISTS assistance (
         id VARCHAR(60) PRIMARY KEY,
+        image VARCHAR(60),
         name VARCHAR(255),
         description TEXT,
-        specialities TEXT,
+        specialities TEXT[],
         "phoneNumber" VARCHAR(50),
         estado VARCHAR(100),
         cidade VARCHAR(100),

@@ -27,7 +27,7 @@ export class ActivitieStageService {
 
     // A rota da API deve corresponder exatamente à rota do seu backend
     // Ex: '/get-stages-by-activitie/ID_DA_ATIVIDADE_AQUI'
-    const endpoint = `${this.apiUrl}/GetStagesFromActivitieIdFromTestDB/${activitieId}`;
+    const endpoint = `${this.apiUrl}/GetStagesFromActivitieId/${activitieId}`;
 
     return this.http.get<GetStagesByActivitieIdApiResponse>(endpoint).pipe(
       // Transforma a resposta da API para extrair o array de estágios

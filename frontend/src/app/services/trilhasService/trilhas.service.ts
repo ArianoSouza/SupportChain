@@ -22,7 +22,7 @@ export class TrilhaService {
    * @returns Observable<Trilha[]> Um Observable contendo um array de objetos Trilha.
    */
   getAllTrilhas(): Observable<Trilha[]> { // A assinatura do método continua Observable<Trilha[]>
-    const endpoint = `${this.apiUrl}/getAllTrilhasFromTestDB`;
+    const endpoint = `${this.apiUrl}/getAllTrilhas`;
 
     return this.http.get<GetAllTrilhasApiResponse>(endpoint).pipe(
       // Primeiro, transforme a resposta da API para extrair o array de trilhas
