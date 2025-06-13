@@ -49,10 +49,8 @@ export class AtividadesPage implements OnInit {
         queryParams:{
           tag: tag,
           img:img,
-          info:{
-            title:title,
-            desc:desc
-          }
+          title:title,
+          desc:desc
       }
     }
     )
