@@ -75,6 +75,40 @@ export class ConfiguracoesPage implements OnInit {
     await alert.present();
   }
 
+
+  async presentConfirmCancelAlert(
+    header: string,
+    message: string,
+    confirmHandler: () => void, // Função a ser executada no clique em "Confirmar"
+    cancelHandler?: () => void // Função opcional a ser executada no clique em "Cancelar"
+  ) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel', // Define o papel do botão como 'cancel'
+          cssClass: 'secondary', // Classe CSS opcional para estilo (ex: cinza)
+          handler: () => {
+            console.log('Botão Cancelar clicado');
+          },
+        },
+        {
+          text: 'Confirmar',
+          role: 'confirm', // Define um papel personalizado ou 'destructive' para ações perigosas
+          cssClass: 'primary', // Classe CSS opcional para estilo (ex: azul)
+          handler: () => {
+            console.log('Botão Confirmar clicado');
+            confirmHandler(); // Executa a função de confirmação fornecida
+          },
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+
   // Opcional: Para pull-to-refresh
   handleRefresh(event: any) {
     this.loadUserInfo().finally(() => {
@@ -97,5 +131,21 @@ export class ConfiguracoesPage implements OnInit {
 
     await modal.present();
   }
+
+  logOut(){
+    this.presentConfirmCancelAlert(
+      "Sair do aplicativo",
+      "Deseja mesmo sair do aplicativo?",
+      ()=>{this.doSomethingOnConfirm()} // Função a ser executada no clique em "Confirmar"
+    )
+
+  }
+
+
+  doSomethingOnConfirm():void {
+    localStorage.removeItem('token');
+     this.router.navigate(['/login'])
+  }
+  
 
 }
