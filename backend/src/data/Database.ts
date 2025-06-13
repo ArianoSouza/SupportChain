@@ -129,6 +129,4 @@ const closeConnection = () => {
     connection.destroy();
 };
 
-createTable();
-
 export default createTable;
