@@ -71,9 +71,22 @@ const app = express();
 const upload = multer({ dest: "uploads/" });
 
 app.use(express.json());
-app.use(cors());
+// 1. CORS: DEVE ser o primeiro para garantir que os cabeçalhos de CORS sejam adicionados a todas as respostas.
+const corsOptions = {
+  origin: 'https://support-chain.vercel.app', // Sua URL de frontend no Vercel
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  credentials: true, // Se você envia credenciais (tokens de autorização, cookies)
+  optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions)); // Aplique o middleware de CORS com suas opções
+
+// 2. Body Parsers: Devem vir antes das rotas para que o corpo da requisição seja parseado antes que suas rotas o leiam.
+app.use(express.json()); // Para requests com Content-Type: application/json
+app.use(express.urlencoded({ extended: true })); // Para requests com Content-Type: application/x-www-form-urlencoded
+
+// 3. Router: O roteador vem depois de todos os middlewares globais.
 app.use(router);
-app.use(express.urlencoded({ extended: true }));
+
 
 
 ////ROTAS 
