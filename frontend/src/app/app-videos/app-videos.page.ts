@@ -59,7 +59,6 @@ export class AppVideosPage implements OnInit {
           loader.dismiss(); // Garante que o loader seja fechado
           console.error('Erro ao adicionar tags do vídeo:', err);
           // Opcional: Mostrar um alerta ou mensagem de erro
-          this.presentAlert('Erro ao Adicionar Tags', err.message || 'Falha ao atualizar tags de interesse.');
         }
       });
       this.navCtrl.navigateForward('/full-video',

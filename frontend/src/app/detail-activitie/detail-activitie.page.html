@@ -12,14 +12,17 @@
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-button>
 
-    <div *ngFor="let activity of activities">
-      <ion-item button (click)="goToActivitieDetail(activity.id)">
+    <div *ngFor="let activity of activities" >
+      <ion-item button (click)="goToActivitieDetail(activity.id)" *ngIf="activities else noActivities">
         <ion-icon [name]="activity.icon" slot="start"></ion-icon>
         <ion-label>
           <h2>{{ activity.title }}</h2>
           <p>{{ activity.description }}</p>
         </ion-label>
       </ion-item>
+      <ng-template #noActivities>
+        Ainda não há atividades para essa categoria!
+      </ng-template>
     </div>
   </div>
 </ion-content>
