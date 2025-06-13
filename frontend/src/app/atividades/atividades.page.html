@@ -25,7 +25,7 @@
   <div class="activities">
     <h2>Todas as atividades</h2>
 
-    <ion-card *ngFor="let activity of filteredActivities" button (click)="goToActivitieDetail(activity.tag,activity.image,activity.title,activity.description)" id={{activity.tag}}>
+    <ion-card *ngFor="let activity of filteredActivities" button (click)="goToActivitieDetail(activity.tag,activity.image,activity.title,activity.description)" id={{activity.tag}} >
       <img [src]="activity.image" [alt]="activity.title" (error)="onImgError($event)">
       <ion-card-header>
         <ion-card-title>{{ activity.title }}</ion-card-title>

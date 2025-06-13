@@ -24,7 +24,6 @@ export class AtividadesPage implements OnInit {
     "atividade física",
     "bem-estar",
     "autocontrole",
-    "culinária"
   ];
 
   allactivities: ActivityCategory[] = dataAtvCategories as ActivityCategory[]

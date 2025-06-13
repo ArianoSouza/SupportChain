@@ -93,19 +93,13 @@ export class FullVideoPage implements OnInit {
   }
 
   async onLikeVideo(videoId: string | null) {
-    const loader = await this.loadingController.create({
-      message: 'Curtindo vídeo...',
-    });
-    await loader.present();
 
     this.videoService.addLikeToVideo(videoId).subscribe({
       next: (response) => {
-        loader.dismiss();
         console.log('Like adicionado/verificado:', response);
         this.presentToast(response.message, 'success');
       },
       error: async (err: Error) => {
-        loader.dismiss();
         console.error('Erro ao curtir vídeo:', err);
         this.presentAlert('Erro ao Curtir Vídeo', err.message || 'Falha ao curtir vídeo.');
       }
