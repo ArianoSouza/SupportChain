@@ -14,6 +14,10 @@ ion-radio{
     --color-checked: #004b7e;
 }
 
+ion-content{
+    margin-top:3rem;
+}
+
 .questionnaire{
     margin-top: 3rem;
 }
@@ -31,3 +35,17 @@ ion-radio{
     --border-color: black;
 
 }
+
+.back-button{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    --background:white;
+    width:3rem ;
+    height: 3rem;
+    font-size: 1rem;
+    --border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

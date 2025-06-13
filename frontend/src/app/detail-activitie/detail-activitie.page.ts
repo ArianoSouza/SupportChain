@@ -45,8 +45,8 @@ export class DetailActivitiePage implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.tag = params['tag']; 
       this.image = params['img']
-      this.title = params['info'].title
-      this.desc = params['info'].desc
+      this.title = params['title']
+      this.desc = params['desc']
     });
   }
 
